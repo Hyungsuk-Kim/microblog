@@ -28,15 +28,15 @@ public class Blog implements Serializable {
 	
 	// Constructors
 	// 블로그 생성 테스트용
-	public Blog(String blogName, String memberName) {
-		this.blogName = blogName;
+	public Blog(String memberName, String blogName) {
 		this.memberName = memberName;
+		this.blogName = blogName;
 	}
 	
 	// 블로그 생성용
-	public Blog(String blogName,String memberName, int backgroundColor, String headerImage, String profileImage, int blogLayout) {
-		this.blogName = blogName;
+	public Blog(String memberName, String blogName, int backgroundColor, String headerImage, String profileImage, int blogLayout) {
 		this.memberName = memberName;
+		this.blogName = blogName;
 		this.backgroundColor = backgroundColor;
 		this.headerImage = headerImage;
 		this.profileImage = profileImage;
@@ -44,15 +44,15 @@ public class Blog implements Serializable {
 	}
 	
 	// 팔로워 조회용
-	public Blog(String blogName, String memberName, int followerCount) {
+	public Blog(String memberName, String blogName, int followerCount) {
 		this(memberName, blogName);
 		this.followerCount = followerCount;
 	}
 	
 	// 조회용
-	public Blog(String blogName, String memberName, int followerCount, int backgroundColor, String headerImage, String profileImage, int blogLayout) {
-		this.blogName = blogName;
+	public Blog(String memberName, String blogName, int followerCount, int backgroundColor, String headerImage, String profileImage, int blogLayout) {
 		this.memberName = memberName;
+		this.blogName = blogName;
 		this.followerCount = followerCount;
 		this.backgroundColor = backgroundColor;
 		this.headerImage = headerImage;
