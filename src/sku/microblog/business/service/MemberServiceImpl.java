@@ -14,6 +14,7 @@ public class MemberServiceImpl implements MemberService {
 
 	public MemberServiceImpl() {
 		memberDataAccess = new MemberDaoImpl();
+		System.out.println("dlld");
 	}
 	
 	@Override
