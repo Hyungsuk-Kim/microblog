@@ -84,8 +84,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void giveRole(Member administrator, String targetMemberName, int role)
 			throws DataNotFoundException {
-		// TODO Auto-generated method stub
-
+		if(memberDataAccess.selectMemberAsRole(role).equals(administrator)){
+			
+		}
 	}
 
 }
