@@ -1,5 +1,6 @@
 package sku.microblog.business.domain;
 
+import java.awt.Color;
 import java.io.Serializable;
 
 /**
@@ -27,10 +28,11 @@ public class Blog implements Serializable {
 	public static final int GRID_LAYOUT = 2;
 	
 	// Constructors
-	// 블로그 생성 테스트용
+	// 기본 블로그 생성
 	public Blog(String blogName, String memberName) {
 		this.blogName = blogName;
 		this.memberName = memberName;
+		this.blogLayout = LISTED_LAYOUT;
 	}
 	
 	// 블로그 생성용

@@ -16,4 +16,5 @@ public interface BlogDao {
 	public abstract void cancelFollowing(Member member, String blogName);
 	public abstract List<Blog> selectBlogList(Map<String, Object> searchInfo);
 	public abstract int selectBlogCount(Map<String, Object> searchInfo);
+	public abstract boolean blogExists(String blogName);
 }

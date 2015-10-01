@@ -416,5 +416,34 @@ public class BlogDaoImpl implements BlogDao{
 		
 		return count;
 	}
+
+	@Override
+	public boolean blogExists(String blogName) {
+		boolean result = false;
+		
+		String sql = "SELECT blog_name FROM blog WHERE blog_name=?";
+		System.out.println("BlogDaoImpl blogExists() query : " + sql);
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			connection = this.obtainConnection();
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, blogName);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DatabaseUtil.close(connection, pstmt, rs);
+		}
+		
+		return result;
+	}
 	
 }
