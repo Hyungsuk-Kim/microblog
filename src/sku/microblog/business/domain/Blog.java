@@ -1,6 +1,5 @@
 package sku.microblog.business.domain;
 
-import java.awt.Color;
 import java.io.Serializable;
 
 /**
