@@ -14,8 +14,6 @@ import javax.servlet.http.HttpSession;
 import sku.microblog.business.domain.Member;
 import sku.microblog.business.service.MemberService;
 import sku.microblog.business.service.MemberServiceImpl;
-import sku.microblog.business.service.PostingService;
-import sku.microblog.business.service.PostingServiceImpl;
 import sku.microblog.util.DataDuplicatedException;
 import sku.microblog.util.DataNotFoundException;
 
@@ -366,28 +364,11 @@ public class MemberController extends HttpServlet {
 	 * @param response
 	 * @throws ServletException
 	 * @throws IOException
-	 * @throws DataNotFoundException 
 	 */
 	private void cancelLike(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
-		HttpSession session = request.getSession(false);
-		if(session == null) {
-			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "로그인이 필요합니다.");
-			return;
-		}
-		
-		Member member = (Member) session.getAttribute("loginMember");
-		
-		if(member == null) {
-			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "로그인이 필요합니다.");
-			return;
-		}
-		
-		String blogName = request.getParameter("blogName");
-		int postingNum = Integer.parseInt(request.getParameter("postingNum"));
-		
-		PostingService postingService = new PostingServiceImpl();
-		postingService.cancelLikes(member, blogName, postingNum);
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
 	}
 	
 	private boolean availableName(HttpServletRequest request,
