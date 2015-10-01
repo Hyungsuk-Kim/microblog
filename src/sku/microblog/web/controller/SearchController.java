@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import sku.microblog.business.service.*;
+
 /**
  * Servlet implementation class SearchController
  */
@@ -59,9 +61,15 @@ public class SearchController extends HttpServlet {
 			searchInfo.put("searchType", "all");
 			
 			// 해당하는(member, posting, blog) 서비스 객체에게 Map객체(searchInfo)를 매개변수로 넘겨주며 getXXXList 메서드 호출
-			1.
-			2.
-			3.
+			MemberService memberService = new MemberServiceImpl();
+			memberService.getMemberList(searchInfo);
+			
+			PostingService postingService = new PostingServiceImpl();
+			postingService.getPostingList(searchInfo);
+			
+			BlogService blogService = new BlogServiceImpl();
+			blogService.getBlogList(searchInfo);
+			
 			return;
 		} else if (searchType != null && searchType.trim().length() != 0) {
 			// 결과 내 검색 기능(해당 타입에 대하여 재검색)
@@ -70,14 +78,16 @@ public class SearchController extends HttpServlet {
 				searchInfo.put("searchType", "member");
 				
 				// member 관련 서비스 객체에게 Map객체(searchInfo)를 매개변수로 넘겨주며 getXXXList 메서드 호출
-				1.
+				MemberService memberService = new MemberServiceImpl();
+				memberService.getMemberList(searchInfo);
 				return;
 			} else if (searchType.equals("blog")) { 
 				// 입력된 키워드를 포함한 블로그를 검색
 				searchInfo.put("searchType", "blog");
 				
 				// blog 관련 서비스 객체에게 Map객체(searchInfo)를 매개변수로 넘겨주며 getXXXList 메서드 호출
-				1.
+				BlogService blogService = new BlogServiceImpl();
+				blogService.getBlogList(searchInfo);
 				return;
 			} else if (searchType.equals("postingTitle")) {
 				// 입력된 키워드를 포함한 포스팅을 포스팅 제목으로 검색
@@ -93,7 +103,8 @@ public class SearchController extends HttpServlet {
 				searchInfo.put("searchType", "tags");
 			}
 			// posting 관련 서비스 객체에게 Map객체(searchInfo)를 매개변수로 넘겨주며 getXXXList 메서드 호출
-			1.
+			PostingService postingService = new PostingServiceImpl();
+			postingService.getPostingList(searchInfo);
 			return;
 		}
 		
