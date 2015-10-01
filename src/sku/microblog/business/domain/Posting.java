@@ -14,18 +14,18 @@ public class Posting implements Serializable {
 	private String title; // 포스팅 제목
 	private String writer; // 작성자의 name
 	private PostingContent contents; // 포스팅의 내용을 담은 PostingContent 객체
-	private String ip; // 포스팅한 기기의 ip 주소
+	private String ip; // 포스팅한 client의 ip 주소
 	private int readCount; // 조회수
 	private java.util.Date regDate; // 등록 날짜
 	private int likes; // 좋아요 수
 	private int exposure; // 공개여부 (PUBLIC or PRIVATE)
-	private String tags; // 해시태그
+	private String tags; // 태그
 	private int ref; // 원본 글의 번호(num)
 	private int replyStep; // 원본 글에 대한 총 댓글의 수 혹은 순서
 	private int replyDepth; // 원본 글(0)을 기준으로 한 댓글의 깊이(레벨)
 	private int replyCount; // 현재 (댓)글에 달린 댓글의 수
 	private boolean isReply = false; // 현재 글이 댓글인 경우 true
-	private int reblogCount;
+	private int reblogCount; // 리블로그한 횟수
 	
 	// Class Variables
 	public static final int PUBLIC_ALLOW_REPLY = 0; // 댓글을 허용한 공개 포스팅
