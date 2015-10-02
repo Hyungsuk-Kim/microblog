@@ -14,7 +14,7 @@ public class PostingContent implements Serializable{
 	private static final long serialVersionUID = -3440708136003859673L;
 	
 	private String blogName;
-	private String postingNum;
+	private int postingNum;
 	private int contentType;
 	private String textContent;
 	private List<File> fileContent;
@@ -32,20 +32,20 @@ public class PostingContent implements Serializable{
 	public static final int LINK_CONTENT = 50;
 	
 	// Constructors
-	public PostingContent(String blogName, String postingNum, int contentType) {
+	public PostingContent(String blogName, int postingNum, int contentType) {
 		this.blogName = blogName;
 		this.postingNum = postingNum;
 		this.contentType = contentType;
 	}
 	
 	// for Text Contents
-	public PostingContent(String blogName, String postingNum, int contentType, String textContent) {
+	public PostingContent(String blogName, int postingNum, int contentType, String textContent) {
 		this(blogName, postingNum, contentType);
 		this.textContent = textContent;
 	}
 	
 	// for Single Contents (Media content)
-	public PostingContent(String blogName, String postingNum, int contentType, File... files) {
+	public PostingContent(String blogName, int postingNum, int contentType, File... files) {
 		this(blogName, postingNum, contentType);
 		if (files.length != 0) {
 			this.fileContent = new ArrayList<File>();
@@ -56,7 +56,7 @@ public class PostingContent implements Serializable{
 	}
 	
 	// for Mixed Contents
-	public PostingContent(String blogName, String postingNum, int contentType, String textContent, File... files) {
+	public PostingContent(String blogName, int postingNum, int contentType, String textContent, File... files) {
 		this(blogName, postingNum, contentType, files);
 		this.textContent = textContent;
 	}
@@ -73,7 +73,7 @@ public class PostingContent implements Serializable{
 		return blogName;
 	}
 
-	public String getPostingNum() {
+	public int getPostingNum() {
 		return postingNum;
 	}
 
@@ -94,7 +94,7 @@ public class PostingContent implements Serializable{
 		this.blogName = blogName;
 	}
 
-	public void setPostingNum(String postingNum) {
+	public void setPostingNum(int postingNum) {
 		this.postingNum = postingNum;
 	}
 
