@@ -7,86 +7,105 @@ import sku.microblog.business.domain.Member;
 import sku.microblog.dataaccess.MemberDaoImpl;
 import sku.microblog.util.DataDuplicatedException;
 import sku.microblog.util.DataNotFoundException;
+import sku.microblog.util.IllegalDataException;
 
 public class MemberServiceImpl implements MemberService {
 	
-	private MemberDao memberDataAccess;
-
-	public MemberServiceImpl() {
-		memberDataAccess = new MemberDaoImpl();
+	private MemberDao getMemberDaoImplimentation() {
+		return new MemberDaoImpl();
 	}
-	
+
 	@Override
 	public Member loginCheck(String email, String password) {
-		return memberDataAccess.checkMember(email, password);
+		return this.getMemberDaoImplimentation().checkMember(email, password);
 	}
 
 	@Override
 	public void registerMember(Member member) throws DataDuplicatedException {
-		if(memberDataAccess.memberEmailExists(member.getEmail())){
-			throw new DataDuplicatedException("registerMember Error");
+		MemberDao memberDao = this.getMemberDaoImplimentation();
+		if (memberDao.memberEmailExists(member.getEmail())) {
+			throw new DataDuplicatedException("이미 등록된 E-Mail 입니다. [" + member.getEmail() + "]");
 		} else {
-			memberDataAccess.insertMember(member);
+			if (memberDao.memberNameExists(member.getName())) {
+				throw new DataDuplicatedException("이미 등록된 회원이름 입니다. [" + member.getName() + "]");
+			} else {
+				memberDao.insertMember(member);
+			}
 		}
 	}
 
 	@Override
 	public void updateMember(Member member) throws DataNotFoundException {
-		if(memberDataAccess.memberEmailExists(member.getEmail())){
-			memberDataAccess.updateMember(member);
+		MemberDao memberDao = this.getMemberDaoImplimentation();
+		if (memberDao.memberEmailExists(member.getEmail())) {
+			memberDao.updateMember(member);
 		} else {
-			throw new DataNotFoundException("updateMember Error");
+			throw new DataNotFoundException("등록되지 않은 회원입니다. [" + member.getEmail() + "]");
 		}
 	}
 
 	@Override
 	public void removeMember(Member member) throws DataNotFoundException {
-		if(memberDataAccess.memberEmailExists(member.getEmail())){
-			memberDataAccess.deleteMember(member);
+		MemberDao memberDao = this.getMemberDaoImplimentation();
+		if (memberDao.memberEmailExists(member.getEmail())) {
+			memberDao.deleteMember(member);
 		} else {
-			throw new DataNotFoundException("removeMember Error");
+			throw new DataNotFoundException("등록되지 않은 회원입니다. [" + member.getEmail() + "]");
 		}
 	}
 
 	@Override
 	public Member findMember(String name) throws DataNotFoundException {
-		if(memberDataAccess.memberNameExists(name)){
-			return memberDataAccess.selectMemberAsName(name);
+		MemberDao memberDao = this.getMemberDaoImplimentation();
+		if (memberDao.memberNameExists(name)) {
+			return memberDao.selectMemberAsName(name);
 		} else {
-			throw new DataNotFoundException("findMember Error");
+			throw new DataNotFoundException("등록되지 않은 회원입니다. [" + name + "]");
 		}
 	}
 
 	@Override
 	public Member[] getAllUsers() {
-		return memberDataAccess.selectAllMembers();
+		return this.getMemberDaoImplimentation().selectAllMembers();
 	}
 
 	@Override
-	public List<Member> getMemberList(Map<String, Object> searchInfo) {
-		return memberDataAccess.selectMemberList(searchInfo);
+	public Member[] getMemberList(Map<String, Object> searchInfo) {
+		List<Member> mList = this.getMemberDaoImplimentation().selectMemberList(searchInfo);
+		return mList.toArray(new Member[0]);
 	}
 
 	@Override
 	public int getMemberCount(Map<String, Object> searchInfo) {
-		return memberDataAccess.selectMemberCount(searchInfo);
+		return this.getMemberDaoImplimentation().selectMemberCount(searchInfo);
 	}
 
 	@Override
 	public boolean availableName(String name) {
-		if(memberDataAccess.memberNameExists(name)){
-			return false;
-		}else{
-			return true;
-		}
+		return this.getMemberDaoImplimentation().memberNameExists(name);
 	}
 
 	@Override
-	public void giveRole(Member administrator, String targetMemberName, int role)
-			throws DataNotFoundException {
-		if(memberDataAccess.selectMemberAsRole(role).equals(administrator)){
-			
+	public void giveRole(Member administrator, String targetMemberName, int role) throws DataNotFoundException, IllegalDataException {
+		MemberDao memberDao = this.getMemberDaoImplimentation();
+		Member admin = null;
+		if (memberDao.memberEmailExists(administrator.getEmail())) {
+			admin = memberDao.selectMemberAsEmail(administrator.getEmail());
+			if (admin.getRole() == Member.ADMINISTRATOR) {
+				if (memberDao.memberNameExists(targetMemberName)) {
+					Member targetMember = memberDao.selectMemberAsName(targetMemberName);
+					if (role == Member.SUPER_USER || role == Member.NORMAL_USER) {
+						targetMember.setRole(role);
+					}
+				} else {
+					throw new DataNotFoundException("등록되지 않은 회원입니다. [" + targetMemberName + "]");
+				}
+			} else {
+				throw new IllegalDataException("관리자 계정이 아닙니다. [" + administrator.getEmail() + "]");
+			}
+		} else {
+			throw new DataNotFoundException("등록되지 않은 회원입니다. [" + administrator.getEmail() + "]");
 		}
 	}
-
+	
 }

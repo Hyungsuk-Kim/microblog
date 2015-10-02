@@ -229,7 +229,8 @@ public class MemberDaoImpl implements MemberDao{
 				String pw = rs.getString("password");
 				if (pw.equals(password)) {
 					member.setName(rs.getString("name"));
-					member.setRegDate(ConvertDateType.ConvertDateSqlToUtil(rs.getDate("reg_Date")));
+					//member.setRegDate(ConvertDateType.ConvertDateSqlToUtil(rs.getDate("reg_Date")));
+					member.setRegDate(rs.getDate("reg_date"));
 					member.setRole(rs.getInt("role"));
 					member.setCheck(Member.VALID_MEMBER);
 				} else {

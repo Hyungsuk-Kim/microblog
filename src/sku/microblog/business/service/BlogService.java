@@ -6,6 +6,7 @@ import sku.microblog.business.domain.Blog;
 import sku.microblog.business.domain.Member;
 import sku.microblog.util.DataDuplicatedException;
 import sku.microblog.util.DataNotFoundException;
+import sku.microblog.util.IllegalDataException;
 
 public interface BlogService {
 	
@@ -14,8 +15,9 @@ public interface BlogService {
 	 * @param member 블로그를 생성하고자하는 회원의 정보를 담은 Member 객체
 	 * @param blogName 생성하고자하는 블로그의 이름
 	 * @throws DataDuplicatedException blogName과 일치하는 블로그가 이미 존재할 경우 발생하는 Exception
+	 * @throws DataNotFoundException 인자로 받은 member와 일치하는 회원 정보가 없을 경우 발생하는 Exception
 	 */
-	public abstract void createBlog(Member member, String blogName) throws DataDuplicatedException;
+	public abstract void createBlog(Member member, String blogName) throws DataDuplicatedException, DataNotFoundException;
 	
 	/**
 	 * 인자로 받은 member 정보에 해당하는 회원의 Blog 정보에 해당하는 블로그를 갱신한다.
@@ -78,4 +80,8 @@ public interface BlogService {
 	 * @return 조건에 해당하는 블로그의 수
 	 */
 	public abstract int getBlogCount(Map<String, Object> searchInfo);
+	
+	public abstract void changeBlogName(Member member, String originBlogName, String newBlogName) throws DataNotFoundException, DataDuplicatedException, IllegalDataException;
+	
+	public abstract void visitBlog(Member member, String blogName) throws DataNotFoundException;
 }

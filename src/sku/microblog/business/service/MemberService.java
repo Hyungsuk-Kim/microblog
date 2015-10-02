@@ -1,11 +1,11 @@
 package sku.microblog.business.service;
 
-import java.util.List;
 import java.util.Map;
 
 import sku.microblog.business.domain.Member;
 import sku.microblog.util.DataDuplicatedException;
 import sku.microblog.util.DataNotFoundException;
+import sku.microblog.util.IllegalDataException;
 
 public interface MemberService {
 	
@@ -52,7 +52,7 @@ public interface MemberService {
 	 * @param searchInfo 조회하고자하는 조건을 담은 Map 객체
 	 * @return 조건에 해당하는 Member 배열 객체
 	 */
-	public abstract List<Member> getMemberList(Map<String, Object> searchInfo);
+	public abstract Member[] getMemberList(Map<String, Object> searchInfo);
 	
 	/**
 	 * 조건에 해당하는 회원의 수를 조회한다.
@@ -68,5 +68,5 @@ public interface MemberService {
 	 */
 	public abstract boolean availableName(String name);
 	
-	public abstract void giveRole(Member administrator, String targetMemberName, int role) throws DataNotFoundException;
+	public abstract void giveRole(Member administrator, String targetMemberName, int role) throws DataNotFoundException, IllegalDataException;
 }
