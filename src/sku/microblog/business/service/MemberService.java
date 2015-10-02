@@ -5,6 +5,7 @@ import java.util.Map;
 import sku.microblog.business.domain.Member;
 import sku.microblog.util.DataDuplicatedException;
 import sku.microblog.util.DataNotFoundException;
+import sku.microblog.util.IllegalDataException;
 
 public interface MemberService {
 	
@@ -67,5 +68,5 @@ public interface MemberService {
 	 */
 	public abstract boolean availableName(String name);
 	
-	public abstract void giveRole(Member administrator, String targetMemberName, int role) throws DataNotFoundException;
+	public abstract void giveRole(Member administrator, String targetMemberName, int role) throws DataNotFoundException, IllegalDataException;
 }
