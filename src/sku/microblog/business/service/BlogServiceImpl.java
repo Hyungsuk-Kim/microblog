@@ -9,6 +9,7 @@ import sku.microblog.dataaccess.BlogDaoImpl;
 import sku.microblog.dataaccess.MemberDaoImpl;
 import sku.microblog.util.DataDuplicatedException;
 import sku.microblog.util.DataNotFoundException;
+import sku.microblog.util.IllegalDataException;
 
 public class BlogServiceImpl implements BlogService {
 
@@ -132,6 +133,54 @@ public class BlogServiceImpl implements BlogService {
 	@Override
 	public int getBlogCount(Map<String, Object> searchInfo) {
 		return this.getBlogDaoImplimentation().selectBlogCount(searchInfo);
+	}
+
+	@Override
+	public void changeBlogName(Member member, String originBlogName, String newBlogName)
+			throws DataNotFoundException, DataDuplicatedException, IllegalDataException {
+		MemberDao memberDao = this.getMemberDaoImplimentation();
+		BlogDao blogDao = null;
+		Member tempMember = null;
+		Blog tempBlog = null;
+		if (memberDao.memberNameExists(member.getName())) {
+			tempMember = memberDao.selectMemberAsName(member.getName());
+			blogDao = this.getBlogDaoImplimentation();
+			if (blogDao.blogExists(originBlogName)) {
+				tempBlog = blogDao.selectBlog(originBlogName);
+				if (tempBlog.getMemberName().equals(tempMember.getName())) {
+					if (blogDao.blogExists(newBlogName)) {
+						throw new DataDuplicatedException("이미 등록된 블로그명 입니다. [" + newBlogName + "]");
+					} else {
+						blogDao.updateBlogName(originBlogName, newBlogName);
+					}
+				} else {
+					throw new IllegalDataException("해당 블로그에 대한 권한이 없습니다.");
+				}
+			} else {
+				throw new DataNotFoundException("존재하지 않는 블로그입니다. [" + originBlogName + "]");
+			}
+		} else {
+			throw new DataNotFoundException("등록되지 않은 회원입니다. [" + member.getName() + "]");
+		}
+	}
+
+	@Override
+	public void visitBlog(Member member, String blogName) throws DataNotFoundException {
+		MemberDao memberDao = this.getMemberDaoImplimentation();
+		BlogDao blogDao = null;
+		if (memberDao.memberNameExists(member.getName())) {
+			blogDao = this.getBlogDaoImplimentation();
+			if (blogDao.blogExists(blogName)) {
+				Blog blog = blogDao.selectBlog(blogName);
+				if (!(member.getName()).equals(blog.getMemberName())) {
+					blogDao.addVisitCount(blogName);
+				}
+			} else {
+				throw new DataNotFoundException("존재하지 않는 블로그입니다. [" + blogName + "]");
+			}
+		} else {
+			throw new DataNotFoundException("등록되지 않은 회원입니다. [" + member.getName() + "]");
+		}
 	}
 
 }

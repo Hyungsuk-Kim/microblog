@@ -20,8 +20,8 @@ public class BlogDaoImpl implements BlogDao{
 	
 	@Override
 	public void insertBlog(Blog blog) {
-		String sql = "INSERT INTO blog (member_name, blog_name, follower_count, background_color, header_image, profile_image, blog_layout) "
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO blog (blog_name, member_name, follower_count, visit_count, background_color, header_image, profile_image, blog_layout) "
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		System.out.println("BlogDaoImpl insertBlog() query : " + sql);
 		
 		Connection connection = null;
@@ -30,13 +30,14 @@ public class BlogDaoImpl implements BlogDao{
 		try {
 			connection = this.obtainConnection();
 			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, blog.getMemberName());
-			pstmt.setString(2, blog.getBlogName());
+			pstmt.setString(1, blog.getBlogName());
+			pstmt.setString(2, blog.getMemberName());
 			pstmt.setInt(3, blog.getFollowerCount());
-			pstmt.setInt(4, blog.getBackgroundColor());
-			pstmt.setString(5, blog.getHeaderImage());
-			pstmt.setString(6, blog.getProfileImage());
-			pstmt.setInt(7, blog.getBlogLayout());
+			pstmt.setInt(4, blog.getVisitCount());
+			pstmt.setInt(5, blog.getBackgroundColor());
+			pstmt.setString(6, blog.getHeaderImage());
+			pstmt.setString(7, blog.getProfileImage());
+			pstmt.setInt(8, blog.getBlogLayout());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -47,7 +48,8 @@ public class BlogDaoImpl implements BlogDao{
 
 	@Override
 	public void updateBlog(Blog blog) {
-		String sql = "UPDATE blog SET blog_name=?, follower_count=?, background_color=?, header_image, profile_image=?, blog_layout=? WHERE member_name=?";
+		//String sql = "UPDATE blog SET blog_name=?, follower_count=?, visit_count=?, background_color=?, header_image, profile_image=?, blog_layout=? WHERE member_name=?";
+		String sql = "UPDATE blog SET background_color=?, header_image=?, profile_image=?, blog_layout=? WHERE blog_name=?";
 		System.out.println("BlogDaoImpl updateBlog() query : " + sql);
 		
 		Connection connection = null;
@@ -56,13 +58,13 @@ public class BlogDaoImpl implements BlogDao{
 		try {
 			connection = this.obtainConnection();
 			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, blog.getBlogName());
-			pstmt.setInt(2, blog.getFollowerCount());
-			pstmt.setInt(3, blog.getBackgroundColor());
-			pstmt.setString(4, blog.getHeaderImage());
-			pstmt.setString(5, blog.getProfileImage());
-			pstmt.setInt(6, blog.getBlogLayout());
-			pstmt.setString(7, blog.getMemberName());
+			/*pstmt.setInt(2, blog.getFollowerCount());
+			pstmt.setInt(3, blog.getVisitCount());*/
+			pstmt.setInt(1, blog.getBackgroundColor());
+			pstmt.setString(2, blog.getHeaderImage());
+			pstmt.setString(3, blog.getProfileImage());
+			pstmt.setInt(4, blog.getBlogLayout());
+			pstmt.setString(5, blog.getBlogName());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -110,8 +112,8 @@ public class BlogDaoImpl implements BlogDao{
 			
 			if (rs.next()) {
 				blog = new Blog(rs.getString("blog_name"), rs.getString("member_name"), rs.getInt("follower_count"), 
-						rs.getInt("background_color"), rs.getString("header_image"), rs.getString("profile_image"), 
-						rs.getInt("blog_layout"));
+						rs.getInt("visit_count"), rs.getInt("background_color"), rs.getString("header_image"), 
+						rs.getString("profile_image"), rs.getInt("blog_layout"));
 			}
 		} catch(SQLException e) {
 			
@@ -154,8 +156,8 @@ public class BlogDaoImpl implements BlogDao{
 				
 				while (rs2.next()) {
 					blog = new Blog(rs.getString("blog_name"), rs.getString("member_name"), rs.getInt("follower_count"), 
-							rs.getInt("background_color"), rs.getString("header_image"), rs.getString("profile_image"), 
-							rs.getInt("blog_layout"));
+							rs.getInt("visit_count"), rs.getInt("background_color"), rs.getString("header_image"), 
+							rs.getString("profile_image"), rs.getInt("blog_layout"));
 					
 					bList.add(blog);
 				}
@@ -184,6 +186,7 @@ public class BlogDaoImpl implements BlogDao{
 	public void addFollowing(Member member, String blogName) {
 		String sql = "INSERT INTO following (blog_name, member_name) VALUES (?, ?)";
 		String sql2 = "UPDATE blog SET follower_count = follower_count + 1 WHERE blog_name=?";
+		System.out.println("BlogDaoImpl addFollowing() query : " + sql);
 		
 		Connection connection = null;
 		PreparedStatement pstmt = null;
@@ -197,6 +200,7 @@ public class BlogDaoImpl implements BlogDao{
 			pstmt.executeUpdate();
 			pstmt.close();
 			
+			System.out.println("BlogDaoImpl addFollowing() query : " + sql2);
 			pstmt = connection.prepareStatement(sql2);
 			pstmt.setString(1, blogName);
 			pstmt.executeUpdate();
@@ -331,8 +335,8 @@ public class BlogDaoImpl implements BlogDao{
 			
 			while (rs.next()) {
 				blog = new Blog(rs.getString("blog_name"), rs.getString("member_name"), rs.getInt("follower_count"), 
-						rs.getInt("background_color"), rs.getString("header_image"), rs.getString("profile_image"), 
-						rs.getInt("blog_layout"));
+						rs.getInt("visit_count"), rs.getInt("background_color"), rs.getString("header_image"), 
+						rs.getString("profile_image"), rs.getInt("blog_layout"));
 				bList.add(blog);
 			}
 		} catch (SQLException e) {
@@ -444,6 +448,47 @@ public class BlogDaoImpl implements BlogDao{
 		}
 		
 		return result;
+	}
+
+	@Override
+	public void addVisitCount(String blogName) {
+		String sql = "UPDATE blog SET visit_count = visit_count + 1 WHERE blog_name=?";
+		System.out.println("BlogDaoImpl addVisitCount() query : " + sql);
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			connection = this.obtainConnection();
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, blogName);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DatabaseUtil.close(connection, pstmt);
+		}
+	}
+
+	@Override
+	public void updateBlogName(String originBlogName, String newBlogName) {
+		String sql = "UPDATE blog SET blogName=? WHERE blogName=?";
+		System.out.println("BlogDaoImpl updateBlogName() query : " + sql);
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			connection = this.obtainConnection();
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, newBlogName);
+			pstmt.setString(2, originBlogName);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DatabaseUtil.close(connection, pstmt);
+		}
 	}
 	
 }

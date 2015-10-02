@@ -6,6 +6,7 @@ import sku.microblog.business.domain.Blog;
 import sku.microblog.business.domain.Member;
 import sku.microblog.util.DataDuplicatedException;
 import sku.microblog.util.DataNotFoundException;
+import sku.microblog.util.IllegalDataException;
 
 public interface BlogService {
 	
@@ -79,4 +80,8 @@ public interface BlogService {
 	 * @return 조건에 해당하는 블로그의 수
 	 */
 	public abstract int getBlogCount(Map<String, Object> searchInfo);
+	
+	public abstract void changeBlogName(Member member, String originBlogName, String newBlogName) throws DataNotFoundException, DataDuplicatedException, IllegalDataException;
+	
+	public abstract void visitBlog(Member member, String blogName) throws DataNotFoundException;
 }
