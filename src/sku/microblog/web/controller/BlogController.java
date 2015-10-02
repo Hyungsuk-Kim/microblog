@@ -17,7 +17,6 @@ public class BlogController extends HttpServlet {
 	
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		
 		try {
 			if (action.equals("create")) {
 				this.createBlog(request, response);
