@@ -1,7 +1,6 @@
 package sku.microblog.business.domain;
 
 import java.io.Serializable;
-import gaaeTest;
 
 /**
  * 
