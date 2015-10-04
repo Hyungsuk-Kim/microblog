@@ -473,6 +473,7 @@ public class BlogDaoImpl implements BlogDao{
 	@Override
 	public void updateBlogName(String originBlogName, String newBlogName) {
 		String sql = "UPDATE blog SET blogName=? WHERE blogName=?";
+		String sql2 = "RENAME ? TO ?";
 		System.out.println("BlogDaoImpl updateBlogName() query : " + sql);
 		
 		Connection connection = null;
@@ -480,13 +481,30 @@ public class BlogDaoImpl implements BlogDao{
 		
 		try {
 			connection = this.obtainConnection();
+			connection.setAutoCommit(false);
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, newBlogName);
 			pstmt.setString(2, originBlogName);
 			pstmt.executeUpdate();
+			pstmt.close();
+			
+			pstmt = connection.prepareStatement(sql2);
+			pstmt.setString(1, originBlogName);
+			pstmt.setString(2, newBlogName);
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 		} finally {
+			try {
+				connection.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			DatabaseUtil.close(connection, pstmt);
 		}
 	}
