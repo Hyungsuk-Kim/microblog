@@ -24,23 +24,31 @@ public class Posting implements Serializable {
 	private int replyStep; // 원본 글에 대한 총 댓글의 수 혹은 순서
 	private int replyDepth; // 원본 글(0)을 기준으로 한 댓글의 깊이(레벨)
 	private int replyCount; // 현재 (댓)글에 달린 댓글의 수
-	private boolean isReply = false; // 현재 글이 댓글인 경우 true
+	private int postingType; // 현재 글이 일반 글일 경우 0, 댓글인 경우 1, Q&A인 경우 2
 	private int reblogCount; // 리블로그한 횟수
+	private int reblogOption;
 	
 	// Class Variables
-	public static final int PUBLIC_ALLOW_REPLY = 0; // 댓글을 허용한 공개 포스팅
-	public static final int PUBLIC_NO_REPLY = 1; // 댓글을 허용하지 않는 공개 포스팅
-	public static final int PRIVATE = 2; // 비공개 포스팅
+	public static final int PUBLIC_ALLOW_BOTH_REPLY_AND_REBLOG = 0; // 댓글과 리블로그를 허용한 공개 포스팅
+	public static final int PUBLIC_NO_REPLY_AND_ALLOW_REBLOG = 1; // 댓글은 허용하지 않고 리블로그는 허용한 공개 포스팅
+	public static final int PUBLIC_ALLOW_REPLY_AND_NO_REBLOG = 2; // 댓글은 허용하고 리블로그는 허용하지 않는 공개 포스팅
+	public static final int PUBLIC_NO_REPLY_NO_REBLOG = 3; // 댓글과 리블로그를 허용하지 않는 공개 포스팅
+	public static final int PRIVATE = 4; // 비공개 포스팅
 	
 	public static final int NORMAL_TYPE_POSTING = 0; // 일반 포스팅
 	public static final int REPLY_TYPE_POSTING = 1; // 댓글
 	public static final int QNA_TYPE_POSTING = 2; // QnA
 	
+	public static final int ON_UPDATE_AND_DELETE_CASCADE = 0;
+	public static final int ON_UPDATE_CASCADE = 1;
+	public static final int ON_DELETE_CASCADE = 2;
+	public static final int SET_NULL = 3;
+	
 	// Constructors
 	// 조회용 - all instance variables
 	public Posting(int num, String title, String writer, PostingContent contents, String ip,
-			int readCount, java.util.Date regDate, int likes, int exposure, String tags, 
-			int ref, int replyStep, int replyDepth, int replyCount, boolean isReply) {
+			int readCount, java.util.Date regDate, int likes, int exposure, String tags, int ref, int replyStep, 
+			int replyDepth, int replyCount, int postingType, int reblogCount, int reblogOption) {
 		this.num = num;
 		this.title = title;
 		this.writer = writer;
@@ -55,12 +63,14 @@ public class Posting implements Serializable {
 		this.replyStep = replyStep;
 		this.replyDepth = replyDepth;
 		this.replyCount = replyCount;
-		this.isReply = isReply;
+		this.postingType = postingType;
+		this.reblogCount = reblogCount;
+		this.reblogOption = reblogOption;
 	}
 	
 	// 포스팅용 (글 작성)
 	public Posting(String title, String writer, PostingContent contents, String ip, java.util.Date regDate,
-			int exposure, String tags) {
+			int exposure, String tags, int postingType, int reblogOption) {
 		this.title = title;
 		this.writer = writer;
 		this.contents = contents;
@@ -68,28 +78,178 @@ public class Posting implements Serializable {
 		this.regDate = regDate;
 		this.exposure = exposure;
 		this.tags = tags;
+		this.postingType = postingType;
+		this.reblogOption = reblogOption;
 	}
 	
 	// 포스팅용 (글 수정)
-		public Posting(String title, String writer, PostingContent contents, String ip, int exposure, String tags) {
-			this.title = title;
-			this.writer = writer;
-			this.contents = contents;
-			this.ip = ip;
-			this.exposure = exposure;
-			this.tags = tags;
+	public Posting(String title, String writer, PostingContent contents, String ip, int exposure, String tags, int reblogOption) {
+		this.title = title;
+		this.writer = writer;
+		this.contents = contents;
+		this.ip = ip;
+		this.exposure = exposure;
+		this.tags = tags;
+		this.reblogOption = reblogOption;
 		}
 	
 	// 댓글용 (댓글 작성)
-	public Posting(String title, String writer, PostingContent contents, String ip, boolean isReply) {
+	public Posting(String title, String writer, PostingContent contents, String ip, int postingType) {
 		this.title = title;
 		this.writer = writer;
 		this.contents = contents;
 		this.ip = ip;
 		this.regDate = new java.util.Date();
-		this.isReply = isReply;
+		this.postingType = postingType;
+		this.exposure = PUBLIC_ALLOW_REPLY_AND_NO_REBLOG;
+	}
+	
+	// Methods
+	@Override
+	public String toString() {
+		return "Posting [num=" + num + ", title=" + title + ", writer=" + writer + ", contents=" + contents + ", ip="
+				+ ip + ", readCount=" + readCount + ", regDate=" + regDate + ", likes=" + likes + ", exposure="
+				+ exposure + ", tags=" + tags + ", ref=" + ref + ", replyStep=" + replyStep + ", replyDepth="
+				+ replyDepth + ", replyCount=" + replyCount + ", postingType=" + postingType + ", reblogCount=" + reblogCount
+				+ ", reblogOption=" + reblogOption + "]";
 	}
 
-	// Methods
+	// Getters
+	public int getNum() {
+		return num;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public PostingContent getContents() {
+		return contents;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public int getReadCount() {
+		return readCount;
+	}
+
+	public java.util.Date getRegDate() {
+		return regDate;
+	}
+
+	public int getLikes() {
+		return likes;
+	}
+
+	public int getExposure() {
+		return exposure;
+	}
+
+	public String getTags() {
+		return tags;
+	}
+
+	public int getRef() {
+		return ref;
+	}
+
+	public int getReplyStep() {
+		return replyStep;
+	}
+
+	public int getReplyDepth() {
+		return replyDepth;
+	}
+
+	public int getReplyCount() {
+		return replyCount;
+	}
+
+	public int getPostingType() {
+		return postingType;
+	}
+
+	public int getReblogCount() {
+		return reblogCount;
+	}
+
+	public int getReblogOption() {
+		return reblogOption;
+	}
+
+	// Setters
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+	public void setContents(PostingContent contents) {
+		this.contents = contents;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public void setReadCount(int readCount) {
+		this.readCount = readCount;
+	}
+
+	public void setRegDate(java.util.Date regDate) {
+		this.regDate = regDate;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+	public void setExposure(int exposure) {
+		this.exposure = exposure;
+	}
+
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
+
+	public void setRef(int ref) {
+		this.ref = ref;
+	}
+
+	public void setReplyStep(int replyStep) {
+		this.replyStep = replyStep;
+	}
+
+	public void setReplyDepth(int replyDepth) {
+		this.replyDepth = replyDepth;
+	}
+
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
+	}
+
+	public void setPostingType(int postingType) {
+		this.postingType = postingType;
+	}
+
+	public void setReblogCount(int reblogCount) {
+		this.reblogCount = reblogCount;
+	}
+
+	public void setReblogOption(int reblogOption) {
+		this.reblogOption = reblogOption;
+	}
 	
 }

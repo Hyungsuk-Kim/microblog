@@ -1,7 +1,6 @@
 package sku.microblog.web.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.*;
 
 import javax.servlet.RequestDispatcher;
@@ -264,7 +263,7 @@ public class MemberController extends HttpServlet {
 	private void logout(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Member member = new Member();
-		if (member.getRole() == member.NORMAL_USER) {
+		if (member.getRole() == Member.NORMAL_USER) {
 
 			HttpSession session = request.getSession(false);
 
