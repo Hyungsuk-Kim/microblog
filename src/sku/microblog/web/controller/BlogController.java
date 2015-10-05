@@ -42,7 +42,17 @@ public class BlogController extends HttpServlet {
 				this.unfollow(request, response);
 			} else if (action.equals("theme")) {
 				this.modifyTheme(request, response);
-			}
+			}else if (action.equals("theme")) {
+                this.modifyTheme(request, response);
+            }else if (action.equals("theme")) {
+                this.modifyTheme(request, response);
+            }else if (action.equals("theme")) {
+                this.modifyTheme(request, response);
+            }
+			
+			
+			
+			
 		} catch (DataNotFoundException dne) {
 			throw new ServletException(dne);
 		} catch (DataDuplicatedException dde) {
@@ -184,6 +194,11 @@ public class BlogController extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	
+	
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
