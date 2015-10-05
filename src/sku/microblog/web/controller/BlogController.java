@@ -1,7 +1,6 @@
 package sku.microblog.web.controller;
 
 import java.io.IOException;
-import java.util.Formatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,17 +41,9 @@ public class BlogController extends HttpServlet {
 				this.unfollow(request, response);
 			} else if (action.equals("theme")) {
 				this.modifyTheme(request, response);
-			}else if (action.equals("theme")) {
-                this.modifyTheme(request, response);
-            }else if (action.equals("theme")) {
-                this.modifyTheme(request, response);
-            }else if (action.equals("theme")) {
-                this.modifyTheme(request, response);
-            }
-			
-			
-			
-			
+			}
+
+					
 		} catch (DataNotFoundException dne) {
 			throw new ServletException(dne);
 		} catch (DataDuplicatedException dde) {
@@ -193,6 +184,7 @@ public class BlogController extends HttpServlet {
 	private void modifyTheme(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+	    
 	}
 	
 	
