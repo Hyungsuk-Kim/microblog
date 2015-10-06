@@ -82,7 +82,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public boolean availableName(String name) {
-		return this.getMemberDaoImplimentation().memberNameExists(name);
+		return (!(this.getMemberDaoImplimentation().memberNameExists(name)));
 	}
 
 	@Override

@@ -300,7 +300,9 @@ public class MemberDaoImpl implements MemberDao{
 			}
 		}
 		
-		String sql = "SELECT * FROM (SELECT ROWNUM AS row_num, * FROM (SELECT * FROM member " + whereSyntax + ")) WHERE row_num BETWEEN ? AND ?";
+		String sql = "SELECT * FROM "
+				+ "(SELECT ROWNUM AS row_num, email, name, password, reg_date, role FROM "
+				+ "(SELECT * FROM member " + whereSyntax + ")) WHERE row_num BETWEEN ? AND ?";
 		System.out.println("MemberDaoImpl selectMemberList() query : " + sql);
 		
 		Connection connection = null;
