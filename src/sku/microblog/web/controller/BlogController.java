@@ -18,6 +18,7 @@ import sku.microblog.business.service.BlogServiceImpl;
 import sku.microblog.util.DataDuplicatedException;
 import sku.microblog.util.DataNotFoundException;
 import sku.microblog.util.IllegalDataException;
+import sku.microblog.util.PageHandler;
 
 /**
  * Servlet implementation class BlogController
@@ -32,10 +33,14 @@ public class BlogController extends HttpServlet {
         try {
             if (action.equals("create")) {
                 this.createBlog(request, response);
+            } else if (action.equals("createBlogForm")) {
+                this.createBlogForm(request, response);
             } else if (action.equals("find")) {
                 this.findBlog(request, response);
             } else if (action.equals("update")) {
                 this.updateBlog(request, response);
+            } else if (action.equals("updateBlogForm")) {
+                this.updateBlogForm(request, response);
             } else if (action.equals("remove")) {
                 this.removeBlog(request, response);
             } else if (action.equals("following")) {
@@ -67,18 +72,13 @@ public class BlogController extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException,
             DataNotFoundException {
 
-            
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-
-        Member member = new Member(email, password);
-
         String blogName = request.getParameter("blogName");
 
         BlogService blogService = new BlogServiceImpl();
-        blogService.selectBlog(member, blogName);
+        blogService.findBlog(blogName);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher dispatcher = request
+                .getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -114,7 +114,6 @@ public class BlogController extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("blog.jsp");
         dispatcher.forward(request, response);
-       
 
     }
 
@@ -144,7 +143,7 @@ public class BlogController extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("blog.jsp");
         dispatcher.forward(request, response);
-       
+
     }
 
     private void getBlogList(HttpServletRequest request,
@@ -164,16 +163,52 @@ public class BlogController extends HttpServlet {
         }
 
         String searchType = request.getParameter("searchType");
+        String searchText = request.getParameter("searchText");
+
+        String pageNumber = request.getParameter("pageNumber");
+
+        int currentPageNumber = 1;
+        if (pageNumber != null && pageNumber.length() != 0) {
+            currentPageNumber = Integer.parseInt(pageNumber);
+        }
 
         Map<String, Object> searchInfo = new HashMap<String, Object>();
         searchInfo.put("searchType", searchType);
+        searchInfo.put("searchText", searchText);
 
         BlogService blogService = new BlogServiceImpl();
-        blogService.getBlogList(searchInfo);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("blogList.jsp");
+        Map<String, Object> goCurrentPage = new HashMap<String, Object>();
+        goCurrentPage.put("pageNumber", pageNumber);
+
+        int totalBoardCount = blogService.getBlogCount(searchInfo);
+
+        int totalPageCount = PageHandler.getTotalPageCount(totalBoardCount);
+
+        int startPageNumber = PageHandler.getStartPageNumber(currentPageNumber);
+
+        int endPageNumber = PageHandler.getEndPageNumber(currentPageNumber,
+                totalBoardCount);
+
+        int startRow = PageHandler.getStartRow(currentPageNumber);
+        int endRow = PageHandler.getEndRow(currentPageNumber);
+
+        searchInfo.put("startRow", startRow);
+        searchInfo.put("endRow", endRow);
+
+        Blog[] blogList = blogService.getBlogList(searchInfo);
+        request.setAttribute("blogList", blogList);
+
+        request.setAttribute("currentPageNumber", currentPageNumber);
+        request.setAttribute("startPageNumber", startPageNumber);
+        request.setAttribute("endPageNumber", endPageNumber);
+        request.setAttribute("totalPageCount", totalPageCount);
+
+        // RequestDispatcher 객체를 통해 뷰 페이지(list.jsp)로 요청을 전달한다.
+        RequestDispatcher dispatcher = request
+                .getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
-      
+
     }
 
     private void getFollowingList(HttpServletRequest request,
@@ -193,17 +228,61 @@ public class BlogController extends HttpServlet {
             return;
         }
 
+        String pageNumber = request.getParameter("pageNumber");
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         Member member = new Member(email, password);
 
-        BlogService blogService = new BlogServiceImpl();
-        blogService.getFollowingList(member);
+        int currentPageNumber = 1;
+        if (pageNumber != null && pageNumber.length() != 0) {
+            currentPageNumber = Integer.parseInt(pageNumber);
+        }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("followingList.jsp");
+        BlogService blogService = new BlogServiceImpl();
+
+        Map<String, Object> searchInfo = new HashMap<String, Object>();
+
+        Map<String, Object> goCurrentPage = new HashMap<String, Object>();
+        goCurrentPage.put("pageNumber", pageNumber);
+
+        int totalFollowList = blogService.getFollowingList(member).length;
+
+        int totalPageCount = PageHandler.getTotalPageCount(totalFollowList);
+
+        int startPageNumber = PageHandler.getStartPageNumber(currentPageNumber);
+
+        int endPageNumber = PageHandler.getEndPageNumber(currentPageNumber,
+                totalFollowList);
+
+        int startRow = PageHandler.getStartRow(currentPageNumber);
+        int endRow = PageHandler.getEndRow(currentPageNumber);
+
+        searchInfo.put("startRow", startRow);
+        searchInfo.put("endRow", endRow);
+
+        Blog[] followingList = blogService.getFollowingList(member);
+        request.setAttribute("followingList", followingList);
+
+        request.setAttribute("currentPageNumber", currentPageNumber);
+        request.setAttribute("startPageNumber", startPageNumber);
+        request.setAttribute("endPageNumber", endPageNumber);
+        request.setAttribute("totalPageCount", totalPageCount);
+
+        RequestDispatcher dispatcher = request
+                .getRequestDispatcher("followingList.jsp");
         dispatcher.forward(request, response);
 
+    }
+
+    private void createBlogForm(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException,
+            DataDuplicatedException, DataNotFoundException {
+
+        RequestDispatcher dispatcher = request
+                .getRequestDispatcher("createForm.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void createBlog(HttpServletRequest request,
@@ -242,22 +321,40 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.createBlog(member, blogName);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("blogList.jsp");
+        RequestDispatcher dispatcher = request
+                .getRequestDispatcher("blogList.jsp");
         dispatcher.forward(request, response);
 
     }
-//내가 블로그를선택했을때 실행되는 메소드
+
+    // 내가 블로그를선택했을때 실행되는 메소드
     private void selectBlog(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException,
             DataNotFoundException {
 
-       
         String blogName = request.getParameter("blogName");
 
         BlogService blogService = new BlogServiceImpl();
         blogService.findBlog(blogName);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("blog.jsp");
+        dispatcher.forward(request, response);
+
+    }
+
+    private void updateBlogForm(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException,
+            DataNotFoundException {
+
+        String blogName = request.getParameter("blogName");
+
+        BlogService blogService = new BlogServiceImpl();
+        Blog blog = blogService.findBlog(blogName);
+
+        request.setAttribute("blog", blog);
+
+        RequestDispatcher dispatcher = request
+                .getRequestDispatcher("updateForm.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -298,7 +395,8 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.updateBlog(member, blog);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("blogList.jsp");
+        RequestDispatcher dispatcher = request
+                .getRequestDispatcher("blogList.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -339,7 +437,8 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.removeBlog(member, blog);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("blogList.jsp");
+        RequestDispatcher dispatcher = request
+                .getRequestDispatcher("blogList.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -370,7 +469,8 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.following(member, blogName);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("followingList.jsp");
+        RequestDispatcher dispatcher = request
+                .getRequestDispatcher("followingList.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -402,7 +502,8 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.unfollow(member, blogName);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("followingList.jsp");
+        RequestDispatcher dispatcher = request
+                .getRequestDispatcher("followingList.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -430,7 +531,7 @@ public class BlogController extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-       
+
         response.getWriter().append("Served at: ")
                 .append(request.getContextPath());
     }
@@ -441,7 +542,7 @@ public class BlogController extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        
+
         doGet(request, response);
     }
 
