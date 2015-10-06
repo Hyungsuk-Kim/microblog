@@ -17,6 +17,7 @@ public class Posting implements Serializable {
 	//private String ip; // 포스팅한 client의 ip 주소
 	private int readCount; // 조회수
 	private java.util.Date regDate; // 등록 날짜
+	private String ip;
 	private int likes; // 좋아요 수
 	private int exposure; // 공개여부 (PUBLIC or PRIVATE)
 	private String tags; // 태그
@@ -83,11 +84,11 @@ public class Posting implements Serializable {
 	}
 	
 	// 포스팅용 (글 수정)
-	public Posting(/*int num,*/ String title, String writer, PostingContent contents, String ip, int exposure, String tags, int reblogOption) {
+	public Posting(String title, String writer, PostingContent contents, String ip, int exposure, String tags, int reblogOption) {
 		this.title = title;
 		this.writer = writer;
 		this.contents = contents;
-		//this.ip = ip;
+		this.ip = ip;
 		this.exposure = exposure;
 		this.tags = tags;
 		this.reblogOption = reblogOption;
@@ -108,7 +109,7 @@ public class Posting implements Serializable {
 	@Override
 	public String toString() {
 		return "Posting [num=" + num + ", title=" + title + ", writer=" + writer + ", contents=" + contents + ", ip="
-				/*+ ip + ", readCount="*/ + readCount + ", regDate=" + regDate + ", likes=" + likes + ", exposure="
+				+ ip + ", readCount=" + readCount + ", regDate=" + regDate + ", likes=" + likes + ", exposure="
 				+ exposure + ", tags=" + tags + ", ref=" + ref + ", replyStep=" + replyStep + ", replyDepth="
 				+ replyDepth + ", replyCount=" + replyCount + ", postingType=" + postingType + ", reblogCount=" + reblogCount
 				+ ", reblogOption=" + reblogOption + "]";
@@ -131,9 +132,9 @@ public class Posting implements Serializable {
 		return contents;
 	}
 
-	/*public String getIp() {
+	public String getIp() {
 		return ip;
-	}*/
+	}
 
 	public int getReadCount() {
 		return readCount;
@@ -200,9 +201,9 @@ public class Posting implements Serializable {
 		this.contents = contents;
 	}
 
-	/*public void setIp(String ip) {
+	public void setIp(String ip) {
 		this.ip = ip;
-	}*/
+	}
 
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;

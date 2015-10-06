@@ -38,9 +38,9 @@ public class Member implements Serializable {
 
 	// 계정 생성용
 	public Member(String email, String name, String password) {
+		this.email = email;
 		this.name = name;
 		this.password = password;
-		this.email = email;
 		this.role = Member.NORMAL_USER;
 	}
 

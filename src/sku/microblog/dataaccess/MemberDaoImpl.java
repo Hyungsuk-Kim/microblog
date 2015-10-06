@@ -3,6 +3,7 @@ package sku.microblog.dataaccess;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +16,19 @@ import sku.microblog.util.ConvertDateType;
 public class MemberDaoImpl implements MemberDao{
 
 	private Connection obtainConnection() throws SQLException {
-    	return DatabaseUtil.getConnection();
-    	//return DatabaseUtil.getConnection();
+		//return DatabaseUtil.getConnection();
+    	return DatabaseUtil_old.getConnection();
     }
+	
+	private void closeResources(Connection connection, Statement stmt, ResultSet rs){
+		//DatabaseUtil.close(connection, stmt, rs);
+		DatabaseUtil_old.close(connection, stmt, rs);
+	}
+	
+	private void closeResources(Connection connection, Statement stmt){
+		//DatabaseUtil.close(connection, stmt);
+		DatabaseUtil_old.close(connection, stmt);
+	}
 	
 	@Override
 	public boolean memberEmailExists(String email) {
@@ -43,7 +54,7 @@ public class MemberDaoImpl implements MemberDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(connection, pstmt, rs);
 		}
 		
 		return result;
@@ -73,7 +84,7 @@ public class MemberDaoImpl implements MemberDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(connection, pstmt, rs);
 		}
 		return result;
 	}
@@ -99,13 +110,13 @@ public class MemberDaoImpl implements MemberDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt);
+			this.closeResources(connection, pstmt);
 		}
 	}
 
 	@Override
 	public void updateMember(Member member) {
-		String sql = "UPDATE member SET name=?, password=?, role=? WHERE email=?";
+		String sql = "UPDATE member SET password=?, role=? WHERE email=?";
 		System.out.println("MemberDaoImpl updateMember() query : " + sql);
 		
 		Connection connection = null;
@@ -114,15 +125,14 @@ public class MemberDaoImpl implements MemberDao{
 		try {
 			connection = this.obtainConnection();
 			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, member.getName());
-			pstmt.setString(2, member.getPassword());
-			pstmt.setInt(3, member.getRole());
-			pstmt.setString(4, member.getEmail());
+			pstmt.setString(1, member.getPassword());
+			pstmt.setInt(2, member.getRole());
+			pstmt.setString(3, member.getEmail());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt);
+			this.closeResources(connection, pstmt);
 		}
 	}
 
@@ -142,7 +152,7 @@ public class MemberDaoImpl implements MemberDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt);
+			this.closeResources(connection, pstmt);
 		}
 	}
 
@@ -170,7 +180,7 @@ public class MemberDaoImpl implements MemberDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(connection, pstmt, rs);
 		}
 		
 		return member;
@@ -202,7 +212,7 @@ public class MemberDaoImpl implements MemberDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(connection, pstmt, rs);
 		}
 		
 		return mList.toArray(new Member[0]);
@@ -242,7 +252,7 @@ public class MemberDaoImpl implements MemberDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(connection, pstmt, rs);
 		}
 		
 		return member;
@@ -290,7 +300,9 @@ public class MemberDaoImpl implements MemberDao{
 			}
 		}
 		
-		String sql = "SELECT * FROM (SELECT ROWNUM AS row_num, * FROM (SELECT * FROM member " + whereSyntax + ")) WHERE row_num BETWEEN ? AND ?";
+		String sql = "SELECT * FROM "
+				+ "(SELECT ROWNUM AS row_num, email, name, password, reg_date, role FROM "
+				+ "(SELECT * FROM member " + whereSyntax + ")) WHERE row_num BETWEEN ? AND ?";
 		System.out.println("MemberDaoImpl selectMemberList() query : " + sql);
 		
 		Connection connection = null;
@@ -329,7 +341,7 @@ public class MemberDaoImpl implements MemberDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(connection, pstmt, rs);
 		}
 		
 		return mList;
@@ -401,7 +413,7 @@ public class MemberDaoImpl implements MemberDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(connection, pstmt, rs);
 		}
 		
 		return count;
@@ -431,7 +443,7 @@ public class MemberDaoImpl implements MemberDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(connection, pstmt, rs);
 		}
 		
 		return member;
@@ -464,7 +476,7 @@ public class MemberDaoImpl implements MemberDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(connection, pstmt, rs);
 		}
 		
 		return mList.toArray(new Member[0]);

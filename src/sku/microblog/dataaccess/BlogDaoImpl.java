@@ -4,12 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import sku.microblog.business.domain.Blog;
 import sku.microblog.business.domain.Member;
+import sku.microblog.business.domain.Posting;
 import sku.microblog.business.service.BlogDao;
 
 public class BlogDaoImpl implements BlogDao{
@@ -18,10 +20,54 @@ public class BlogDaoImpl implements BlogDao{
 		return DatabaseUtil.getConnection();
 	}
 	
+	private void closeResources(Connection connection, Statement stmt, ResultSet rs){
+		DatabaseUtil.close(connection, stmt, rs);
+	}
+	
+	private void closeResources(Connection connection, Statement stmt){
+		DatabaseUtil.close(connection, stmt);
+	}
+	
 	@Override
 	public void insertBlog(Blog blog) {
 		String sql = "INSERT INTO blog (blog_name, member_name, follower_count, visit_count, background_color, header_image, profile_image, blog_layout) "
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql2 = "CREATE TABLE " + blog.getBlogName() + "("
+						+ "num INTEGER,"
+						+ "title VARCHAR(255),"
+						+ "writer VARCHAR(60),"
+						+ "contents INTEGER,"
+						+ "ip VARCHAR(20),"
+						+ "read_count NUMBER(10),"
+						+ "reg_date DATE,"
+						+ "likes NUMBER(10),"
+						+ "exposure NUMBER(1) CHECK(exposure IN("
+							+ Posting.PUBLIC_ALLOW_BOTH_REPLY_AND_REBLOG + ", "
+							+ Posting.PUBLIC_ALLOW_REPLY_AND_NO_REBLOG + ", "
+							+ Posting.PUBLIC_NO_REPLY_AND_ALLOW_REBLOG + ", "
+							+ Posting.PUBLIC_NO_REPLY_NO_REBLOG + ", "
+							+ Posting.PRIVATE + ")"
+						+ "),"
+						+ "tags VARCHAR(255),"
+						+ "ref INTEGER NOT NULL,"
+						+ "reply_step NUMBER(5),"
+						+ "reply_depth NUMBER(5),"
+						+ "reply_count NUMBER(5),"
+						+ "posting_type NUMBER(1) CHECK(posting_type IN("
+							+ Posting.NORMAL_TYPE_POSTING + ", "
+							+ Posting.REPLY_TYPE_POSTING + ", "
+							+ Posting.QNA_TYPE_POSTING + ")"
+						+ "),"
+						+ "reblog_count NUMBER(5),"
+						+ "reblog_option NUMBER(1) CHECK(reblog_option IN("
+							+ Posting.ON_UPDATE_AND_DELETE_CASCADE + ", "
+							+ Posting.ON_UPDATE_CASCADE + ", "
+							+ Posting.ON_DELETE_CASCADE + ", "
+							+ Posting.SET_NULL + ")"
+						+ "),"
+						+ "PRIMARY KEY(num),"
+						//+ "FOREIGN KEY(num) REFERENCES reblog(origin_num)"
+					+")";
 		System.out.println("BlogDaoImpl insertBlog() query : " + sql);
 		
 		Connection connection = null;
@@ -29,6 +75,7 @@ public class BlogDaoImpl implements BlogDao{
 		
 		try {
 			connection = this.obtainConnection();
+			connection.setAutoCommit(false);
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, blog.getBlogName());
 			pstmt.setString(2, blog.getMemberName());
@@ -39,10 +86,24 @@ public class BlogDaoImpl implements BlogDao{
 			pstmt.setString(7, blog.getProfileImage());
 			pstmt.setInt(8, blog.getBlogLayout());
 			pstmt.executeUpdate();
+			pstmt.close();
+			
+			pstmt = connection.prepareStatement(sql2);
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt);
+			try {
+				connection.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			this.closeResources(connection, pstmt);
 		}
 	}
 
@@ -69,13 +130,14 @@ public class BlogDaoImpl implements BlogDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt);
+			this.closeResources(connection, pstmt);
 		}
 	}
 
 	@Override
 	public void removeBlog(Blog blog) {
 		String sql = "DELETE FROM blog WHERE blog_name=?";
+		String sql2 ="DROP TABLE ?";
 		System.out.println("BlogDaoImpl removeBlog() query : " + sql);
 		
 		Connection connection = null;
@@ -83,13 +145,29 @@ public class BlogDaoImpl implements BlogDao{
 		
 		try {
 			connection = this.obtainConnection();
+			connection.setAutoCommit(false);
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, blog.getBlogName());
 			pstmt.executeUpdate();
+			pstmt.close();
+			
+			pstmt = connection.prepareStatement(sql2);
+			pstmt.setString(1, blog.getBlogName());
+			pstmt.executeQuery();
 		} catch (SQLException e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt);
+			try {
+				connection.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			this.closeResources(connection, pstmt);
 		}
 	}
 
@@ -118,7 +196,7 @@ public class BlogDaoImpl implements BlogDao{
 		} catch(SQLException e) {
 			
 		} finally {
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(connection, pstmt, rs);
 		}
 		
 		return blog;
@@ -175,8 +253,8 @@ public class BlogDaoImpl implements BlogDao{
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			DatabaseUtil.close(null, pstmt2, rs2);
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(null, pstmt2, rs2);
+			this.closeResources(connection, pstmt, rs);
 		}
 		
 		return bList.toArray(new Blog[0]);
@@ -218,7 +296,7 @@ public class BlogDaoImpl implements BlogDao{
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			DatabaseUtil.close(connection, pstmt);
+			this.closeResources(connection, pstmt);
 		}
 	}
 
@@ -256,7 +334,7 @@ public class BlogDaoImpl implements BlogDao{
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			DatabaseUtil.close(connection, pstmt);
+			this.closeResources(connection, pstmt);
 		}
 	}
 
@@ -342,7 +420,7 @@ public class BlogDaoImpl implements BlogDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(connection, pstmt, rs);
 		}
 		
 		return bList;
@@ -415,7 +493,7 @@ public class BlogDaoImpl implements BlogDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(connection, pstmt, rs);
 		}
 		
 		return count;
@@ -444,7 +522,7 @@ public class BlogDaoImpl implements BlogDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt, rs);
+			this.closeResources(connection, pstmt, rs);
 		}
 		
 		return result;
@@ -466,13 +544,14 @@ public class BlogDaoImpl implements BlogDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt);
+			this.closeResources(connection, pstmt);
 		}
 	}
 
 	@Override
 	public void updateBlogName(String originBlogName, String newBlogName) {
 		String sql = "UPDATE blog SET blogName=? WHERE blogName=?";
+		String sql2 = "RENAME ? TO ?";
 		System.out.println("BlogDaoImpl updateBlogName() query : " + sql);
 		
 		Connection connection = null;
@@ -480,14 +559,31 @@ public class BlogDaoImpl implements BlogDao{
 		
 		try {
 			connection = this.obtainConnection();
+			connection.setAutoCommit(false);
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, newBlogName);
 			pstmt.setString(2, originBlogName);
 			pstmt.executeUpdate();
+			pstmt.close();
+			
+			pstmt = connection.prepareStatement(sql2);
+			pstmt.setString(1, originBlogName);
+			pstmt.setString(2, newBlogName);
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 		} finally {
-			DatabaseUtil.close(connection, pstmt);
+			try {
+				connection.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			this.closeResources(connection, pstmt);
 		}
 	}
 	
