@@ -165,7 +165,7 @@ public class BlogServiceImpl implements BlogService {
 	}
 
 	@Override
-	public void visitBlog(Member member, String blogName) throws DataNotFoundException {
+	public void selectBlog(Member member, String blogName) throws DataNotFoundException {
 		MemberDao memberDao = this.getMemberDaoImplimentation();
 		BlogDao blogDao = null;
 		if (memberDao.memberNameExists(member.getName())) {
