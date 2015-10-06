@@ -83,5 +83,5 @@ public interface BlogService {
 	
 	public abstract void changeBlogName(Member member, String originBlogName, String newBlogName) throws DataNotFoundException, DataDuplicatedException, IllegalDataException;
 	
-	public abstract void visitBlog(Member member, String blogName) throws DataNotFoundException;
+	public abstract void selectBlog(Member member, String blogName) throws DataNotFoundException;
 }
