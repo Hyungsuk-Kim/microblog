@@ -31,22 +31,22 @@
 	</header>
 	<section id="home">
 		<img src="image/logo.png" alt="Your logo" /><br/>
-		<form id="slick-login" >
+		<form id="slick-login" action="blogMain.jsp">
 			<label for="email">email</label>
 			<input type="email"
 				name="email" class="placeholder" placeholder="이메일">
-				
 				<label for="username">username</label>
 				<input type="text"
 			name="username" class="placeholder" placeholder="닉네임">
 			
 			<label for="password">password</label><input type="password"
 				name="password" class="placeholder" placeholder="비밀번호">
-			<input type="submit" value="Log In">
+				
+			<input type="submit" value="회원가입">
 		
-		</form><br/>
-		<a href="register.jsp">회원가입</a>/<a href="searchPassword.jsp">혹시
-			비밀번호를 잊으셨나요?</a>
+		</form><br/><br/><br/>
+		
+		<a href="register.jsp">회원가입</a>/<a href="searchPassword.jsp">비밀번호를 잊어 버리셨나요?</a>
 	</section>
 	<section id="about">
 		<div class="wrap">
@@ -55,13 +55,12 @@
 				This is the Web Projects. That name is Micro Blog : ) <br/>
 				이 프로젝트는 "kitsch" 라는 이름의 마이크로블로깅 웹 서비스를 구현한 프로젝트입니다. <br/>
 				서버측의 구현은 java기반의 jsp, 클라이언트 구현은 HTML, CSS, JavaScript를 사용합니다. <br/>
-				데이터저장소는 oracle 데이터베이스를 사용합니다 <br/>
+				데이터저장소는 oracle 데이터베이스를 사용합니다. <br/>
 			</p>
 		</div>
 	</section>
 	<footer>
-		Micro Blog에 오신 걸 환영합니다. ^^ <br /> 청년취업아카데미 5조 김형석, 정다혜, 박신후, 김가애의
-		웹프로젝트 Micro Blog입니다.
+		Micro Blog에 오신 걸 환영합니다. ^^ <br /> 청년 취업 아카데미 5조 김형석, 김가애, 정다혜, 박신후의 Web Projuct입니다.
 	</footer>
 </body>
 </html>
