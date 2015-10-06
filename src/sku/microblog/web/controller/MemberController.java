@@ -120,18 +120,18 @@ public class MemberController extends HttpServlet {
 	private void deregisterMember(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {
-		HttpSession session = request.getSession(false);
+	    HttpSession session = request.getSession(false);
 
-		if (session == null) {
-			response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
-			return;
-		}
+        if (session == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
 
-		Member member = (Member) session.getAttribute("loginMember");
-		if (member == null) {
-			response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
-			return;
-		}
+        Member member = (Member) session.getAttribute("loginMember");
+        if (member == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
 
 		MemberService memberService = new MemberServiceImpl();
 		memberService.removeMember(member);
