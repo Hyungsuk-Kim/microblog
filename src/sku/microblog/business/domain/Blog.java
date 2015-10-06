@@ -13,6 +13,7 @@ public class Blog implements Serializable {
 	private String memberName; //블로그 소유자의 이름
 	private String blogName; // 블로그의 이름(URL로 사용됨)
 	private int followerCount; // 해당 블로그를 팔로잉한 사람의 수
+	private int visitCount; // 누적 방문자수
 	private int backgroundColor; // 블로그의 배경색
 	private String headerImage; // 블로그 헤더 이미지 파일의 URL(Built-in / custom img)
 	private String profileImage; // 블로그의 사용자 프로필 이미지 파일의 URL(Built-in / custom img)
@@ -27,10 +28,11 @@ public class Blog implements Serializable {
 	public static final int GRID_LAYOUT = 2;
 	
 	// Constructors
-	// 블로그 생성 테스트용
-	public Blog(String memberName, String blogName) {
-		this.memberName = memberName;
+	// 기본 블로그 생성
+	public Blog(String blogName, String memberName) {
 		this.blogName = blogName;
+		this.memberName = memberName;
+		this.blogLayout = LISTED_LAYOUT;
 	}
 	
 	// 블로그 생성용
@@ -50,10 +52,12 @@ public class Blog implements Serializable {
 	}
 	
 	// 조회용
-	public Blog(String memberName, String blogName, int followerCount, int backgroundColor, String headerImage, String profileImage, int blogLayout) {
+	public Blog(String blogName, String memberName, int followerCount, int visitCount, int backgroundColor, String headerImage, String profileImage, int blogLayout) {
+		this.blogName = blogName;
 		this.memberName = memberName;
 		this.blogName = blogName;
 		this.followerCount = followerCount;
+		this.visitCount = visitCount;
 		this.backgroundColor = backgroundColor;
 		this.headerImage = headerImage;
 		this.profileImage = profileImage;
@@ -61,11 +65,12 @@ public class Blog implements Serializable {
 	}
 
 	// Methods
+	
 	@Override
 	public String toString() {
 		return "Blog [memberName=" + memberName + ", blogName=" + blogName + ", followerCount=" + followerCount
-				+ ", backgroundColor=" + backgroundColor + ", headerImage=" + headerImage + ", profileImage="
-				+ profileImage + ", blogLayout=" + blogLayout + "]";
+				+ ", visitCount=" + visitCount + ", backgroundColor=" + backgroundColor + ", headerImage=" + headerImage
+				+ ", profileImage=" + profileImage + ", blogLayout=" + blogLayout + "]";
 	}
 
 	// Getters
@@ -83,6 +88,10 @@ public class Blog implements Serializable {
 
 	public int getFollowerCount() {
 		return followerCount;
+	}
+	
+	public int getVisitCount() {
+		return visitCount;
 	}
 
 	public int getBackgroundColor() {
@@ -112,6 +121,10 @@ public class Blog implements Serializable {
 
 	public void setFollowerCount(int followerCount) {
 		this.followerCount = followerCount;
+	}
+
+	public void setVisitCount(int visitCount) {
+		this.visitCount = visitCount;
 	}
 
 	public void setBackgroundColor(int backgroundColor) {
