@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import sku.microblog.business.domain.Blog;
 import sku.microblog.business.domain.Member;
@@ -65,8 +66,19 @@ public class BlogController extends HttpServlet {
     private void findBlog(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException,
             DataNotFoundException {
-        
-        
+
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
+        Member isLoginMember = (Member) session.getAttribute("loginMember");
+        if (isLoginMember == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -88,6 +100,19 @@ public class BlogController extends HttpServlet {
             DataNotFoundException, DataDuplicatedException,
             IllegalDataException {
 
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
+        Member isLoginMember = (Member) session.getAttribute("loginMember");
+        if (isLoginMember == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
@@ -108,49 +133,79 @@ public class BlogController extends HttpServlet {
     private void getBlogCount(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 
-        
-        
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
+        Member isLoginMember = (Member) session.getAttribute("loginMember");
+        if (isLoginMember == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
         String searchType = request.getParameter("searchType");
-        
-               
-         Map<String,Object> searchInfo = new HashMap<String,Object>();
-         searchInfo.put("searchType",searchType);
-         
-        
-         BlogService blogService = new BlogServiceImpl();
-         blogService.getBlogCount(searchInfo);
-        
-         RequestDispatcher dispatcher = request.getRequestDispatcher("");
-         dispatcher.forward(request, response);
-         // TODO Auto-generated method stub
-        
+
+        Map<String, Object> searchInfo = new HashMap<String, Object>();
+        searchInfo.put("searchType", searchType);
+
+        BlogService blogService = new BlogServiceImpl();
+        blogService.getBlogCount(searchInfo);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        dispatcher.forward(request, response);
+        // TODO Auto-generated method stub
 
     }
 
     private void getBlogList(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-    
+
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
+        Member isLoginMember = (Member) session.getAttribute("loginMember");
+        if (isLoginMember == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
         String searchType = request.getParameter("searchType");
-        
-        
-        Map<String,Object> searchInfo = new HashMap<String,Object>();
-        searchInfo.put("searchType",searchType);
-        
-        
+
+        Map<String, Object> searchInfo = new HashMap<String, Object>();
+        searchInfo.put("searchType", searchType);
+
         BlogService blogService = new BlogServiceImpl();
         blogService.getBlogList(searchInfo);
-       
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("");
         dispatcher.forward(request, response);
         // TODO Auto-generated method stub
-       
-        
 
     }
 
     private void getFollowingList(HttpServletRequest request,
             HttpServletResponse response) throws DataNotFoundException,
             ServletException, IOException {
+
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
+        Member isLoginMember = (Member) session.getAttribute("loginMember");
+        if (isLoginMember == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -168,6 +223,19 @@ public class BlogController extends HttpServlet {
     private void createBlog(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException,
             DataDuplicatedException, DataNotFoundException {
+
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
+        Member isLoginMember = (Member) session.getAttribute("loginMember");
+        if (isLoginMember == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -197,10 +265,21 @@ public class BlogController extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException,
             DataNotFoundException {
 
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
+        Member isLoginMember = (Member) session.getAttribute("loginMember");
+        if (isLoginMember == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
         String blogName = request.getParameter("blogName");
 
-        
-       
         BlogService blogService = new BlogServiceImpl();
         blogService.findBlog(blogName);
 
@@ -212,6 +291,19 @@ public class BlogController extends HttpServlet {
     private void updateBlog(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException,
             DataNotFoundException {
+
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
+        Member isLoginMember = (Member) session.getAttribute("loginMember");
+        if (isLoginMember == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -241,6 +333,19 @@ public class BlogController extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException,
             DataNotFoundException {
 
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
+        Member isLoginMember = (Member) session.getAttribute("loginMember");
+        if (isLoginMember == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
@@ -268,6 +373,18 @@ public class BlogController extends HttpServlet {
     private void following(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException,
             DataNotFoundException {
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
+        Member isLoginMember = (Member) session.getAttribute("loginMember");
+        if (isLoginMember == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -287,7 +404,19 @@ public class BlogController extends HttpServlet {
     private void unfollow(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException,
             DataNotFoundException {
-        // TODO Auto-generated method stub
+
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
+        Member isLoginMember = (Member) session.getAttribute("loginMember");
+        if (isLoginMember == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -306,7 +435,18 @@ public class BlogController extends HttpServlet {
 
     private void modifyTheme(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
+
+        Member isLoginMember = (Member) session.getAttribute("loginMember");
+        if (isLoginMember == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+            return;
+        }
 
     }
 
