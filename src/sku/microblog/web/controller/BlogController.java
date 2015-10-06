@@ -67,19 +67,7 @@ public class BlogController extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException,
             DataNotFoundException {
 
-        HttpSession session = request.getSession(false);
-
-        if (session == null) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
-            return;
-        }
-
-        Member isLoginMember = (Member) session.getAttribute("loginMember");
-        if (isLoginMember == null) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
-            return;
-        }
-
+            
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
@@ -90,7 +78,7 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.selectBlog(member, blogName);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -124,9 +112,9 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.changeBlogName(member, originBlogName, newBlogName);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("blog.jsp");
         dispatcher.forward(request, response);
-        // TODO Auto-generated method stub
+       
 
     }
 
@@ -154,10 +142,9 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.getBlogCount(searchInfo);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("blog.jsp");
         dispatcher.forward(request, response);
-        // TODO Auto-generated method stub
-
+       
     }
 
     private void getBlogList(HttpServletRequest request,
@@ -184,10 +171,9 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.getBlogList(searchInfo);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("blogList.jsp");
         dispatcher.forward(request, response);
-        // TODO Auto-generated method stub
-
+      
     }
 
     private void getFollowingList(HttpServletRequest request,
@@ -215,7 +201,7 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.getFollowingList(member);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("followingList.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -256,34 +242,22 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.createBlog(member, blogName);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("blogList.jsp");
         dispatcher.forward(request, response);
 
     }
-
+//내가 블로그를선택했을때 실행되는 메소드
     private void selectBlog(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException,
             DataNotFoundException {
 
-        HttpSession session = request.getSession(false);
-
-        if (session == null) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
-            return;
-        }
-
-        Member isLoginMember = (Member) session.getAttribute("loginMember");
-        if (isLoginMember == null) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
-            return;
-        }
-
+       
         String blogName = request.getParameter("blogName");
 
         BlogService blogService = new BlogServiceImpl();
         blogService.findBlog(blogName);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("blog.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -324,7 +298,7 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.updateBlog(member, blog);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("blogList.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -365,7 +339,7 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.removeBlog(member, blog);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("blogList.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -396,7 +370,7 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.following(member, blogName);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("followingList.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -428,7 +402,7 @@ public class BlogController extends HttpServlet {
         BlogService blogService = new BlogServiceImpl();
         blogService.unfollow(member, blogName);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("followingList.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -456,7 +430,7 @@ public class BlogController extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+       
         response.getWriter().append("Served at: ")
                 .append(request.getContextPath());
     }
@@ -467,7 +441,7 @@ public class BlogController extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+        
         doGet(request, response);
     }
 
