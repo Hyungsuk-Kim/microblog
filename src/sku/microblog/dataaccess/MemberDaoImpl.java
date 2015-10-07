@@ -16,18 +16,18 @@ import sku.microblog.util.ConvertDateType;
 public class MemberDaoImpl implements MemberDao{
 
 	private Connection obtainConnection() throws SQLException {
-		//return DatabaseUtil.getConnection();
-    	return DatabaseUtil_old.getConnection();
+		return DatabaseUtil.getConnection();
+    	//return DatabaseUtil_old.getConnection();
     }
 	
 	private void closeResources(Connection connection, Statement stmt, ResultSet rs){
-		//DatabaseUtil.close(connection, stmt, rs);
-		DatabaseUtil_old.close(connection, stmt, rs);
+		DatabaseUtil.close(connection, stmt, rs);
+		//DatabaseUtil_old.close(connection, stmt, rs);
 	}
 	
 	private void closeResources(Connection connection, Statement stmt){
+		this.closeResources(connection, stmt, null);
 		//DatabaseUtil.close(connection, stmt);
-		DatabaseUtil_old.close(connection, stmt);
 	}
 	
 	@Override

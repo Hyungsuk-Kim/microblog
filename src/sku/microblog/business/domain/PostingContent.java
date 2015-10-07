@@ -21,15 +21,21 @@ public class PostingContent implements Serializable{
 	
 	// Class Variables
 	// available content types
-	public static final int TEXT_CONTENT = 10;
-	public static final int MIXED_CONTENT = 11;
-	public static final int IMAGE_FILE_CONTENT = 20;
-	public static final int IMAGE_LINK_CONTENT = 21;
-	public static final int AUDIO_FILE_CONTENT = 30;
-	public static final int AUDIO_LINK_CONTENT = 31;
-	public static final int VIDEO_FILE_CONTENT = 40;
-	public static final int VIDEO_LINK_CONTENT = 41;
-	public static final int LINK_CONTENT = 50;
+	public static final int SINGLE_TYPE_CONTENT = 1;
+	public static final int MIXED_TYPE_CONTENT = 2;
+	public static final int TEXT_CONTENT = 110;
+	public static final int SINGLE_IMAGE_FILE_CONTENT = 120;
+	public static final int SINGLE_IMAGE_LINK_CONTENT = 121;
+	public static final int MIXED_IMAGE_FILE_CONTENT = 220;
+	public static final int MIXED_IMAGE_LINK_CONTENT = 221;
+	public static final int SINGLE_AUDIO_FILE_CONTENT = 130;
+	public static final int SINGLE_AUDIO_LINK_CONTENT = 131;
+	public static final int MIXED_AUDIO_FILE_CONTENT = 230;
+	public static final int MIXED_AUDIO_LINK_CONTENT = 231;
+	public static final int SINGLE_VIDEO_FILE_CONTENT = 140;
+	public static final int SINGLE_VIDEO_LINK_CONTENT = 141;
+	public static final int MIXED_VIDEO_FILE_CONTENT = 240;
+	public static final int MIXED_VIDEO_LINK_CONTENT = 241;
 	
 	// Constructors
 	public PostingContent(String blogName, int postingNum, int contentType) {
