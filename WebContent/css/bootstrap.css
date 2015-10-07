@@ -5,6 +5,8 @@
  */
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -1404,8 +1406,8 @@ a.bg-danger:hover {
 }
 .page-header {
   padding-bottom: 9px;
-  margin: 40px 0 20px;
-  border-bottom: 1px solid #eee;
+  margin: 100px 40px 0 0;
+/*  border-bottom: 1px solid #eee;v */
 }
 ul,
 ol {
@@ -1417,6 +1419,58 @@ ol ul,
 ul ol,
 ol ol {
   margin-bottom: 0;
+}
+
+
+.blogName{
+	
+	
+	text-align : center;
+}
+
+
+.contentsContainer{
+	
+	padding-left: 150px;
+	padding-right: 150px;
+	
+}
+.myButtons{
+	padding-bottom: 10px;
+}
+
+.btnMyButtion {
+	color: #337ab7;
+	border :  1px;
+	background-color: #FFFFFF;
+	border-color: #2e6da4;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+	margin-left: 5px;
+	margin-right: 5px;
+	
+	border-radius: 10px;
+	
+	}
+
+.imgContainer{
+	padding-top: 80px;
+	padding-bottom: 30px;
+	
+	padding-left: 20px;
+	text-align : center;
+}
+
+.myBlogImage{
+	
+width: 230px;
+height: 230px;
+border-radius: 110px;
+	align : center;
+
 }
 .list-unstyled {
   padding-left: 0;
@@ -2255,6 +2309,7 @@ caption {
 th {
   text-align: left;
 }
+
 .table {
   width: 100%;
   max-width: 100%;
@@ -3725,6 +3780,11 @@ tbody.collapse.in {
   display: table;
   border-collapse: separate;
 }
+
+.input-group > .myBlogImage{
+	width: 100px;
+	height: 100px;
+}
 .input-group[class*="col-"] {
   float: none;
   padding-right: 0;
@@ -4127,6 +4187,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     max-height: 200px;
   }
 }
+
+
+
+
 .container > .navbar-header,
 .container-fluid > .navbar-header,
 .container > .navbar-collapse,
@@ -5691,6 +5755,9 @@ a.list-group-item-danger.active:focus {
   padding: 9px;
   border-radius: 3px;
 }
+
+
+
 .close {
   float: right;
   font-size: 21px;
