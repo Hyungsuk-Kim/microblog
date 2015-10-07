@@ -75,7 +75,7 @@
   
   <filter>
     <filter-name>EncodingFilter</filter-name>
-    <filter-class>casestudy.web.filter.EncodingFilter</filter-class>
+    <filter-class>sku.microblog.web.filter.EncodingFilter</filter-class>
     <init-param>
       <param-name>charset</param-name>
       <param-value>UTF-8</param-value>

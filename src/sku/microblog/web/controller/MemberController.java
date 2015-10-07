@@ -95,7 +95,7 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("errorMsgs", errorMsgs);
 
 			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("userError.jsp");
+					.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 
 			return;
@@ -213,7 +213,7 @@ public class MemberController extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loginMember", member);
 			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("index.jsp");
+					.getRequestDispatcher("blogMain.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} else {
@@ -227,7 +227,7 @@ public class MemberController extends HttpServlet {
 
 			request.setAttribute("loginErrorMsg", loginErrorMsg);
 			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("index.jsp");
+					.getRequestDispatcher("blogMain.jsp");
 			dispatcher.forward(request, response);
 		}
 

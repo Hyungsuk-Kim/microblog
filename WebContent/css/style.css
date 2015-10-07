@@ -4,7 +4,7 @@ body {
     font:15px/26px 'Open Sans', Verdana, sans-serif;
     color:#ffffff;
     font-weight:400;
-    background: #000000 url('image/yellow.jpg') top center repeat fixed;
+    background: #000000 url('../image/blue.jpg') top center repeat fixed;
 }
 
 .clearfix:after {
@@ -30,7 +30,7 @@ a:visited {
     outline:none;
 }
 a {
-    color:#00ab94;
+    color:#ffffff;
     text-decoration:none;
 }
 a:hover {
@@ -154,12 +154,13 @@ section {
 }
 #home {
     text-align:center;
-    margin-top:80px;
-    padding:130px;
+    margin-top:50px;
+    padding:70px;
 }
 #about,
 #team,
-#contact {
+#contact,
+#login {
     background-color:#2d2d2d;
     box-shadow: 1px 1px 5px #000;
         -moz-box-shadow: 1px 1px 5px #000;
@@ -399,6 +400,27 @@ table {
 	animation: login 1s ease-in-out;
 }
 
+.error {
+	padding: 15px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+
+.msg {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+
 #slick-login label {
 	display: none;
 }
@@ -434,7 +456,7 @@ table {
 	width: 100%;
 	height: 50px;
 	margin-top: 7px;
-	color: #fff;
+	color: #ffffff;
 	font-size: 18px;
 	font-weight: bold;
 	text-shadow: 0px -1px 0px #5b6ddc;
@@ -446,7 +468,7 @@ table {
 	background-clip: padding-box;
 	border-radius: 6px;
 
-	background-color: #5466da;
+	background-color: #444444;
 	
 	
 	cursor: pointer;
