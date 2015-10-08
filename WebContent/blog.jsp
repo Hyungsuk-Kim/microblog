@@ -24,7 +24,11 @@
 
 </head>
 
-<body>
+<body background="image/yellow.jpg">
+
+
+
+
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -54,9 +58,11 @@
 
 
 	<div class="imgContainer">
-
 		<img class="myBlogImage" src="image/team2.png" alt="myBlogImage">
 	</div>
+
+	
+
 
 	<div class="blogName">
 		<h1 class="page-header">

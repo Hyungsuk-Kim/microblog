@@ -1424,6 +1424,13 @@ ol ol {
   margin-bottom: 0;
 }
 
+body{
+	
+
+background-size: 100% 290px;
+background-repeat: no-repeat;
+}
+
 
 .bannersContainer{
 		
@@ -1479,12 +1486,13 @@ ol ol {
 	
 	}
 
-.imgContainer{
+
+.imgContainer {
 	padding-top: 80px;
-		
 	padding-left: 20px;
-	text-align : center;
-}
+	text-align: center;}
+
+
 
 .myBlogImage{
 	
