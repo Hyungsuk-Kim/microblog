@@ -33,12 +33,20 @@
 
 
 					</div>
+					
+						<a class="btn btn-info btn-sm" href="#">Read More<span
+            class="glyphicon glyphicon-chevron-right"></span></a>
+						<input type="button" value="내 블로그"/><input type="button" value="로그아웃"/>
+						
+					
 
 					<ul class="nav hidden-xs" id="lg-menu">
-                    <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Featured</a></li>
-                    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Stories</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Saved</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> Refresh</a></li>
+                    <li class="active">
+                    
+                    <a href="#userInfo"><i class="glyphicon glyphicon-list-alt"></i> 회원정보수정</a></li>
+                    <li><a href="#blog"><i class="glyphicon glyphicon-list"></i> 블로그</a></li>
+                    <li><a href="#following"><i class="glyphicon glyphicon-paperclip"></i> 팔로잉</a></li>
+                    <li><a href="#like"><i class="glyphicon glyphicon-refresh"></i> 좋아요</a></li>
                 </ul>
                 <ul class="list-unstyled hidden-xs" id="sidebar-footer">
                     <li>
@@ -48,10 +56,10 @@
               
               	<!-- tiny only nav-->
               <ul class="nav visible-xs" id="xs-menu">
-                  	<li><a href="#featured" class="text-center"><i class="glyphicon glyphicon-list-alt"></i></a></li>
-                    <li><a href="#stories" class="text-center"><i class="glyphicon glyphicon-list"></i></a></li>
-                  	<li><a href="#" class="text-center"><i class="glyphicon glyphicon-paperclip"></i></a></li>
-                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-refresh"></i></a></li>
+                  	<li><a href="#userInfo" class="text-center"><i class="glyphicon glyphicon-list-alt"></i></a></li>
+                    <li><a href="#blog" class="text-center"><i class="glyphicon glyphicon-list"></i></a></li>
+                  	<li><a href="#following" class="text-center"><i class="glyphicon glyphicon-paperclip"></i></a></li>
+                    <li><a href="#like" class="text-center"><i class="glyphicon glyphicon-refresh"></i></a></li>
                 </ul>
               
             </div>
