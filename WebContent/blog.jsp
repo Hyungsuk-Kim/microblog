@@ -55,7 +55,7 @@
 
 	<div class="imgContainer">
 
-		<img class="myBlogImage" src="images/team2.png" alt="myBlogImage">
+		<img class="myBlogImage" src="image/team2.png" alt="myBlogImage">
 	</div>
 
 	<div class="blogName">
