@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +11,7 @@
 <title>Blog Home - Start Bootstrap Template</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/blog.css" rel="stylesheet">
 
 <!-- Custom CSS
     <link href="css/blog-home.css" rel="stylesheet"> -->
@@ -24,7 +25,11 @@
 
 </head>
 
-<body>
+<body background="image/yellow.jpg">
+
+
+
+
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -53,37 +58,58 @@
 	<!-- /.container --> </nav>
 
 
-
-
-
-
-
-
-
 	<div class="imgContainer">
-
-		<img class="myBlogImage" src="images/team2.png" alt="myBlogImage">
+		<img class="myBlogImage" src="image/team2.png" alt="myBlogImage">
 	</div>
+
 
 
 
 	<div class="blogName">
 		<h1 class="page-header">
-			Page Heading <a class="btn btn-primary" href="#"> Follow</a>
+			키티키티키치키치키블로그 <a class="btn btn-primary" href="#">Follow</a>
+
 		</h1>
-
-		<h3 class="user-name">User Name</h3>
-
+		<h3 class="user-name">By. 가애가애</h3>
 		<hr />
-
 	</div>
 
 
+	<div class="bannersContainer">
+
+		<div class="row">
+
+			<div class="banners"></div>
+
+			<a class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-center"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-center"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-center"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-cetner"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-center"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-center"></span></a>
+
+		</div>
+		<hr />
+	</div>
+
+
+
+
+
+
 	<!-- Page Content -->
-	<div class="contentsContainer">
+	
+	
 		<div class="row">
 			<!-- Blog Entries Column -->
 			<div class="col-md-8">
+
 				<!-- First Blog Post -->
 				<h2>
 					<a href="#">Blog Post Title</a>
@@ -149,36 +175,34 @@
 					class="glyphicon glyphicon-chevron-right"></span></a>
 
 				<hr>
+
 			</div>
 		</div>
 
 
-		<!-- Pager -->
-		<ul class="pager">
-			<li class="previous"><a href="#">&larr; Older</a></li>
-			<li class="next"><a href="#">Newer &rarr;</a></li>
-		</ul>
+
+	<!-- Pager -->
+	<ul class="pager">
+		<li class="previous"><a href="#">&larr; Older</a></li>
+		<li class="next"><a href="#">Newer &rarr;</a></li>
+	</ul>
 
 
 
-		<!-- Footer -->
-		<footer>
+	<!-- Footer -->
+	<div class="footer">
 		<div class="row">
 			<div class="col-lg-12">
 				<p>Copyright &copy; Your Website 2014</p>
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>
-		<!-- /.row --> 
-		</footer>
+		<!-- /.row -->
 
 	</div>
 
 
 
-
-
-	</div>
 	<!-- /.container -->
 
 	<!-- jQuery -->
@@ -186,7 +210,6 @@
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="js/bootstrap.min.js"></script>
-
 </body>
 
 </html>
