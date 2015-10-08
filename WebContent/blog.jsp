@@ -10,7 +10,7 @@
 <title>Blog Home - Start Bootstrap Template</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/blog.css" rel="stylesheet">
 
 <!-- Custom CSS
     <link href="css/blog-home.css" rel="stylesheet"> -->
@@ -53,30 +53,47 @@
 	<!-- /.container --> </nav>
 
 
-
-
-
-
-
-
-
 	<div class="imgContainer">
 
 		<img class="myBlogImage" src="images/team2.png" alt="myBlogImage">
 	</div>
 
-
-
 	<div class="blogName">
 		<h1 class="page-header">
-			Page Heading <a class="btn btn-primary" href="#"> Follow</a>
+			Page Heading <a class="btn btn-primary" href="#">Follow</a>
+
 		</h1>
-
 		<h3 class="user-name">User Name</h3>
-
 		<hr />
-
 	</div>
+
+
+	<div class="bannersContainer">
+
+		<div class="row">
+
+			<div class="banners"></div>
+
+			<a class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-right"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-right"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-right"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-right"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-right"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-right"></span></a>
+
+		</div>
+		<hr />
+	</div>
+
+
+
+
 
 
 	<!-- Page Content -->
@@ -162,23 +179,19 @@
 
 
 		<!-- Footer -->
-		<footer>
-		<div class="row">
-			<div class="col-lg-12">
-				<p>Copyright &copy; Your Website 2014</p>
+		<div class="footer">
+			<div class="row">
+				<div class="col-lg-12">
+					<p>Copyright &copy; Your Website 2014</p>
+				</div>
+				<!-- /.col-lg-12 -->
 			</div>
-			<!-- /.col-lg-12 -->
+			<!-- /.row -->
+
 		</div>
-		<!-- /.row --> 
-		</footer>
-
 	</div>
 
 
-
-
-
-	</div>
 	<!-- /.container -->
 
 	<!-- jQuery -->
