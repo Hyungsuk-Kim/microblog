@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -14,6 +14,7 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href="css/blogMain.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	</head>
 	<body>
 <div class="wrapper">
@@ -22,98 +23,14 @@
                       
           
             <!-- sidebar -->
-            <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
-              
-              	<ul class="nav">
-          			<li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
-            	</ul>
-
-					<div class="imgContainer">
-
-						<img class="myImage" src="image/team1.png" alt="내 프로필이미지" />
-
-
-					</div>
-					<div class="btn btn-info btn-sm">
-						<a class="btn btn-info btn-sm" href="#">내 블로그<span
-            class="glyphicon glyphicon-chevron-right"></span></a>
-            
-            	<a class="btn btn-info btn-sm" href="#">로그아웃<span
-            class="glyphicon glyphicon-chevron-right"></span></a>		
-            </div>
-								<ul class="nav hidden-xs" id="lg-menu">
-                    <li class="active">
-                    
-                    <a href="#userInfo"><i class="glyphicon glyphicon-list-alt"></i> 회원정보수정</a></li>
-                    <li><a href="#blog"><i class="glyphicon glyphicon-list"></i> 블로그</a></li>
-                    <li><a href="#following"><i class="glyphicon glyphicon-paperclip"></i> 팔로잉</a></li>
-                    <li><a href="#like"><i class="glyphicon glyphicon-refresh"></i> 좋아요</a></li>
-                </ul>
-                <ul class="list-unstyled hidden-xs" id="sidebar-footer">
-                    <li>
-                      <a href="http://www.bootply.com"><h3>Bootstrap</h3> <i class="glyphicon glyphicon-heart-empty"></i> Bootply</a>
-                    </li>
-                </ul>
-              
-              	<!-- tiny only nav-->
-              <ul class="nav visible-xs" id="xs-menu">
-                  	<li><a href="#userInfo" class="text-center"><i class="glyphicon glyphicon-list-alt"></i></a></li>
-                    <li><a href="#blog" class="text-center"><i class="glyphicon glyphicon-list"></i></a></li>
-                  	<li><a href="#following" class="text-center"><i class="glyphicon glyphicon-paperclip"></i></a></li>
-                    <li><a href="#like" class="text-center"><i class="glyphicon glyphicon-refresh"></i></a></li>
-                </ul>
-              
-            </div>
+            <c:import url="/include/side-bar.jsp" />
             <!-- /sidebar -->
           
             <!-- main right col -->
             <div class="column col-sm-10 col-xs-11" id="main">
                 
                 <!-- top nav -->
-              	<div class="navbar navbar-blue navbar-static-top">  
-                    <div class="navbar-header">
-                      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle</span>
-                        <span class="icon-bar"></span>
-          				<span class="icon-bar"></span>
-          				<span class="icon-bar"></span>
-                      </button>
-                      <a href="/" class="navbar-brand logo">M</a>
-                  	</div>
-                  	<nav class="collapse navbar-collapse" role="navigation">
-                    <form class="navbar-form navbar-left">
-                        <div class="input-group input-group-sm" style="max-width:360px;">
-                          <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                          <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                          </div>
-                        </div>
-                    </form>
-                    <ul class="nav navbar-nav">
-                      <li>
-                        <a href="#"><i class="glyphicon glyphicon-home"></i> Home</a>
-                      </li>
-                      <li>
-                        <a href="#postModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Post</a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="badge">badge</span></a>
-                      </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="">More</a></li>
-                          <li><a href="">More</a></li>
-                          <li><a href="">More</a></li>
-                          <li><a href="">More</a></li>
-                          <li><a href="">More</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  	</nav>
-                </div>
+              	<c:import url="/include/top.jsp" />
                 <!-- /top nav -->
               
                 <div class="padding">
@@ -270,13 +187,7 @@
                           </div>
                         </div>
                       
-                      <hr>
-                      
-                      <h4 class="text-center">
-                      <a href="http://bootply.com/96266" target="ext">Download this Template @Bootply</a>
-                      </h4>
-                        
-                      <hr>
+                      <c:import url="/include/foot.jsp" />
                         
                       
                     </div><!-- /col-9 -->
