@@ -98,7 +98,10 @@
 
 	<div class="updateBlog">
 		<a class="btn btn-info btn-sm" href="#">수정완료 <spanclass="glyphiconglyphicon-chevron-center">
-			</span></a> <a class="btn btn-info btn-sm" href="#">돌아가기 <spanclass="glyphiconglyphicon-chevron-center">
+		
+			</span></a> 
+			
+			<a class="btn btn-info btn-sm" href="#">돌아가기 <spanclass="glyphiconglyphicon-chevron-center">
 			</span></a>
 
 	</div>
