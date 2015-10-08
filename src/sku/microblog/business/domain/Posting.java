@@ -76,7 +76,7 @@ public class Posting implements Serializable {
 		this.writer = writer;
 		this.contents = contents;
 		//this.ip = ip;
-		this.regDate = regDate;
+		//this.regDate = regDate;
 		this.exposure = exposure;
 		this.tags = tags;
 		this.postingType = postingType;
