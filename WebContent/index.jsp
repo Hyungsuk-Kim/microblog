@@ -45,9 +45,7 @@
 		</c:if>
 		
 			<label for="email">email</label> 
-			<input type="email" name="email" class="placeholder" placeholder="이메일"
-			onblur="checkNotEmpty(this, document.getElement)">
-			<span id="error"></span>
+			<input type="email" name="email" class="placeholder" placeholder="이메일">
 			
 				 <label for="username">name</label>
 			<input type="text" name="name" class="placeholder" placeholder="닉네임">
