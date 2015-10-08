@@ -5,6 +5,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 		<title>Faceboot - A Facebook style template for Bootstrap</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -33,14 +34,14 @@
 
 
 					</div>
-					
-						<a class="btn btn-info btn-sm" href="#">Read More<span
+					<div class="btn btn-info btn-sm">
+						<a class="btn btn-info btn-sm" href="#">내 블로그<span
             class="glyphicon glyphicon-chevron-right"></span></a>
-						<input type="button" value="내 블로그"/><input type="button" value="로그아웃"/>
-						
-					
-
-					<ul class="nav hidden-xs" id="lg-menu">
+            
+            	<a class="btn btn-info btn-sm" href="#">로그아웃<span
+            class="glyphicon glyphicon-chevron-right"></span></a>		
+            </div>
+								<ul class="nav hidden-xs" id="lg-menu">
                     <li class="active">
                     
                     <a href="#userInfo"><i class="glyphicon glyphicon-list-alt"></i> 회원정보수정</a></li>
