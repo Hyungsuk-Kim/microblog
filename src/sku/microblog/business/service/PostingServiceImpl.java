@@ -82,7 +82,7 @@ public class PostingServiceImpl implements PostingService {
 	}
 
 	@Override
-	public void reblog(String fromBlogName, int postingNum, String toBlogName)
+	public void reblog(Member member, String originBlogName, int postingNum, String targetBlogName)
 			throws DataNotFoundException {
 		// TODO Auto-generated method stub
 

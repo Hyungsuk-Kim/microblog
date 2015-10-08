@@ -102,7 +102,7 @@ public interface PostingService {
 	 * @param toBlogName 다시 포스팅할 (목적지) 블로그
 	 * @throws DataNotFoundException fromBlogName, toBlogName 혹은 postingNum과 일치하는 Posting이 없을 경우 발생하는 Exception
 	 */
-	public abstract void reblog(String fromBlogName, int postingNum, String toBlogName) throws DataNotFoundException;
+	public abstract void reblog(Member member, String originBlogName, int postingNum, String targetBlogName) throws DataNotFoundException;
 	
 	/**
 	 * 해당 포스팅 내용의 타입을 반환한다.
@@ -112,4 +112,8 @@ public interface PostingService {
 	 * @throws DataNotFoundException blogName 혹은 postingNum과 일치하는 Posting이 없을 경우 발생하는 Exception
 	 */
 	public abstract int getContentType(String blogName, int postingNum) throws DataNotFoundException;
+	
+	public abstract Posting[] getReblogedPostings(Member member) throws DataNotFoundException;
+	public abstract Posting[] getlikedPostings(Member member) throws DataNotFoundException;
+	
 }

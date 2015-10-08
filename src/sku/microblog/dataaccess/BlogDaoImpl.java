@@ -18,15 +18,17 @@ import sku.microblog.business.service.BlogDao;
 public class BlogDaoImpl implements BlogDao{
 
 	private Connection obtainConnection() throws SQLException{
-		return DatabaseUtil.getConnection();
+		return DatabaseUtil_old.getConnection();
+		//return DatabaseUtil.getConnection();
 	}
 	
 	private void closeResources(Connection connection, Statement stmt, ResultSet rs){
-		DatabaseUtil.close(connection, stmt, rs);
+		DatabaseUtil_old.close(connection, stmt, rs);
+		//DatabaseUtil.close(connection, stmt, rs);
 	}
 	
 	private void closeResources(Connection connection, Statement stmt){
-		DatabaseUtil.close(connection, stmt);
+		this.closeResources(connection, stmt, null);
 	}
 	
 	@Override
@@ -81,6 +83,8 @@ public class BlogDaoImpl implements BlogDao{
 						+ Posting.SET_NULL + ", "
 						+ Posting.ON_UPDATE_AND_DELETE_CASCADE + "))"
 					+")";
+		
+		String sql3 = "CREATE SEQUENCE " + blog.getBlogName() + "_num_seq START with 1 INCREMENT BY 1";
 				  
 		System.out.println("BlogDaoImpl insertBlog() query : " + sql);
 		
@@ -104,6 +108,11 @@ public class BlogDaoImpl implements BlogDao{
 			
 			pstmt = connection.prepareStatement(sql2);
 			pstmt.executeUpdate();
+			pstmt.close();
+			
+			pstmt = connection.prepareStatement(sql3);
+			pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			try {
 				connection.rollback();
@@ -276,7 +285,7 @@ public class BlogDaoImpl implements BlogDao{
 
 	@Override
 	public void addFollowing(Member member, String blogName) {
-		String sql = "INSERT INTO following (blog_name, member_name) VALUES (?, ?)";
+		String sql = "INSERT INTO follow (member_email, origin_blog_name) VALUES (?, ?)";
 		String sql2 = "UPDATE blog SET follower_count = follower_count + 1 WHERE blog_name=?";
 		System.out.println("BlogDaoImpl addFollowing() query : " + sql);
 		
@@ -287,8 +296,8 @@ public class BlogDaoImpl implements BlogDao{
 			connection = this.obtainConnection();
 			connection.setAutoCommit(false);
 			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, blogName);
-			pstmt.setString(2, member.getName());
+			pstmt.setString(1, member.getEmail());
+			pstmt.setString(2, blogName);
 			pstmt.executeUpdate();
 			pstmt.close();
 			
@@ -316,7 +325,7 @@ public class BlogDaoImpl implements BlogDao{
 
 	@Override
 	public void cancelFollowing(Member member, String blogName) {
-		String sql = "DELETE FROM following WHERE member_name=? AND blog_name=?";
+		String sql = "DELETE FROM follow WHERE member_email=? AND origin_blog_name=?";
 		String sql2 = "UPDATE blog SET follower_count = follower_count - 1 WHERE blog_name=?";
 		
 		Connection connection = null;
@@ -326,8 +335,8 @@ public class BlogDaoImpl implements BlogDao{
 			connection = this.obtainConnection();
 			connection.setAutoCommit(false);
 			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, blogName);
-			pstmt.setString(2, member.getName());
+			pstmt.setString(1, member.getEmail());
+			pstmt.setString(2, blogName);
 			pstmt.executeUpdate();
 			pstmt.close();
 			
