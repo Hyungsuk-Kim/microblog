@@ -6711,20 +6711,18 @@ button.close {
 .maintable th { background-color: #ffffff; text-align: center;}
 
 #listtable .image { width: 25%; text-align: center; padding-bottom:15px; font-size: 15px;}
-#listtable .owner { width: 15%; text-align: center;  padding-bottom:15px; font-size: 15px;}
 #listtable .blogname { width: 45%; text-align: center;  padding-bottom:15px; font-size: 15px;}
-#listtable .isfollow { width: 15%; text-align: center;  padding-bottom:15px; font-size: 15px;}
-
-#listtable .nofollow{ font-size:20px; font-weight: bold; text-align: center;}
+#listtable .update {width: 15%;  text-align:center;}
+#listtable .del{width: 15%; text-align:center;}
 
 
 #searchinput { width: 200px; }
 
 #readtable th { width: 75px; }
 #readtable td.image { width: 25%; font-weight: bold; padding-bottom:15px;}
-#readtable td.owner { width: 15%; text-align: center; padding-bottom:15px; }
-#readtable td.blogname { width: 45%; text-align: center; padding-bottom:15px;}		
-#readtable td.isfollow { width: 15%; text-align: center;padding-bottom:15px; }
+#readtable td.blogname { width: 45%; text-align: center; padding-bottom:15px;}	
+#readtable td.update {width: 15%;  text-align:center; padding-bottom:15px; }
+#readtable td.del { width: 15%; text-align: center; padding-bottom:15px; }
 
 
 #writetable .titleinput, #updatetable .titleinput, #replytable .titleinput { width: 496px; }
