@@ -37,16 +37,146 @@
 							<th class="num">블로그 이미지</th>
 							<th class="title">닉네임</th>
 							<th class="writer">블로그 이름</th>
-							<th class="regdate">팔로우/언팔로우</th>
+							<th class="regdate">팔로우</th>
 						</tr>
 					</thead>
 					<tbody>
+					<!--  
 						<c:if test="${empty requestScope.followingList}">
 							<tr>
 								<td colspan="5" class = "nofollow">아직 팔로우 한 사람이 없어요.</td>
 							</tr>
 						</c:if>
-						<c:forEach var="following" items="${requestScope.followingList}">
+						
+					-->
+
+
+
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						</tr>
+	
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team1.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						</tr>
+	
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team3.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						</tr>
+	
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team1.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						</tr>
+	
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team3.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						</tr>
+	
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team1.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						</tr>
+	
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team3.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						</tr>
+	
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team1.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						</tr>
+	
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team3.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						</tr>
+	
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team1.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						</tr>
+	
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team3.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						</tr>
+	
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team1.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						</tr>
+	
+						<tr>
+							<td class="image"><img class = "miniimg" src = "image/team3.png"></td>
+							<td class="owner">이 블로그의 주인은 가애킴</td>
+							<td class="blogname">가애킴의 블로그입니다.</td>
+							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
+						</tr>
+	
+
+
+						
+
+
+						<!--  
+						<c:forEach var="following" items="${requestScope.getfollowingList}">
+						
+					
 							<tr>
 								<td class="num">${following.num}</td>
 								<td class="title">
@@ -59,38 +189,9 @@
 								<td class="regdate">${following.regDate}</td>
 								<td class="readcount">${following.readCount}</td>
 							</tr>
-						</c:forEach>
+						 </c:forEach> -->
 					</tbody>
-					<tfoot>
-						<tr>
-							<td id="pagenavigator" colspan="5">
-								<!-- 
-								<a href="list">이전</a>
-								<a class="pagenumber currpage">3</a>
-								<a class="pagenumber" href="list">4</a>
-								<a class="pagenumber" href="list">5</a>
-								<a href="board?action=list">다음</a>
-								-->
-								<c:if test="${requestScope.startPageNumber > 1}">
-									<a href="list?searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${requestScope.startPageNumber - 1}">이전</a>
-								</c:if>
-								<c:forEach begin="${requestScope.startPageNumber}" end="${requestScope.endPageNumber}" var="pageNumber">
-									<c:choose>
-										<c:when test="${requestScope.currentPageNumber == pageNumber}">
-											<a class="pagenumber currpage" >${pageNumber}</a>
-										</c:when>
-										<c:otherwise>
-											<a class="pagenumber" href="list?pageNumber=${pageNumber}&searchType=${param.searchType}&searchText=${param.searchText}">${pageNumber}</a>
-										</c:otherwise>
-									</c:choose>
-									
-								</c:forEach>
-								<c:if test="${requestScope.endPageNumber < requestScope.totalPageCount}">
-									<a href="list?searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${requestScope.endPageNumber + 1}">다음</a>
-								</c:if>
-							</td>
-						</tr>
-					</tfoot>
+					
 				</table>
 				
 			</div>

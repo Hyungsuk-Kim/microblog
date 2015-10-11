@@ -29,9 +29,6 @@
 <body background="image/yellow.jpg">
 
 
-
-
-
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
@@ -51,7 +48,8 @@
 			<ul class="nav navbar-nav">
 				<li><a href="#">About</a></li>
 				<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
+				
+				<li><a href="#">00000 명의 사람들이 이 블로그를 방문했어요!</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -77,6 +75,9 @@
 		<h3 class="user-name">By. 가애가애</h3>
 		<hr />
 	</div>
+
+	<a href = "createBlogForm.jsp"><p>블로그생성하기</p></a>
+
 
 <!-- 
 	<div class="bannersContainer">
@@ -114,7 +115,10 @@
 
 			<c:import url="/follow.jsp" />
 
-						<c:import url="/like.jsp" />
+			<c:import url="/like.jsp" />
+			
+			<c:import url="/blogList.jsp" />
+			
 		</div>
 	</div>
 

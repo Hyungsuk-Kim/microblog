@@ -6700,35 +6700,33 @@ button.close {
 
 
 
-.boardpage { width: 100%; }
+.boardpage { width: 800px; }
 .maintable { margin-top: 15px; margin-bottom: 8px; }
 .buttonbar { text-align: right; }
 
 .maintable { caption-side: top; border-collapse: collapse; }
 .maintable > caption { font-size : 40px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #337ab7;   }
-.maintable th, .maintable td {padding-bottom:10px; height: 21px; }
+.maintable th, .maintable td { padding: 10px; height: 21px; }
 /* .maintable th, .maintable td { border-top: 1px solid black; border-bottom: 1px solid black; padding: 2px; height: 21px; } */
-.maintable th { background-color: #ffffff; text-align: center;}
+.maintable th { background-color: #ffffff; }
 
-#listtable .image { width: 25%; text-align: center; padding-bottom:15px; font-size: 15px;}
-#listtable .owner { width: 25%; text-align: center;  padding-bottom:15px; font-size: 15px;}
-#listtable .blogname { width: 35%; text-align: center;  padding-bottom:15px; font-size: 15px;}
-#listtable .isfollow { width: 15%; text-align: center;  padding-bottom:15px; font-size: 15px;}
+#listtable .num { width: 300px; text-align: center;  font-size: 15px;}
+#listtable .title { width: 600px; text-align: center;   font-size: 15px;}
+#listtable .writer { width: 300px; text-align: center;   font-size: 15px;}
+#listtable .regdate { width: 300px; text-align: center;   font-size: 15px;}
+#listtable .readcount { width: 300px; text-align: center;  font-size: 15px; }
 
 #listtable .nofollow{ font-size:20px; font-weight: bold; text-align: center;}
 
 
-#listtable .image > img{width : 70px; height: 70px; border-radius:35px;}
-
 #searchinput { width: 200px; }
 
 #readtable th { width: 75px; }
-#readtable td.image { font-weight: bold; padding-bottom:15px;}
-#readtable td.owner {  text-align: center; padding-bottom:15px; }
-#readtable td.blogname {  text-align: center; padding-bottom:15px;}		
-#readtable td.isfollow {  text-align: center;padding-bottom:15px; }
-
-
+#readtable td.title { font-weight: bold; padding-left: 10px;}
+#readtable td.writer { width: 127px; text-align: center; }
+#readtable td.readcount { width: 90px; text-align: center; }		
+#readtable td.regdate { width: 127px; text-align: center; }
+#readtable td.contents { width: 578px; height: 250px; padding: 20px; line-height: 1.5em; vertical-align: top;}
 
 #writetable .titleinput, #updatetable .titleinput, #replytable .titleinput { width: 496px; }
 #writetable .writerinput, #updatetable .writerinput, #replytable .writerinput { width: 150px; }
