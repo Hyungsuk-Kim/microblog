@@ -114,7 +114,7 @@
 
 			<c:import url="/follow.jsp" />
 
-			
+						<c:import url="/like.jsp" />
 		</div>
 	</div>
 

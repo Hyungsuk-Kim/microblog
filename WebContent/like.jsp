@@ -21,11 +21,19 @@
            
 			<div class="boardpage">
 			
-					<h1 class="des1">Following List </h1>
-			 		<h1 class="des2">이곳에서 내가 팔로우 한 사람들의 목록을 볼 수 있어요.</h1>
+					<h1 class="des1">Like List </h1>
+			 		<h1 class="des2">내가 좋아요 한 게시글들을 볼 수있어요.</h1>
 			 		
 			 		<hr>
-			 		
+
+						<c:if test="${empty requestScope. LikeList}">
+						
+								<p class = "nolike">아직 좋아요 한 게시글이 없어요.</p>
+
+						</c:if>
+
+
+				<!-- 
 				<table id="listtable" class="maintable">
 
 			 		
@@ -63,7 +71,7 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td id="pagenavigator" colspan="5">
+							<td id="pagenavigator" colspan="5">-->
 								<!-- 
 								<a href="list">이전</a>
 								<a class="pagenumber currpage">3</a>
@@ -71,7 +79,7 @@
 								<a class="pagenumber" href="list">5</a>
 								<a href="board?action=list">다음</a>
 								-->
-								<c:if test="${requestScope.startPageNumber > 1}">
+								<!-- <c:if test="${requestScope.startPageNumber > 1}">
 									<a href="list?searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${requestScope.startPageNumber - 1}">이전</a>
 								</c:if>
 								<c:forEach begin="${requestScope.startPageNumber}" end="${requestScope.endPageNumber}" var="pageNumber">
@@ -92,7 +100,7 @@
 						</tr>
 					</tfoot>
 				</table>
-				
+				 	-->
 			</div>
 		</div>
 	</div>

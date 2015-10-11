@@ -6718,6 +6718,7 @@ button.close {
 
 #listtable .nofollow{ font-size:20px; font-weight: bold; text-align: center;}
 
+
 #searchinput { width: 200px; }
 
 #readtable th { width: 75px; }
@@ -6739,3 +6740,6 @@ button.close {
 
 .des1 {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #337ab7;}
 .des2 {font-size : 13px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: gray;}
+
+.nolike { font-size:20px; font-weight: bold; text-align: center; margin-bottom: 200px;}
+
