@@ -12,7 +12,7 @@
 <title>Blog Home - createBlog</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="css/createBlog.css" rel="stylesheet">
+<link href="../css/createBlog.css" rel="stylesheet">
 </head>
 
 <body>

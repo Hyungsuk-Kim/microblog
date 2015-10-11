@@ -12,7 +12,7 @@
 <title>Blog Home - followingList </title>
 
 <!-- Bootstrap Core CSS -->
-<link href="css/followingList.css" rel="stylesheet">
+<link href="../css/followingList.css" rel="stylesheet">
 </head>
 <body>
 

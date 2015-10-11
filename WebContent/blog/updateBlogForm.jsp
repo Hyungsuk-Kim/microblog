@@ -11,7 +11,7 @@
 <title>Blog Home - Start Bootstrap Template</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="css/blog.css" rel="stylesheet">
+<link href="../css/blog.css" rel="stylesheet">
 
 <!-- Custom CSS
     <link href="css/blog-home.css" rel="stylesheet"> -->
@@ -25,7 +25,7 @@
 
 </head>
 
-<body background="image/yellow.jpg">
+<body background="../image/blue.jpg">
 
 
 
@@ -60,7 +60,7 @@
 
 
 		<div class="imgContainer">
-			<a href="blog.jsp"><img class="myBlogImage" src="image/team2.png" alt="myBlogImage"></a>
+			<a href="blog.jsp"><img class="myBlogImage" src="../image/team2.png" alt="myBlogImage"></a>
 			<br>
 			<br>
 

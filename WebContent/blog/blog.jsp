@@ -12,7 +12,7 @@
 <title>Blog Home - Start Bootstrap Template</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="css/blog.css" rel="stylesheet">
+<link href="../css/blog.css" rel="stylesheet">
 
 <!-- Custom CSS
     <link href="css/blog-home.css" rel="stylesheet"> -->
@@ -26,7 +26,7 @@
 
 </head>
 
-<body background="image/blue.jpg">
+<body background="../image/blue.jpg">
 
 
 	<!-- Navigation -->
@@ -58,17 +58,14 @@
 
 
 	<div class="imgContainer">
-		<img class="myBlogImage" src="image/team2.png" alt="myBlogImage">
+		<img class="myBlogImage" src="../image/team2.png" alt="myBlogImage">
 	</div>
 
 
 
 
 	<div class="blogName">
-		<h1 class="page-header">
-			키티키티키치키치키블로그 
-			
-			
+		<h1 class="page-header"> 가애의 테스트블로그
 			<a class="btn btn-primary" href="#">Follow</a>
 
 		</h1>
@@ -76,8 +73,8 @@
 		<hr />
 	</div>
 
-	<a href = "createBlogForm.jsp"><p>블로그생성하기</p></a>
-	<a href = "updateBlogForm.jsp"><p>블로그수정하기</p></a>
+	<a href = "../blog/createBlogForm.jsp"><p>블로그생성하기</p></a>
+	<a href = "../blog/updateBlogForm.jsp"><p>블로그수정하기</p></a>
 
 
 <!-- 
@@ -109,17 +106,20 @@
 
 
 
+
 	<!-- Page Content -->
 
 	<div id="align">
 		<div id="content">
 
-			<c:import url="/follow.jsp" />
 
-			<c:import url="/like.jsp" />
+
+
+			<c:import url="/blog/follow.jsp" />
+
+			<c:import url="/blog/like.jsp" />
 			
-			<c:import url="/blogList.jsp" />
-			
+			<c:import url="/blog/blogList.jsp" />
 		</div>
 	</div>
 

@@ -12,7 +12,7 @@
 <title>Blog Home - BlogList </title>
 
 <!-- Bootstrap Core CSS -->
-<link href="css/blogList.css" rel="stylesheet">
+<link href="../css/blogList.css" rel="stylesheet">
 </head>
 <body>
 
@@ -53,49 +53,50 @@
 
 
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
+							<td class="blogname"> 가애킴의 테스트블로그</td>
+							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
+							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
+						</tr>
+	
+						
+						<tr>
+							<td class="image"><img class = "miniimg" src = "../image/team3.png"></td>
 							<td class="blogname"> 가애킴의 테스트블로그</td>
 							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
 							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team1.png"></td>
 							<td class="blogname"> 가애킴의 테스트블로그</td>
 							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
 							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team3.png"></td>
 							<td class="blogname"> 가애킴의 테스트블로그</td>
 							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
 							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
 							<td class="blogname"> 가애킴의 테스트블로그</td>
 							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
 							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team1.png"></td>
 							<td class="blogname"> 가애킴의 테스트블로그</td>
 							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
 							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
-							<td class="blogname"> 가애킴의 테스트블로그</td>
-							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
-							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
-						</tr>
-	
-						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
 							<td class="blogname"> 가애킴의 테스트블로그</td>
 							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
 							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>

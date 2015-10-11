@@ -12,7 +12,7 @@
 <title>Blog Home - followingList </title>
 
 <!-- Bootstrap Core CSS -->
-<link href="css/followingList.css" rel="stylesheet">
+<link href="../css/followingList.css" rel="stylesheet">
 </head>
 <body>
 
@@ -53,60 +53,62 @@
 
 
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
 							<td class="owner"> 가애킴</td>
 							<td class="blogname">가애킴의 블로그입니다.</td>
 							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
 							<td class="owner"> 가애킴</td>
 							<td class="blogname">가애킴의 블로그입니다.</td>
 							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
 							<td class="owner"> 가애킴</td>
 							<td class="blogname">가애킴의 블로그입니다.</td>
 							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
 							<td class="owner"> 가애킴</td>
 							<td class="blogname">가애킴의 블로그입니다.</td>
 							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
 							<td class="owner"> 가애킴</td>
 							<td class="blogname">가애킴의 블로그입니다.</td>
 							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
 							<td class="owner"> 가애킴</td>
 							<td class="blogname">가애킴의 블로그입니다.</td>
 							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
 							<td class="owner"> 가애킴</td>
 							<td class="blogname">가애킴의 블로그입니다.</td>
 							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "image/team2.png"></td>
+							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
 							<td class="owner"> 가애킴</td>
 							<td class="blogname">가애킴의 블로그입니다.</td>
 							<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
 						</tr>
+	
+						
 	
 
 						<!--  
