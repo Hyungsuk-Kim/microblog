@@ -26,7 +26,7 @@
 
 </head>
 
-<body background="image/yellow.jpg">
+<body background="image/blue.jpg">
 
 
 	<!-- Navigation -->
@@ -40,7 +40,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Start Bootstrap</a>
+			<a class="navbar-brand" href="#">-- Kitsch --</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
@@ -77,6 +77,7 @@
 	</div>
 
 	<a href = "createBlogForm.jsp"><p>블로그생성하기</p></a>
+	<a href = "updateBlogForm.jsp"><p>블로그수정하기</p></a>
 
 
 <!-- 
