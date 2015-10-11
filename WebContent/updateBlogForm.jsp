@@ -60,7 +60,7 @@
 
 
 		<div class="imgContainer">
-			<img class="myBlogImage" src="image/team2.png" alt="myBlogImage">
+			<a href="blog.jsp"><img class="myBlogImage" src="image/team2.png" alt="myBlogImage"></a>
 			<br>
 			<br>
 

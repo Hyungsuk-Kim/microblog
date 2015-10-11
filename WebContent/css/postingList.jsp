@@ -1441,9 +1441,8 @@ background-repeat: no-repeat;
 .bannersContainer{
 		
 		text-align: center;
+		padding-top : 30pxl;
 		padding-bottom : 30px;
-		margin-left: 5%;
-		margin-right: 5%;
 	
 	
 }
@@ -6687,19 +6686,6 @@ button.close {
   .hidden-print {
     display: none !important;
   }
-}
-
-
-#align{
-	width:100%;   
-text-align:center; 
-	
-}
-
-#content{
-margin:0 auto; /*위에서 센터로 놨음에도 또 이걸 해 주는 건 IE외의 다른 브라우저에선 이게 없으면 다시 왼쪽으로 붙기 때문이에요*/  
-width:800px; 
-text-align:left;   
 }
 
 /*# sourceMappingURL=bootstrap.css.map */

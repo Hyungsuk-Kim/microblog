@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE>
 <html>
 <head>
 
@@ -67,14 +68,17 @@
 
 	<div class="blogName">
 		<h1 class="page-header">
-			키티키티키치키치키블로그 <a class="btn btn-primary" href="#">Follow</a>
+			키티키티키치키치키블로그 
+			
+			
+			<a class="btn btn-primary" href="#">Follow</a>
 
 		</h1>
 		<h3 class="user-name">By. 가애가애</h3>
 		<hr />
 	</div>
 
-
+<!-- 
 	<div class="bannersContainer">
 
 		<div class="row">
@@ -98,108 +102,23 @@
 		<hr />
 	</div>
 
-
+ -->
 
 
 
 
 	<!-- Page Content -->
-	
-	
-		<div class="row">
-			<!-- Blog Entries Column -->
-			<div class="col-md-8">
 
-				<!-- First Blog Post -->
-				<h2>
-					<a href="#">Blog Post Title</a>
-				</h2>
-				<p>
-					<span class="glyphicon glyphicon-time"></span> Posted on August 28,
-					2013 at 10:00 PM
-				</p>
-				<hr>
-				<img class="img-responsive" src="http://placehold.it/900x300" alt="">
-				<hr>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia
-					repellat ut tempore laborum possimus eum dicta id animi corrupti
-					debitis ipsum officiis rerum.</p>
-				<a class="btn btn-primary" href="#">Read More <span
-					class="glyphicon glyphicon-chevron-right"></span></a>
+	<div id="align">
+		<div id="content">
 
-				<hr>
+			<c:import url="/follow.jsp" />
 
-				<!-- Second Blog Post -->
-				<h2>
-					<a href="#">Blog Post Title</a>
-				</h2>
-				<p class="lead">
-					by <a href="index.php">Start Bootstrap</a>
-				</p>
-				<p>
-					<span class="glyphicon glyphicon-time"></span> Posted on August 28,
-					2013 at 10:45 PM
-				</p>
-				<hr>
-				<img class="img-responsive" src="http://placehold.it/900x300" alt="">
-				<hr>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Quibusdam, quasi, fugiat, asperiores harum voluptatum tenetur a
-					possimus nesciunt quod accusamus saepe tempora ipsam distinctio
-					minima dolorum perferendis labore impedit voluptates!</p>
-				<a class="btn btn-primary" href="#">Read More <span
-					class="glyphicon glyphicon-chevron-right"></span></a>
-
-				<hr>
-
-				<!-- Third Blog Post -->
-				<h2>
-					<a href="#">Blog Post Title</a>
-				</h2>
-				<p class="lead">
-					- by <a href="index.php">Start Bootstrap</a>
-				</p>
-				<p>
-					<span class="glyphicon glyphicon-time"></span> Posted on August 28,
-					2013 at 10:45 PM
-				</p>
-				<hr>
-				<img class="img-responsive" src="http://placehold.it/900x300" alt="">
-				<hr>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Cupiditate, voluptates, voluptas dolore ipsam cumque quam veniam
-					accusantium laudantium adipisci architecto itaque dicta aperiam
-					maiores provident id incidunt autem. Magni, ratione.</p>
-				<a class="btn btn-primary" href="#">Read More <span
-					class="glyphicon glyphicon-chevron-right"></span></a>
-
-				<hr>
-
-			</div>
+			
 		</div>
-
-
-
-	<!-- Pager -->
-	<ul class="pager">
-		<li class="previous"><a href="#">&larr; Older</a></li>
-		<li class="next"><a href="#">Newer &rarr;</a></li>
-	</ul>
-
-
-
-	<!-- Footer -->
-	<div class="footer">
-		<div class="row">
-			<div class="col-lg-12">
-				<p>Copyright &copy; Your Website 2014</p>
-			</div>
-			<!-- /.col-lg-12 -->
-		</div>
-		<!-- /.row -->
-
 	</div>
+
+	
 
 
 
