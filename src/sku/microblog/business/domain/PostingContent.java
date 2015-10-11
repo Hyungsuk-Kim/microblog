@@ -20,7 +20,7 @@ public class PostingContent implements Serializable{
 	// available content types
 	public static final int SINGLE_TYPE_CONTENT = 1;
 	public static final int MIXED_TYPE_CONTENT = 2;
-	public static final int TEXT_CONTENT = 110;
+	public static final int TEXT_CONTENT = 310;
 	public static final int SINGLE_IMAGE_FILE_CONTENT = 120;
 	public static final int SINGLE_IMAGE_LINK_CONTENT = 121;
 	public static final int MIXED_IMAGE_FILE_CONTENT = 220;
@@ -59,14 +59,21 @@ public class PostingContent implements Serializable{
 	}
 	
 	// for Text Contents when create
-	public PostingContent(String blogName, String textContent) {
+	/*public PostingContent(String blogName, String textContent) {
 		this.blogName = blogName;
+		this.textContent = textContent;
+	}*/
+	public PostingContent(String textContent) {
 		this.textContent = textContent;
 	}
 	
 	// for Mixed Contents when create
-	public PostingContent(String blogName, String textContent, String... filePath) {
+	/*public PostingContent(String blogName, String textContent, String... filePath) {
 		this.blogName = blogName;
+		this.textContent = textContent;
+		this.filePaths = filePath;
+	}*/
+	public PostingContent(String textContent, String... filePath) {
 		this.textContent = textContent;
 		this.filePaths = filePath;
 	}

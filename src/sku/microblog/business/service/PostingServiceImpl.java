@@ -95,4 +95,16 @@ public class PostingServiceImpl implements PostingService {
 		return 0;
 	}
 
+	@Override
+	public Posting[] getReblogedPostings(Member member) throws DataNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Posting[] getlikedPostings(Member member) throws DataNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

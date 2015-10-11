@@ -16,13 +16,13 @@ import sku.microblog.util.ConvertDateType;
 public class MemberDaoImpl implements MemberDao{
 
 	private Connection obtainConnection() throws SQLException {
-		return DatabaseUtil.getConnection();
-    	//return DatabaseUtil_old.getConnection();
+		//return DatabaseUtil.getConnection();
+    	return DatabaseUtil_old.getConnection();
     }
 	
 	private void closeResources(Connection connection, Statement stmt, ResultSet rs){
-		DatabaseUtil.close(connection, stmt, rs);
-		//DatabaseUtil_old.close(connection, stmt, rs);
+		//DatabaseUtil.close(connection, stmt, rs);
+		DatabaseUtil_old.close(connection, stmt, rs);
 	}
 	
 	private void closeResources(Connection connection, Statement stmt){
@@ -259,7 +259,7 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 	@Override
-	public List<Member> selectMemberList(Map<String, Object> searchInfo) {
+	public List<Member> getMemberList(Map<String, Object> searchInfo) {
 		List<Member> mList = new ArrayList<Member>();
 		Member member = null;
 		
@@ -348,7 +348,7 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 	@Override
-	public int selectMemberCount(Map<String, Object> searchInfo) {
+	public int getMemberCount(Map<String, Object> searchInfo) {
 		int count = 0;
 		
 		String searchType = null;

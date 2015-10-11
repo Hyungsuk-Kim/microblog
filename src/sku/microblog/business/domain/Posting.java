@@ -70,13 +70,14 @@ public class Posting implements Serializable {
 	}
 	
 	// 포스팅용 (글 작성)
-	public Posting(String title, String writer, PostingContent contents, int contentType, java.util.Date regDate,
+	public Posting(String title, String writer, PostingContent contents, int contentType, /*java.util.Date regDate,*/
 			int exposure, String tags, int postingType, int reblogOption) {
 		this.title = title;
 		this.writer = writer;
 		this.contents = contents;
 		//this.ip = ip;
 		//this.regDate = regDate;
+		this.contentType = contentType;
 		this.exposure = exposure;
 		this.tags = tags;
 		this.postingType = postingType;

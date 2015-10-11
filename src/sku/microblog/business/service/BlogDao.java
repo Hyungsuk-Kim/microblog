@@ -9,7 +9,7 @@ import sku.microblog.business.domain.Member;
 public interface BlogDao {
 	public abstract void insertBlog(Blog blog);
 	public abstract void updateBlog(Blog blog);
-	public abstract void removeBlog(Blog blog);
+	public abstract void deleteBlog(Blog blog);
 	public abstract Blog selectBlog(String blogName);
 	public abstract Blog[] selectFollowedBlogs(Member member);
 	public abstract void addFollowing(Member member, String blogName);

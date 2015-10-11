@@ -71,13 +71,13 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member[] getMemberList(Map<String, Object> searchInfo) {
-		List<Member> mList = this.getMemberDaoImplimentation().selectMemberList(searchInfo);
+		List<Member> mList = this.getMemberDaoImplimentation().getMemberList(searchInfo);
 		return mList.toArray(new Member[0]);
 	}
 
 	@Override
 	public int getMemberCount(Map<String, Object> searchInfo) {
-		return this.getMemberDaoImplimentation().selectMemberCount(searchInfo);
+		return this.getMemberDaoImplimentation().getMemberCount(searchInfo);
 	}
 
 	@Override
