@@ -37,24 +37,25 @@ public class SearchController extends HttpServlet {
 		}
 	}
 	
-	private void goHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void goHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
 		HttpSession session = request.getSession(false); 
 		Member member = (Member) session.getAttribute("loginMember");
 		BlogService blogService = new BlogServiceImpl();
 		Blog[] blogs = blogService.getMyBlogs(member);
 		
 		if (member != null) {
-			if (blogs.length == 0) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher(arg0);
+			System.out.println("확인" + blogs.toString());
+			if (blogs.length == 0 || blogs == null) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("blogMain.jsp");
 				dispatcher.forward(request, response);
 				return;
 			} else if (blogs.length > 0) {
 				request.setAttribute("blogs", blogs);
-				RequestDispatcher dispatcher = request.getRequestDispatcher(arg0);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("blog.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher(arg0);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
@@ -142,7 +143,7 @@ public class SearchController extends HttpServlet {
 		
 		Member member = (Member) session.getAttribute("loginMember");
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(arg0);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");
 		dispatcher.forward(request, response);
 		
 	}
