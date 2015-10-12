@@ -226,6 +226,10 @@ public class MemberController extends HttpServlet {
 			} else if (member.getCheck() == Member.INVALID_PASSWORD) {
 				loginErrorMsg = "비밀번호가 일치하지 않습니다.";
 			}
+			request.setAttribute("loginErrorMsg", loginErrorMsg);
+			RequestDispatcher dispatcher = request
+					.getRequestDispatcher("userError.jsp");
+			dispatcher.forward(request, response);
 		}
 
 	}

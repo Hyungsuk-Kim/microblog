@@ -20,7 +20,7 @@
  	<div class="col-md-12">
         <div class="navbar-header">
           
-          <a href="blogMain.jsp" class="navbar-brand">Kitsch</a>
+          <a href="index.jsp" class="navbar-brand">Kitsch</a>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
           <i class="glyphicon glyphicon-search"></i>
           </button>
