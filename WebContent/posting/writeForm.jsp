@@ -18,6 +18,9 @@
 
 </head>
 <body>
+
+<c:import url="../blog/blog.jsp" />
+
 	<div class="tableContainer">
 		<div class="tableRow">
 
@@ -76,11 +79,12 @@
 								<td>
 
 
-									<div >
+									<div class ="puttable">
 										<input class="btn btn-primary" type="button" value="작성"
-											onclick="boardWriteCheck(this.form);"> <input
+											onclick="goUrl('../posting.jsp');"> 
+											<input
 											class="btn" type="button" value="취소"
-											onclick="goUrl('list?pageNumber=${param.pageNumber}');">
+											onclick="goUrl('../posting.jsp');">
 									</div>
 								</td>
 

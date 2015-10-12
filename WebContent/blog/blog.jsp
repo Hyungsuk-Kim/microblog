@@ -13,6 +13,7 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="../css/blog.css" rel="stylesheet">
+<script src="<c:url value='/js/board.js'/>"></script>
 
 <!-- Custom CSS
     <link href="css/blog-home.css" rel="stylesheet"> -->
@@ -77,61 +78,46 @@
 	<a href = "../blog/updateBlogForm.jsp"><p>블로그수정하기</p></a>
 
 
-<!-- 
+
+
+
 	<div class="bannersContainer">
 
-		<div class="row">
+      <div class="row">
 
-			<div class="banners"></div>
+         <div class="banners"></div>
+         
+         <button class="btn btn-info" onclick="goUrl('../posting/writeForm.jsp');"> 글쓰기 </button>
+         <button class="btn btn-info"> 이미지 </button>
+         <button class="btn btn-info"> 비디오 </button>
+         <button class="btn btn-info"> 오디오 </button>
 
-			<a class="btn btn-info btn-sm" href="#">Read More<span
-				class="glyphicon glyphicon-chevron-center"></span></a> <a
-				class="btn btn-info btn-sm" href="#">Read More<span
-				class="glyphicon glyphicon-chevron-center"></span></a> <a
-				class="btn btn-info btn-sm" href="#">Read More<span
-				class="glyphicon glyphicon-chevron-center"></span></a> <a
-				class="btn btn-info btn-sm" href="#">Read More<span
-				class="glyphicon glyphicon-chevron-cetner"></span></a> <a
-				class="btn btn-info btn-sm" href="#">Read More<span
-				class="glyphicon glyphicon-chevron-center"></span></a> <a
-				class="btn btn-info btn-sm" href="#">Read More<span
-				class="glyphicon glyphicon-chevron-center"></span></a>
+        <!-- 
+        <ul>
+        <li class="btn btn-info">글쓰기 </li>
+        <li class="btn btn-info">이미지 </li>
+        <li class="btn btn-info">비디오 </li>
+        <li class="btn btn-info">오디오 </li>
 
-		</div>
-		<hr />
-	</div>
+        
+        
+        </ul>
+         -->
+        
+        
+        
+      </div>
+      
+   </div>
 
- -->
 
-
+	<!--  writer form -->
 
 
 
 	<!-- Page Content -->
 
-	<div id="align">
-		<div id="content">
 
-
-
-
-			<c:import url="/blog/follow.jsp" />
-
-	
-						
-			<c:import url="/blog/blogList.jsp" />
-			
-					
-			
-
-			
-			<c:import url="/blog/like.jsp"/>
-			
-						<c:import url="/posting/writeForm.jsp" />
-			
-			
-		</div>
-	</div>
 
 	
 
