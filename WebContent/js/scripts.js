@@ -1,5 +1,5 @@
-
-$(document).ready(function(){/* jQuery toggle layout */
+jQuery.noConflict();
+jQuery(document).ready(function($){/* jQuery toggle layout */
 $('#btnToggle').click(function(){
   if ($(this).hasClass('on')) {
     $('#main .col-md-6').addClass('col-md-4').removeClass('col-md-6');
