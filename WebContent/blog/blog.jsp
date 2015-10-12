@@ -15,6 +15,7 @@
 <link href="../css/blog.css" rel="stylesheet">
 <script src="<c:url value='/js/board.js'/>"></script>
 
+
 <!-- Custom CSS
     <link href="css/blog-home.css" rel="stylesheet"> -->
 
@@ -50,7 +51,7 @@
 				<!-- <li><a href="#">About</a></li>
 				<li><a href="#">Services</a></li>
 				 -->
-				<li><a href="#">00000 명의 사람들이 이 블로그를 방문했어요!</a></li>
+								<li><a href="#">00000 명의 사람들이 이 블로그를 방문했어요!</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -119,17 +120,18 @@
 
 
 
+	<!-- modal -->
 	
-
+<
 
 
 	<!-- /.container -->
 
 	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/scripts.js"></script>
 </body>
 
 </html>

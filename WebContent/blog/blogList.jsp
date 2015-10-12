@@ -4,22 +4,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<title>Blog Home - BlogList </title>
-
-<!-- Bootstrap Core CSS -->
-<link href="../css/blogList.css" rel="stylesheet">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<title>Kitsch</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		
+		<link href="../css/styles.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="tableContainer">
+<c:import url="../top.jsp"></c:import>
+	
+<div class="tableContainer" style="padding: 100px">
         <div class="tableRow">
            
 			<div class="boardpage">
+		
 			
 					<h1 class="des1">Blog List </h1>
 			 		<h1 class="des2">이 곳에서 내 블로그 목록을 볼 수 있어요.</h1>
