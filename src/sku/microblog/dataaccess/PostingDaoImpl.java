@@ -613,7 +613,7 @@ public class PostingDaoImpl implements PostingDao {
 	}
 
 	@Override
-	public List<Posting> getPostingList(Map<String, Object> searchInfo) {
+	public List<Posting> selectPostingList(Map<String, Object> searchInfo) {
 		List<Posting> pList = new ArrayList<Posting>();
 		Posting selectedPosting = null;
 		PostingContent pContent = null;;
@@ -856,7 +856,7 @@ public class PostingDaoImpl implements PostingDao {
 	}
 
 	@Override
-	public int getPostingCount(Map<String, Object> searchInfo) {
+	public int selectPostingCount(Map<String, Object> searchInfo) {
 		int selectedCount = 0;
 		
 		String whereSyntax = "";
@@ -1024,7 +1024,8 @@ public class PostingDaoImpl implements PostingDao {
 	}
 
 	@Override
-	public void addReadCount(String blogName, int postingNum) {
+	public int addReadCount(String blogName, int postingNum) {
+		int result = 0;
 		String sql ="UPDATE " + blogName + " SET read_count=read_count+1 WHERE num=?";
 		System.out.println("PostingDaoImpl addReadCount() : " + sql);
 		
@@ -1035,12 +1036,13 @@ public class PostingDaoImpl implements PostingDao {
 			connection = this.obtainConnection();
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, postingNum);
-			pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			this.closeResources(connection, pstmt);
 		}
+		return result;
 	}
 
 	@Override
@@ -1269,6 +1271,38 @@ public class PostingDaoImpl implements PostingDao {
 			}
 			this.closeResources(connection, pstmt);
 		}
+	}
+
+	@Override
+	public List<Posting> selectLikedPostings(Member member) {
+		String sql = "SELECT * FROM likes WHERE member_name=?";
+		System.out.println("PostingDaoImpl selectLikedPosting() query : " + sql);
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			connection = this.obtainConnection();
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, member.getName());
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				String blogName = rs.getString("blog_name");
+				String sql2 = "SELECT * FROM " + blogName + " WHERE num=?";
+				sssssssssssss;
+			}
+		}
+		
+		
+		return null;
+	}
+
+	@Override
+	public List<Posting> selectReplyPostings(String tableName, int postingNum) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

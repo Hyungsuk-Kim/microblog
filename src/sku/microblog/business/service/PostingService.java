@@ -38,8 +38,9 @@ public interface PostingService {
 	 * 인자로 받은 blogName에 해당하는 블로그에 포스팅을 등록한다.
 	 * @param blogName 포스팅이 등록될 블로그 명
 	 * @param posting 등록할 포스팅 객체
+	 * @throws DataNotFoundException 
 	 */
-	public abstract void writePosting(String blogName, Posting posting);
+	public abstract void writePosting(String blogName, Posting posting) throws DataNotFoundException;
 	
 	/**
 	 * 인자로 받은 Map 객체에 저장된 properties 정보에 해당하는 블로그와 포스팅을 등록한다.
@@ -67,15 +68,17 @@ public interface PostingService {
 	 * 인자로 받은 Map 객체에 저장된 properties와 일치하는 포스팅의 갯수를 저장소에서 얻어온다.
 	 * @param searchInfo 검색어 키워드, 검색 대상(블로그, 내용, 제목, 작성자, 태그, 전체), 검색할 블로그(optional)
 	 * @return 얻어올 포스팅의 갯수
+	 * @throws DataNotFoundException 
 	 */
-	public abstract int getPostingCount(Map<String, Object> searchInfo);
+	public abstract int getPostingCount(Map<String, Object> searchInfo) throws DataNotFoundException;
 	
 	/**
 	 * 인자로 받은 Map 객체에 저장된 properties와 일치하는 포스팅들을 저장소에서 얻어온다.
 	 * @param searchInfo 검색어 키워드, 검색 대상(블로그, 내용, 제목, 작성자, 태그, 전체), 검색할 블로그(optional)
 	 * @return 얻어올 포스팅들이 담긴 배열 객체
+	 * @throws DataNotFoundException 
 	 */
-	public abstract Posting[] getPostingList(Map<String, Object> searchInfo);
+	public abstract Posting[] getPostingList(Map<String, Object> searchInfo) throws DataNotFoundException;
 	
 	/**
 	 * 해당 포스팅에 좋아요를 추가한다.
