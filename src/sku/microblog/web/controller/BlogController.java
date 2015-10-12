@@ -281,7 +281,7 @@ public class BlogController extends HttpServlet {
             DataDuplicatedException, DataNotFoundException {
 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("createForm.jsp");
+                .getRequestDispatcher("/WEB-INF/blog/createBlogForm.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -322,7 +322,7 @@ public class BlogController extends HttpServlet {
         blogService.createBlog(member, blogName);
 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("blogList.jsp");
+                .getRequestDispatcher("/blog/blogList");
         dispatcher.forward(request, response);
 
     }

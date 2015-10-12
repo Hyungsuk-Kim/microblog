@@ -50,19 +50,19 @@
 						
 					-->
 
-
+	<c:forEach items="${blogList}" var="blogItem">
 
 						<tr>
 							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
-							<td class="blogname"> 가애킴의 테스트블로그</td>
+							<td class="blogname"> ${blogItem.blogName}</td>
 							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
 							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
 						</tr>
-	
+	 </c:forEach>
 						
 						<tr>
 							<td class="image"><img class = "miniimg" src = "../image/team3.png"></td>
-							<td class="blogname"> 가애킴의 테스트블로그</td>
+							<td class="blogname"> 1가애킴의 테스트블로그</td>
 							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
 							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
 						</tr>
