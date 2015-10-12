@@ -40,15 +40,15 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">-- Kitsch --</a>
+			<a class="navbar-brand" href="blogList.jsp">-- Kitsch --</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="#">About</a></li>
+				<!-- <li><a href="#">About</a></li>
 				<li><a href="#">Services</a></li>
-				
+				 -->
 				<li><a href="#">00000 명의 사람들이 이 블로그를 방문했어요!</a></li>
 			</ul>
 		</div>

@@ -11,7 +11,10 @@
 <title>Blog Home - Start Bootstrap Template</title>
 
 <!-- Bootstrap Core CSS -->
+
 <link href="../css/blog.css" rel="stylesheet">
+<script src="<c:url value='/js/board.js'/>"></script>
+
 
 <!-- Custom CSS
     <link href="css/blog-home.css" rel="stylesheet"> -->
@@ -42,37 +45,36 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Start Bootstrap</a>
+			<a class="navbar-brand" href="blogList.jsp">-- kitsch --</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="#">About</a></li>
+				<!-- <li><a href="#">About</a></li>
 				<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
+				 -->
+				<li><a href="#">00000 명의 사람들이 이 블로그를 방문했어요!</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container --> </nav>
+
+
+
 	<div class="updateBlog">
 
 
 		<div class="imgContainer">
-			<a href="blog.jsp"><img class="myBlogImage" src="../image/team2.png" alt="myBlogImage"></a>
-			<br>
-			<br>
 
-			
-				<a class="btn btn-info btn-sm" href="#">이미지 변경하기 <spanclass="glyphiconglyphicon-chevron-center">
-			</span></a>
+			<form id="updateBlog" action="update" method="POST">
+				<a href="blog.jsp"><img class="myBlogImage"
+					src="../image/team2.png" alt="myBlogImage"></a> <br> <br>
+
+
+				<a class="btn btn-primary" href="#">이미지 변경하기</a>
 		</div>
-		
-		
-
-
-
 
 		<div class="blogName">
 			<h1 class="page-header">
@@ -80,8 +82,7 @@
 
 
 				<div class="blogNameSize">
-					<input type="text" class="form-control"
-						placeholder="블로그 명을 입력해 주세요.">
+					<input type="text" class="form-control" placeholder="블로그 명을 입력해 주세요.">
 
 				</div>
 
@@ -97,14 +98,15 @@
 
 
 	<div class="updateBlog">
-		<a class="btn btn-info btn-sm" href="#">수정완료 <spanclass="glyphiconglyphicon-chevron-center">
-		
-			</span></a> 
-			
-			<a class="btn btn-info btn-sm" href="#">돌아가기 <spanclass="glyphiconglyphicon-chevron-center">
-			</span></a>
+	
+		<input type="submit" class="btn btn-primary" value="수정완료">
+
+		<input type="button" class="btn" value="취소" onclick="goUrl('blog.jsp');">
+
 
 	</div>
+
+	</form>
 
 	<!-- /.container -->
 
@@ -113,6 +115,7 @@
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

@@ -31,33 +31,33 @@ public class BlogController extends HttpServlet {
             IllegalDataException {
         String action = request.getParameter("action");
         try {
-            if (action.equals("/create")) {
+            if (action.equals("create")) {
                 this.createBlog(request, response);
-            } else if (action.equals("/createBlogForm")) {
+            } else if (action.equals("createBlog")) {
                 this.createBlogForm(request, response);
-            } else if (action.equals("/find")) {
+            } else if (action.equals("find")) {
                 this.findBlog(request, response);
-            } else if (action.equals("/update")) {
+            } else if (action.equals("update")) {
                 this.updateBlog(request, response);
-            } else if (action.equals("/updateBlogForm")) {
+            } else if (action.equals("updateBlogForm")) {
                 this.updateBlogForm(request, response);
-            } else if (action.equals("/remove")) {
+            } else if (action.equals("remove")) {
                 this.removeBlog(request, response);
-            } else if (action.equals("/following")) {
+            } else if (action.equals("following")) {
                 this.following(request, response);
-            } else if (action.equals("/unfollow")) {
+            } else if (action.equals("unfollow")) {
                 this.unfollow(request, response);
-            } else if (action.equals("/theme")) {
+            } else if (action.equals("theme")) {
                 this.modifyTheme(request, response);
-            } else if (action.equals("/getFollowingList")) {
+            } else if (action.equals("getFollowingList")) {
                 this.getFollowingList(request, response);
-            } else if (action.equals("/getBlogList")) {
+            } else if (action.equals("getBlogList")) {
                 this.getBlogList(request, response);
-            } else if (action.equals("/getBlogCount")) {
+            } else if (action.equals("getBlogCount")) {
                 this.getBlogCount(request, response);
-            } else if (action.equals("/changeBlogName")) {
+            } else if (action.equals("changeBlogName")) {
                 this.changeBlogName(request, response);
-            } else if (action.equals("/selectBlog")) {
+            } else if (action.equals("selectBlog")) {
                 this.selectBlog(request, response);
             }
 
@@ -279,9 +279,9 @@ public class BlogController extends HttpServlet {
     private void createBlogForm(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException,
             DataDuplicatedException, DataNotFoundException {
-        System.out.println("creatBlogForm호출");
+ 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("/WEB-INF/blog/createBlogForm.jsp");
+                .getRequestDispatcher("createBlogForm.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -289,22 +289,7 @@ public class BlogController extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException,
             DataDuplicatedException, DataNotFoundException {
         
-       
-
-        HttpSession session = request.getSession(false);
-
-        if (session == null) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
-            return;
-        }
-
-        Member isLoginMember = (Member) session.getAttribute("loginMember");
-        if (isLoginMember == null) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
-            return;
-        }
-
-        String email = request.getParameter("email");
+                String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         Member member = new Member(email, password);
@@ -324,7 +309,7 @@ public class BlogController extends HttpServlet {
         blogService.createBlog(member, blogName);
 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("/blog/blogList");
+                .getRequestDispatcher("/blog/blogList.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -356,7 +341,7 @@ public class BlogController extends HttpServlet {
         request.setAttribute("blog", blog);
 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("updateForm.jsp");
+                .getRequestDispatcher("/WEB-INF/blog/updateForm.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -398,7 +383,7 @@ public class BlogController extends HttpServlet {
         blogService.updateBlog(member, blog);
 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("blogList.jsp");
+                .getRequestDispatcher("microblog/blog/blogList");
         dispatcher.forward(request, response);
 
     }
@@ -534,8 +519,9 @@ public class BlogController extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 
-        response.getWriter().append("Served at: ")
-                .append(request.getContextPath());
+       
+       response.getWriter().append("Served at: ")
+               .append(request.getContextPath());
     }
 
     /**

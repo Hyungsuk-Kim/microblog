@@ -26,8 +26,8 @@
 
 		<p class="step1">STEP 1.</p>
 		<p class="des2">사용할 블로그 이름을 정해 주세요.</p>
-
-		<form name = "createBlog"action= "create" method="POST">
+		
+		<form id="createBlog" action="/microblog/blog?action=create" method="POST">
 
 
 			<table class="registertable">
