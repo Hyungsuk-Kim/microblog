@@ -105,8 +105,8 @@ public class TestMemberDaoImpl {
 		memberDao.insertMember(member3);
 		memberDao.insertMember(member4);
 		
-		List<Member> mList = memberDao.selectMemberList(searchInfo);
-		int mCount = memberDao.selectMemberCount(searchInfo);
+		List<Member> mList = memberDao.getMemberList(searchInfo);
+		int mCount = memberDao.getMemberCount(searchInfo);
 		
 		System.out.println("=========== Searched Count : " + mCount);
 		for (Member member : mList) {

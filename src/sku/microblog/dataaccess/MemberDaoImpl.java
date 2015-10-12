@@ -26,8 +26,8 @@ public class MemberDaoImpl implements MemberDao{
 	}
 	
 	private void closeResources(Connection connection, Statement stmt){
-		DatabaseUtil.close(connection, stmt);
-		//DatabaseUtil_old.close(connection, stmt);
+		this.closeResources(connection, stmt, null);
+		//DatabaseUtil.close(connection, stmt);
 	}
 	
 	@Override
@@ -259,7 +259,7 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 	@Override
-	public List<Member> selectMemberList(Map<String, Object> searchInfo) {
+	public List<Member> getMemberList(Map<String, Object> searchInfo) {
 		List<Member> mList = new ArrayList<Member>();
 		Member member = null;
 		
@@ -348,7 +348,7 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 	@Override
-	public int selectMemberCount(Map<String, Object> searchInfo) {
+	public int getMemberCount(Map<String, Object> searchInfo) {
 		int count = 0;
 		
 		String searchType = null;
