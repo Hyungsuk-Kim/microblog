@@ -6702,7 +6702,7 @@ button.close {
 
 .boardpage { width: 100%; }
 .maintable { margin-top: 15px; margin-bottom: 8px; }
-.buttonbar { text-align: right; }
+.buttonbar { text-align: center; }
 
 .maintable { caption-side: top; border-collapse: collapse; }
 .maintable > caption { font-size : 40px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #337ab7;   }
@@ -6732,7 +6732,7 @@ button.close {
 
 #writetable .titleinput, #updatetable .titleinput, #replytable .titleinput { width: 496px; }
 #writetable .writerinput, #updatetable .writerinput, #replytable .writerinput { width: 150px; }
-#writetable .contentsinput, #updatetable .contentsinput, #replytable .contentsinput { width: 588px; height: 250px; }
+#writetable .contentsinput, #updatetable .contentsinput, #replytable .contentsinput { width: 496px; height: 250px; }
 #writetable th, #updatetable th, #replytable th { width: 89px; }
 
 #pagenavigator { text-align: center; }
@@ -6755,5 +6755,9 @@ text-align:center;
 margin:0 auto; /*위에서 센터로 놨음에도 또 이걸 해 주는 건 IE외의 다른 브라우저에선 이게 없으면 다시 왼쪽으로 붙기 때문이에요*/  
 width:800px; 
 text-align:left;   
+}
+
+.buttonbar{
+	text-align: center;
 }
 

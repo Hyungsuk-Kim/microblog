@@ -33,6 +33,7 @@ public class BlogController extends HttpServlet {
         try {
             if (action.equals("create")) {
                 this.createBlog(request, response);
+                System.out.println("creat가 될까요??");
             } else if (action.equals("createBlog")) {
                 this.createBlogForm(request, response);
             } else if (action.equals("find")) {
@@ -291,6 +292,9 @@ public class BlogController extends HttpServlet {
         
                 String email = request.getParameter("email");
         String password = request.getParameter("password");
+        
+        
+        System.out.println("email값과 p패스워드값이 들어가나요?" + email + password);
 
         Member member = new Member(email, password);
 

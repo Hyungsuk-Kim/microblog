@@ -64,44 +64,45 @@
 
 
 	<div class="updateBlog">
+		<form id="updateBlog" action="update" method="POST">
+
+			<div class="imgContainer">
 
 
-		<div class="imgContainer">
-
-			<form id="updateBlog" action="update" method="POST">
 				<a href="blog.jsp"><img class="myBlogImage"
 					src="../image/team2.png" alt="myBlogImage"></a> <br> <br>
+			</div>
+			<input type="submit" class="btn btn" value="이미지 변경하기">
 
 
-				<a class="btn btn-primary" href="#">이미지 변경하기</a>
-		</div>
-
-		<div class="blogName">
-			<h1 class="page-header">
+			<div class="blogName">
+				<h1 class="page-header">
 
 
 
-				<div class="blogNameSize">
-					<input type="text" class="form-control" placeholder="블로그 명을 입력해 주세요.">
+					<div class="blogNameSize">
+						<input type="text" class="form-control"
+							placeholder="블로그 명을 입력해 주세요."> <br />
+					</div>
 
-				</div>
+
+				<input type="submit" class="btn" value="블로그 중복확인">
 
 
-			</h1>
 
-		</div>
+				</h1>
 
-		<br>
-		<h3 class="user-name">By. 가애가애</h3>
-		<hr />
+			</div>
+
+
+			<hr />
 	</div>
 
 
 	<div class="updateBlog">
-	
-		<input type="submit" class="btn btn-primary" value="수정완료">
 
-		<input type="button" class="btn" value="취소" onclick="goUrl('blog.jsp');">
+		<input type="submit" class="btn btn-primary" value="수정완료"> <input
+			type="button" class="btn" value="취소" onclick="goUrl('blog.jsp');">
 
 
 	</div>

@@ -117,9 +117,19 @@
 
 			<c:import url="/blog/follow.jsp" />
 
-			<c:import url="/blog/like.jsp"/>
+	
 						
 			<c:import url="/blog/blogList.jsp" />
+			
+					
+			
+
+			
+			<c:import url="/blog/like.jsp"/>
+			
+						<c:import url="/posting/writeForm.jsp" />
+			
+			
 		</div>
 	</div>
 
