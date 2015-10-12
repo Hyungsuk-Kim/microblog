@@ -295,4 +295,12 @@ small.text-muted {
   	font-weight :bold;
   	font-size: 20px;
   }
+  .relay_w{
+  	font-weight: bold;
+  }
+  .reply_form{
+  	padding : 10 0 10 5;
+  }
+
+  
 }

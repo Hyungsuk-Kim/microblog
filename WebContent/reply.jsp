@@ -14,38 +14,16 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	</head>
 <body>
-
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			
-			
-          <img src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s28" width="28px" height="28px">
-             
-			작성자 : ${posting.writer}
-			
-		</div>
-		<div class="panel-body">
-		<p class="title">
-		제목 : ${posting.title}
-				<p>
-			<p>
-			내용 출력  ${posting.contents}
-			</p>
-			<hr>
-			<div class="comment">
-
-			
-			<a href="reply.jsp">
-			댓글 ${posting.replyCount}개
-			</a>
-			
-		
-				<a href="#" class="good">
-				<span class="glyphicon glyphicon-heart"></span>
-				</a>
-				
-			</div>
-		</div>
+<div class="panel panel-default">
+	<div class = "reply_form">
+		<img src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s28" width="28px" height="28px">
+		<a href="#" class="relay_w">작성자</a>내용,작성날짜
+	</div>
+	<div class="col-sm-*">
+	<input type="text">
+	<input type="submit" value="입력">
+	</div>
+	
 	</div>
 </body>
 </html>
