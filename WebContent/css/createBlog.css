@@ -18,6 +18,7 @@ html {
 }
 body {
   margin: 0;
+  background-color: #e0e0e0;
 }
 article,
 aside,
@@ -263,7 +264,7 @@ th {
   }
   .table td,
   .table th {
-    background-color: #fff !important;
+    background-color: #e0e0e0 !important;
   }
   .table-bordered th,
   .table-bordered td {
@@ -1096,7 +1097,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-color: #e0e0e0;
 }
 input,
 button,
@@ -2387,7 +2388,7 @@ th {
   border-top: 2px solid #ddd;
 }
 .table .table {
-  background-color: #fff;
+  background-color: #e0e0e0;
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -2650,7 +2651,7 @@ output {
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
-  background-color: #fff;
+  background-color: #e0e0e0;
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -6708,7 +6709,7 @@ button.close {
 .maintable > caption { font-size : 40px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #337ab7;   }
 .maintable th, .maintable td { padding: 10px; height: 21px; }
 /* .maintable th, .maintable td { border-top: 1px solid black; border-bottom: 1px solid black; padding: 2px; height: 21px; } */
-.maintable th { background-color: #ffffff; }
+.maintable th { background-color: #fff; }
 
 #listtable .num { width: 300px; text-align: center;  font-size: 15px;}
 #listtable .title { width: 600px; text-align: center;   font-size: 15px;}

@@ -12,7 +12,7 @@
 <title>Blog Home - followingList</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="../css/followingList.css" rel="stylesheet">
+<link href="<c:url value='/css/followingList.css'/>" rel="stylesheet">
 </head>
 <body>
 
@@ -20,12 +20,6 @@
 		<div class="tableRow">
 
 			<div class="boardpage">
-
-				<h1 class="des1">Following List</h1>
-				<h1 class="des2">이곳에서 내가 팔로우 한 사람들의 목록을 볼 수 있어요.</h1>
-
-				<hr>
-
 				<div class="table-responsive">
 					<table id="listtable" class="maintable">
 
@@ -55,7 +49,7 @@
 
 							<tr>
 								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
+									src="<c:url value='../image/team2.png'/>"></td>
 								<td class="owner">가애킴</td>
 								<td class="blogname">가애킴의 블로그입니다.</td>
 								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
@@ -63,7 +57,7 @@
 
 							<tr>
 								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
+									src="<c:url value='../image/team2.png'/>"></td>
 								<td class="owner">가애킴</td>
 								<td class="blogname">가애킴의 블로그입니다.</td>
 								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
@@ -71,7 +65,7 @@
 
 							<tr>
 								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
+									src="<c:url value='../image/team2.png'/>"></td>
 								<td class="owner">가애킴</td>
 								<td class="blogname">가애킴의 블로그입니다.</td>
 								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
@@ -79,7 +73,7 @@
 
 							<tr>
 								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
+									src="<c:url value='../image/team2.png'/>"></td>
 								<td class="owner">가애킴</td>
 								<td class="blogname">가애킴의 블로그입니다.</td>
 								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
@@ -87,7 +81,7 @@
 
 							<tr>
 								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
+									src="<c:url value='../image/team2.png'/>"></td>
 								<td class="owner">가애킴</td>
 								<td class="blogname">가애킴의 블로그입니다.</td>
 								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
@@ -95,7 +89,7 @@
 
 							<tr>
 								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
+									src="<c:url value='../image/team2.png'/>"></td>
 								<td class="owner">가애킴</td>
 								<td class="blogname">가애킴의 블로그입니다.</td>
 								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
@@ -103,7 +97,7 @@
 
 							<tr>
 								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
+									src="<c:url value='../image/team2.png'/>"></td>
 								<td class="owner">가애킴</td>
 								<td class="blogname">가애킴의 블로그입니다.</td>
 								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
@@ -111,7 +105,7 @@
 
 							<tr>
 								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
+									src="<c:url value='../image/team2.png'/>"></td>
 								<td class="owner">가애킴</td>
 								<td class="blogname">가애킴의 블로그입니다.</td>
 								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>

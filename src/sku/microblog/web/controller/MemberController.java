@@ -57,6 +57,12 @@ public class MemberController extends HttpServlet {
 				idCheck(request, response);
 			}else if(action.equals("namecheck")){
 				nameCheck(request, response);
+			}else if(action.equals("loginEmailCheck")){
+				loginEmailCheck(request, response);
+			}else if(action.equals("loginPassCheck")){
+				loginPassCheck(request, response);
+			}else if(action.equals("deletecheck")){
+				deleteCheck(request,response);
 			}
 		} catch (DataNotFoundException dne) {
 			throw new ServletException(dne);
@@ -64,12 +70,85 @@ public class MemberController extends HttpServlet {
 			throw new ServletException(dde);
 		}
 	}
+	private void deleteCheck(HttpServletRequest request, HttpServletResponse response)
+	         throws ServletException, IOException {
+		 response.setContentType("text/html;charset=UTF-8");
+	      response.setHeader("Cache-Control", "no-cache");
+	      PrintWriter out = response.getWriter();
+	      // id 중복 처리
+	      HttpSession session = request.getSession();
+	      Member member = (Member) session.getAttribute("loginMember");
+	      String getEmail = member.getEmail();
+	      String getPass = request.getParameter("password");
+	      String result = "";
+
+	      MemberService service = new MemberServiceImpl();
+	      member = service.loginCheck(getEmail, getPass);
+	      System.out.println(getEmail + getPass);
+	      if (member.getCheck()==Member.INVALID_PASSWORD) {
+	    	  result = "0";
+		}else if (member.getCheck() == Member.VALID_MEMBER) {
+			result = "1";
+		}
+	      out.print(result);
+	}
+	
+	private void loginPassCheck(HttpServletRequest request, HttpServletResponse response)
+	         throws ServletException, IOException {
+		 response.setContentType("text/html;charset=UTF-8");
+	      response.setHeader("Cache-Control", "no-cache");
+	      PrintWriter out = response.getWriter();
+	      // id 중복 처리
+	      String getEmail = request.getParameter("email");
+	      String getPass = request.getParameter("password");
+	      String result = "";
+
+	      MemberService service = new MemberServiceImpl();
+	      Member member = service.loginCheck(getEmail, getPass);
+	      System.out.println(getEmail + getPass);
+	      if (member.getCheck()==Member.INVALID_PASSWORD) {
+	    	  result = "<font color=red style='font-family:raleway-bold, sans-serif;'>&nbsp;비밀번호가 틀렸습니다.</font>";
+		}else if (member.getCheck() == Member.VALID_MEMBER) {
+			result = "얘도 짜증나";
+		}
+	      out.print(result);
+	}
+	
+	
+	private void loginEmailCheck(HttpServletRequest request, HttpServletResponse response)
+	         throws ServletException, IOException {
+		   response.setContentType("text/html;charset=UTF-8");
+		      response.setHeader("Cache-Control", "no-cache");
+		      PrintWriter out = response.getWriter();
+		      // id 중복 처리
+		      String getEmail = request.getParameter("email");
+		      String result = "";
+		      System.out.println("getEail 확인"+getEmail);
+
+		      MemberService service = new MemberServiceImpl();
+		      Member[] memberList = service.getAllUsers();
+		      for (Member member : memberList) {
+		         if (!(member.getEmail().equals(getEmail))) {
+		        	 System.out.println(member.getEmail());
+		            // 응답 메세지 1 : 이미 등록된 ID 입니다.
+		            result = "<font color=red style='font-family:raleway-bold, sans-serif;'>&nbsp;이메일이 존재하지 않습니다.</font>";
+		 
+		         } else if (member.getEmail().equals(getEmail)) {
+		        	 System.out.println("동일한거 "+member.getEmail());
+		        	 result = "아이 짜증나";
+		        	 break;
+				}
+		      }
+		      System.out.println(result);
+		      out.print(result);
+
+	}
+	
 	
 	private void nameCheck(HttpServletRequest request, HttpServletResponse response)
 	         throws ServletException, IOException {
 	      response.setContentType("text/html;charset=UTF-8");
 	      response.setHeader("Cache-Control", "no-cache");
-	      System.out.println("nameCheck들어옴?");
 	      PrintWriter out = response.getWriter();
 	      // id 중복 처리
 	      String getName = request.getParameter("email");
@@ -96,7 +175,6 @@ public class MemberController extends HttpServlet {
 	         throws ServletException, IOException {
 	      response.setContentType("text/html;charset=UTF-8");
 	      response.setHeader("Cache-Control", "no-cache");
-	      System.out.println("idCheck들어옴?");
 	      PrintWriter out = response.getWriter();
 	      // id 중복 처리
 	      String getEmail = request.getParameter("email");
@@ -155,11 +233,7 @@ public class MemberController extends HttpServlet {
 		}
 		
 		if(chkpassword == null || chkpassword.length() == 0) {
-			errorMsgs.add("비밀번호 확인은 입력해주세요.");
-		}
-		
-		if(password != chkpassword){
-			errorMsgs.add("비밀번호가 일치하지 않습니다.");
+			errorMsgs.add("비밀번호 확인을 입력해주세요.");
 		}
 
 		// 유효하지 않은 데이터가 있으면 에러 페이지를 출력한다.
@@ -208,7 +282,7 @@ public class MemberController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {
 	    HttpSession session = request.getSession(false);
-
+	    
         if (session == null) {
             response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
             return;
@@ -306,7 +380,7 @@ public class MemberController extends HttpServlet {
 			return;
 			} else {
 				RequestDispatcher dispatcher = request
-						.getRequestDispatcher("blog.jsp");
+						.getRequestDispatcher("/blog/blog.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
@@ -388,7 +462,7 @@ public class MemberController extends HttpServlet {
 
 		request.setAttribute("member", member);
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("success.jsp");
+				.getRequestDispatcher("blogMain.jsp");
 		dispatcher.forward(request, response);
 	}
 

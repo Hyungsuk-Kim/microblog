@@ -33,12 +33,16 @@
 			</div>
 		</c:if>
 		
-			<label for="email">email</label> <input type="email" name="email"
-				class="placeholder" placeholder="이메일"> 
-			<label for="password">password</label><input type="password"
-				name="password" class="placeholder" placeholder="비밀번호">
+			<label for="email">email</label> <input type="email" name="email" id="email" onkeyup="loginEmailCheck()" class="placeholder" placeholder="이메일"> 
+				<span id="emailcheckLayer"></span>
+				
+			<label for="password">password</label> 
+			<input type="password" id="password" onkeyup="loginPassCheck()"
+				name="password" class="placeholder" placeholder="비밀번호"> <span id="passcheckLayer"></span>
+				
+				
 				 <input
-				type="submit" value="로그인">
+				type="submit" id="login" value="로그인">
 				
 					<input type="hidden" name="${loginErrorMsg}"
 			value="${loginErrorMsg}" />

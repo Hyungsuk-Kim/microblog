@@ -15,8 +15,8 @@
 	rel='stylesheet' type='text/css'>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/scripts.js"></script>
-<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="<c:url value='/js/login.js'/>"></script>
+<link rel="stylesheet" href="<c:url value='/css/style.css'/>">
 <title>Kitsch</title>
 </head>
 <body>
@@ -45,11 +45,13 @@
 			</c:if>
 
 			<label for="email">email</label> 
-			<input type="email" name="email" id="email" onkeyup="idcheck()"
-				class="placeholder" placeholder="이메일"> <span id="idcheckLayer"></span>
+			<input type="email" name="email" id="email" onkeyup="idcheck()" class="placeholder" placeholder="이메일"> 
+				<span id="idcheckLayer"></span>
+				
 				<label for="username">name</label>
 			<input type="text" name="name" id="name" class="placeholder" onkeyup="namechecked()" placeholder="닉네임">
 			<span id="namecheckLayer"></span>
+			
 			<label for="password">password</label> 
 			<input type="password" id="password" onkeyup="passwordcheck()"
 				name="password" class="placeholder" placeholder="비밀번호"> <span id="passwordcheckLayer"></span>
@@ -92,15 +94,19 @@
 					<form class="form col-md-12 center-block"
 						action="<c:url value='/member?action=login'/>" method="POST">
 						<div class="form-group">
-							<input type="email" name="email" class="form-control input-lg"
+							<input type="email" name="email" id="loginemail" onkeyup="loginEmailCheck()" class="form-control input-lg"
 								placeholder="Email">
+								<span id="loginemailcheckLayer"></span>
 						</div>
 						<div class="form-group">
-							<input type="password" name="password"
+						
+							<input type="password" name="password" id="loginpassword" onkeyup="loginPassCheck()"
 								class="form-control input-lg" placeholder="Password">
+								<span id="loginpasscheckLayer"></span>
+								
 						</div>
 						<div class="form-group">
-							<button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
+							<button class="btn btn-primary btn-lg btn-block" id="login" type="submit">로그인</button>
 						</div>
 					</form>
 				</div>
@@ -120,7 +126,7 @@
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="js/scripts.js"></script>
+		<script src="<c:url value='/js/scripts.js'/>"></script>
 		
 </body>
 </html>

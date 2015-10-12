@@ -5,59 +5,21 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>Kitsch</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<title>Bootstrap Google Plus Theme</title>
 <meta name="generator" content="Bootply" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="<c:url value='js/scripts.js'/>"></script>
+<link href="<c:url value='css/bootstrap.min.css'/>" rel="stylesheet">
 <!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-<link href="css/styles.css" rel="stylesheet">
+<link href="<c:url value='css/styles.css'/>" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-fixed-top header">
-		<div class="col-md-12">
-			<div class="navbar-header">
-
-				<a href="blogMain.jsp" class="navbar-brand">Kitsch</a>
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#navbar-collapse1">
-					<i class="glyphicon glyphicon-search"></i>
-				</button>
-			</div>
-
-			<div class="collapse navbar-collapse" id="navbar-collapse1">
-
-				<form class="navbar-form pull-left">
-					<div class="input-group" style="max-width: 470px;">
-						<input type="text" class="form-control" placeholder="Search"
-							name="srch-term" id="srch-term">
-						<div class="input-group-btn">
-							<button class="btn btn-default btn-primary" type="submit">
-								<i class="glyphicon glyphicon-search"></i>
-							</button>
-						</div>
-					</div>
-				</form>
-
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" id="btnToggle"><i
-							class="glyphicon glyphicon-th-large"></i></a></li>
-					<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-							class="glyphicon glyphicon-user"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="updateMember.jsp"><span
-									class="badge pull-right"></span>회원정보</a></li>
-							<li><a href="<c:url value='/member?action=logout'/>"><span class="badge pull-right"></span>로그아웃</a></li>
-							<!-- <li><a href="#"><span class="label label-info pull-right">1</span>Link</a></li> -->
-						</ul></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<c:import url="top.jsp"></c:import>
 	<div class="navbar navbar-default" id="subnav">
 		<div class="col-md-12">
 			<div class="navbar-header">
@@ -83,17 +45,17 @@
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse2">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="#"><span class="glyphicon glyphicon-globe"></span>
-							최신 글</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-picture"></span>
-							사진</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-font"></span>
-							텍스트</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-film"></span>
-							비디오</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-music"></span>
-							오디오</a></li>
-					<li><a href="#"><span
+					<li><a href="blogMain.jsp"><span
+							class="glyphicon glyphicon-globe"></span> 최신 글</a></li>
+					<li><a href="picture.jsp"><span
+							class="glyphicon glyphicon-picture"></span> 사진</a></li>
+					<li><a href="text.jsp"><span
+							class="glyphicon glyphicon-font"></span> 텍스트</a></li>
+					<li><a href="video.jsp"><span
+							class="glyphicon glyphicon-film"></span> 비디오</a></li>
+					<li><a href="audio.jsp"><span
+							class="glyphicon glyphicon-music"></span> 오디오</a></li>
+					<li><a href="qna.jsp"><span
 							class="glyphicon glyphicon-question-sign"></span> 질문</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -117,29 +79,44 @@
 							<li class="active"><a href="#A" data-toggle="tab">회원정보수정</a></li>
 							<li><a href="#B" data-toggle="tab">내 블로그 관리</a></li>
 							<li><a href="#C" data-toggle="tab">팔로잉 관리</a></li>
+							<li><a href="#D" data-toggle="tab">회원 탈퇴</a></li>
 						</ul>
 						<div class="tabbable">
 							<div class="tab-content">
 								<div class="tab-pane active" id="A">
 									<form id ="updateForm" action="<c:url value='/member?action=update'/>" method="POST">
 									<div class="well well-sm">
-										<label for="password">비밀번호</label> <input type="password"
-											name="password" class="placeholder" placeholder="비밀번호"><br/>
-										<label for="chkpassword">비밀번호확인</label> <input type="password"
-											name="chkpassword" class="placeholder" placeholder="비밀번호확인"><br/>
-										<input type="submit" value="수정">
+									
+									<label for="password">비밀번호</label> 
+			<input type="password" 
+				name="password" class="placeholder" placeholder="비밀번호"><br/>
+				<label for="password">비밀번호 확인</label> 
+			<input type="password" 
+				name="chkpassword" class="placeholder" placeholder="비밀번호 확인">
+				<input
+				type="submit" id="join" value="수정">
 									</div>
 										</form>
 								</div>
 								<div class="tab-pane" id="B">
 									<div class="well well-sm">
-										<c:import url="blogList.jsp"></c:import>
+										<c:import url="/blog/blogList.jsp"></c:import>
 									</div>
 									
 								</div>
 								<div class="tab-pane" id="C">
 									<div class="well well-sm">
-										<c:import url="follow.jsp"></c:import>
+										<c:import url="/blog/follow.jsp"></c:import>
+									</div>
+									
+								</div>
+								<div class="tab-pane" id="D">
+									<div class="well well-sm">
+									<form id="deregister" action="<c:url value='/member?action=deregister'/>" method="POST">
+									<label for="password">비밀번호</label> <input type="password" id="deletepass"
+											name="password" class="placeholder" placeholder="비밀번호">
+										<input type="button" value="확인" onclick="deletepasscheck()">
+										</form>
 									</div>
 								</div>
 							</div>
@@ -194,7 +171,7 @@
 	<!-- script references -->
 	<script
 		src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/scripts.js"></script>
+	<script src="<c:url value='js/bootstrap.min.js'/>"></script>
+	<script src="<c:url value='js/scripts.js'/>"></script>
 </body>
 </html>

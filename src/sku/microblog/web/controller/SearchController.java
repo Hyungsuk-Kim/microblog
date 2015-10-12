@@ -40,23 +40,26 @@ public class SearchController extends HttpServlet {
 	private void goHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
 		HttpSession session = request.getSession(false); 
 		Member member = (Member) session.getAttribute("loginMember");
-		BlogService blogService = new BlogServiceImpl();
-		Blog[] blogs = blogService.getMyBlogs(member);
+
 		
 		if (member != null) {
+			BlogService blogService = new BlogServiceImpl();
+			Blog[] blogs = blogService.getMyBlogs(member);
+			
 			if (blogs.length == 0) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("blogMain.jsp");
 				dispatcher.forward(request, response);
 				return;
-			} else if (blogs.length > 0) {
+			} else {
 				request.setAttribute("blogs", blogs);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("blog.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/blog/blog.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-			dispatcher.forward(request, response);
 		}
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	private void searching(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
