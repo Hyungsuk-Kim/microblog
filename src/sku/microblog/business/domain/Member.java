@@ -31,6 +31,7 @@ public class Member implements Serializable {
 	public static final int INVALID_EMAIL = 0;
 	/** Password가 일치하지 않는 회원임을 나타내는 상수 */
 	public static final int INVALID_PASSWORD = -10;
+	
 
 	// Constructors
 	public Member() {

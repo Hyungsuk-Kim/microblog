@@ -28,12 +28,10 @@
 					<li><a href="#about">About us</a></li>
 					<li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
 				</ul>
-				<div id="pull">
-					<span class="btn">Menu</span>
-				</div>
 			</nav>
 		</div>
 	</header>
+	
 	<section id="home">
 		<img src="image/logo.png" alt="Your logo" /><br />
 		<form id="slick-login" action="member?action=register" method="POST">

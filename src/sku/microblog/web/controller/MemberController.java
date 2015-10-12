@@ -66,10 +66,11 @@ public class MemberController extends HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 * @throws DataDuplicatedException
+	 * @throws DataNotFoundException 
 	 */
 	private void registerMember(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
-			DataDuplicatedException {
+			DataDuplicatedException, DataNotFoundException {
 		// 요청 파라미터를 통해 HTML 등 데이터를 얻어낸다.
 		String email = request.getParameter("email");
 		String name = request.getParameter("name");
@@ -107,11 +108,20 @@ public class MemberController extends HttpServlet {
 		// memberservice 객체에 위임하여 회원을 등록한다.
 		MemberService memberService = new MemberServiceImpl();
 		memberService.registerMember(member);
+		
+		Member selectedMember = memberService.findMember(member.getName());
+		if (selectedMember != null) {
+			HttpSession session = request.getSession(true);
+			session.setAttribute("loginMember", selectedMember);
+			RequestDispatcher dispatcher = request
+					.getRequestDispatcher("blogMain.jsp");
+			dispatcher.forward(request, response);
+		} else {
 
-		request.setAttribute("member", member);
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("success.jsp");
+				.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
+		}
 	}
 
 	/**
@@ -214,10 +224,17 @@ public class MemberController extends HttpServlet {
 		if (member.getCheck() == Member.VALID_MEMBER) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loginMember", member);
+			if(){
 			RequestDispatcher dispatcher = request
 					.getRequestDispatcher("blog.jsp");
 			dispatcher.forward(request, response);
 			return;
+			} else {
+				RequestDispatcher dispatcher = request
+						.getRequestDispatcher("blogMain.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
 		} else {
 			String loginErrorMsg = null;
 
