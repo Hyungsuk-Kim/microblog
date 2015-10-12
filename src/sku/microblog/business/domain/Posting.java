@@ -96,8 +96,7 @@ public class Posting implements Serializable {
 		}
 	
 	// 댓글용 (댓글 작성)
-	public Posting(String title, String writer, PostingContent contents, int contentType, int postingType) {
-		this.title = title;
+	public Posting(String writer, PostingContent contents, int contentType, int postingType) {
 		this.writer = writer;
 		this.contents = contents;
 		this.contentType = contentType;

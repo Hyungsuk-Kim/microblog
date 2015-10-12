@@ -75,7 +75,7 @@ public class TestPostingDaoImpl {
 		assertFalse(postingDao.postingExists(pContent2.getBlogName(), selectedPosting2.getNum()));
 	}*/
 	
-	@Test
+	/*@Test
 	public void testSelectAll() {
 		Posting[] tempAllPostings = null;
 		Posting tempPosting = null;
@@ -146,7 +146,7 @@ public class TestPostingDaoImpl {
 		Posting[] tempAllPostings = null;
 		Posting tempPosting = null;
 		
-		List<Posting> pList1 = postingDao.getPostingList(searchInfo1);
+		List<Posting> pList1 = postingDao.selectPostingList(searchInfo1);
 		tempAllPostings = pList1.toArray(new Posting[0]);
 		assertFalse(pList1.isEmpty());
 		for (int i = 0; i < tempAllPostings.length; i++) {
@@ -177,9 +177,9 @@ public class TestPostingDaoImpl {
 		searchInfo4.put("target", "posting");
 		searchInfo4.put("contentType", PostingContent.SINGLE_VIDEO_FILE_CONTENT);
 		
-		int selectedCount1 = postingDao.getPostingCount(searchInfo3);
+		int selectedCount1 = postingDao.selectPostingCount(searchInfo3);
 		assertEquals(selectedCount1, 9);
-		int selectedCount2 = postingDao.getPostingCount(searchInfo4);
+		int selectedCount2 = postingDao.selectPostingCount(searchInfo4);
 		assertEquals(selectedCount2, 9);
 	}
 	
@@ -213,10 +213,10 @@ public class TestPostingDaoImpl {
 		assertEquals(selectedPosting.getReadCount(), beforeReadCount+1);
 	}
 	
-	/*@Test
+	@Test
 	public void testReblog() {
 		postingDao.reblog(testMember, "first_blog", 7, targetBlogName);
-	}*/
+	}
 	
 	@Test
 	public void testGetAndSetContent() {
@@ -234,6 +234,22 @@ public class TestPostingDaoImpl {
 		}
 		assertEquals(selectedContent.getPostingNum(), changedContent.getPostingNum());
 		assertEquals(selectedContent.getTextContent(), changedContent.getTextContent());
+	}*/
+	
+	@Test
+	public void testSelectReplies() {
+		PostingContent replyContent1 = new PostingContent("This is reply1. It written by aa!");
+		PostingContent replyContent2 = new PostingContent("This is reply2. It written by aa!");
+		PostingContent replyContent3 = new PostingContent("This is reply3. It written by aa!");
+		Posting reply1 = new Posting("aa", replyContent1, PostingContent.TEXT_CONTENT, Posting.REPLY_TYPE_POSTING);
+		Posting reply2 = new Posting("aa", replyContent2, PostingContent.TEXT_CONTENT, Posting.REPLY_TYPE_POSTING);
+		Posting reply3 = new Posting("aa", replyContent3, PostingContent.TEXT_CONTENT, Posting.REPLY_TYPE_POSTING);
+		
+	}
+	
+	@Test
+	public void testSelectLikes() {
+		
 	}
 	
 	@After

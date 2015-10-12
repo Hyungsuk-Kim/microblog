@@ -234,25 +234,21 @@ public class PostingServiceImpl implements PostingService {
 
 	@Override
 	public Posting[] getReblogedPostings(Member member) throws DataNotFoundException {
-		System.out.println("PostingService ");
+		System.out.println("PostingService getReblogedPostings");
+		// TODO Auto-generated method stub
 		
-		PostingDao postingDao = this.getPosingDaoImplementation();
-		BlogService blogService = this.getBlogServiceImplementaion();
-		Blog blog = blogService.findBlog(blogName);
 		return null;
 	}
 
 	@Override
-	public Posting[] getlikedPostings(Member member) throws DataNotFoundException {
-		System.out.println("PostingService ");
+	public Posting[] getLikedPostings(Member member) throws DataNotFoundException {
+		System.out.println("PostingService get");
 		
 		PostingDao postingDao = this.getPosingDaoImplementation();
 		MemberService memberService = this.getMemberServiceImplementation();
 		Member validMember = memberService.findMember(member.getName());
 		
-		postingDao.
-		
-		return null;
+		return postingDao.selectLikedPostings(validMember).toArray(new Posting[0]);
 	}
 
 }

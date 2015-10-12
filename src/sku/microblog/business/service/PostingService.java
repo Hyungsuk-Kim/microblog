@@ -117,6 +117,6 @@ public interface PostingService {
 	public abstract int getContentType(String blogName, int postingNum) throws DataNotFoundException;
 	
 	public abstract Posting[] getReblogedPostings(Member member) throws DataNotFoundException;
-	public abstract Posting[] getlikedPostings(Member member) throws DataNotFoundException;
+	public abstract Posting[] getLikedPostings(Member member) throws DataNotFoundException;
 	
 }

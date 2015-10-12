@@ -25,4 +25,5 @@ public interface PostingDao {
 	public abstract void reblog(Member member, String originTableName, int postingNum, String targetTableName);
 	public abstract List<Posting> selectLikedPostings(Member member);
 	public abstract List<Posting> selectReplyPostings(String tableName, int postingNum);
+	public abstract void insertReply(String tableName, Posting posting);
 }

@@ -1276,33 +1276,325 @@ public class PostingDaoImpl implements PostingDao {
 	@Override
 	public List<Posting> selectLikedPostings(Member member) {
 		String sql = "SELECT * FROM likes WHERE member_name=?";
-		System.out.println("PostingDaoImpl selectLikedPosting() query : " + sql);
+		System.out.println("PostingDaoImpl selectLikedPosting() first query : " + sql);
+
+		List<Posting> pList = new ArrayList<Posting>();
+		Posting selectedPosting = null;
+		PostingContent pContent = null;
+		String contentTable = null;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+		ResultSet rs3 = null;
+
+		try {
+			connection = this.obtainConnection();
+			connection.setAutoCommit(false);
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, member.getName());
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				String blogName = rs.getString("blog_name");
+				int postingNum = rs.getInt("posting_num");
+
+				String sql2 = "SELECT * FROM " + blogName + " WHERE num=?";
+				System.out.println("PostingDaoImpl selectLikedPosting() second query : " + sql2);
+
+				pstmt2 = connection.prepareStatement(sql2);
+				pstmt2.setInt(1, postingNum);
+				rs2 = pstmt.executeQuery();
+
+				if (rs2.next()) {
+					int num = rs2.getInt("num");
+					String title = rs2.getString("title");
+					String writer = rs2.getString("writer");
+					int contentType = rs2.getInt("content_type");
+					int readCount = rs2.getInt("read_count");
+					java.util.Date regDate = ConvertDateType.ConvertDateSqlToUtil(rs2.getDate("reg_date"));
+					int likes = rs2.getInt("likes");
+					int exposure = rs2.getInt("exposure");
+					String tags = rs2.getString("tags");
+					int ref = rs2.getInt("ref");
+					int replyStep = rs2.getInt("reply_step");
+					int replyDepth = rs2.getInt("reply_depth");
+					int replyCount = rs2.getInt("reply_count");
+					int postingType = rs2.getInt("posting_type");
+					int reblogCount = rs2.getInt("reblog_count");
+					int reblogOption = rs2.getInt("reblog_option");
+
+					contentTable = this.getContentTable(contentType);
+					String sql3 = "SELECT * FROM " + contentTable + " WHERE blog_name=? AND posting_num=?";
+					System.out.println("PostingDaoImpl selectLikedPostings() : " + sql3);
+
+					pstmt3 = connection.prepareStatement(sql3);
+					pstmt3.setString(1, blogName);
+					pstmt3.setInt(2, num);
+					rs3 = pstmt3.executeQuery();
+
+					if (rs3.next()) {
+						String bName = rs3.getString("blog_name");
+						int pNum = rs3.getInt("posting_num");
+						if (contentTable.equals("mixed_contents")) {
+							String textContents = rs3.getString("text_contents");
+							String filePaths = rs3.getString("file_path");
+
+							StringTokenizer tokenizer = new StringTokenizer(filePaths, "@");
+							List<String> paths = new ArrayList<String>();
+							while (tokenizer.hasMoreTokens()) {
+								paths.add("@" + tokenizer.nextToken());
+							}
+							pContent = new PostingContent(bName, pNum, textContents, paths.toArray(new String[0]));
+
+						} else if (contentTable.equals("single_type_contents")) {
+							String filePaths = rs3.getString("file_path");
+
+							StringTokenizer tokenizer = new StringTokenizer(filePaths, "@");
+							List<String> paths = new ArrayList<String>();
+							while (tokenizer.hasMoreTokens()) {
+								paths.add("@" + tokenizer.nextToken());
+							}
+							pContent = new PostingContent(bName, pNum, paths.toArray(new String[0]));
+
+						} else if (contentTable.equals("text_contents")) {
+							String textContent = rs3.getString("text_contents");
+
+							pContent = new PostingContent(bName, pNum, textContent);
+						}
+						selectedPosting = new Posting(num, title, writer, pContent, contentType, readCount, regDate,
+								likes, exposure, tags, ref, replyStep, replyDepth, replyCount, postingType, reblogCount,
+								reblogOption);
+						
+						pList.add(selectedPosting);
+					}
+				}
+			}
+		} catch (SQLException e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			this.closeResources(null, pstmt3, rs3);
+			this.closeResources(null, pstmt2, rs2);
+			this.closeResources(connection, pstmt, rs);
+		}
+		
+		return pList;
+	}
+
+	@Override
+	public List<Posting> selectReplyPostings(String blogName, int postingNum) {
+		String sql = "SELECT * FROM " + blogName + " WHERE posting_type=?";
+		System.out.println("PostingDaoImpl selectReplyPostings() query : " + sql);
+		
+		List<Posting> pList = new ArrayList<Posting>();
+		Posting selectedPosting = null;
+		PostingContent pContent = null;
+		String contentTable = null;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+		
+		try {
+			connection = this.obtainConnection();
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, Posting.REPLY_TYPE_POSTING);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				int num = rs.getInt("num");
+				String title = rs.getString("title");
+				String writer = rs.getString("writer");
+				int contentType = rs.getInt("content_type");
+				int readCount = rs.getInt("read_count");
+				java.util.Date regDate = ConvertDateType.ConvertDateSqlToUtil(rs.getDate("reg_date"));
+				int likes = rs.getInt("likes");
+				int exposure = rs.getInt("exposure");
+				String tags = rs.getString("tags");
+				int ref = rs.getInt("ref");
+				int replyStep = rs.getInt("reply_step");
+				int replyDepth = rs.getInt("reply_depth");
+				int replyCount = rs.getInt("reply_count");
+				int postingType = rs.getInt("posting_type");
+				int reblogCount = rs.getInt("reblog_count");
+				int reblogOption = rs.getInt("reblog_option");
+				
+				contentTable = this.getContentTable(contentType);
+				String sql2 = "SELECT * FROM " + contentTable + " WHERE blog_name=? AND posting_num=?";
+				System.out.println("PostingDaoImpl selectReplyPostings() : " + sql2);
+				
+				pstmt2 = connection.prepareStatement(sql2);
+				pstmt2.setString(1, blogName);
+				pstmt2.setInt(2, num);
+				rs2 = pstmt2.executeQuery();
+				
+				if (rs2.next()) {
+					String bName = rs2.getString("blog_name");
+					int pNum = rs2.getInt("posting_num");
+					if (contentTable.equals("mixed_contents")) {
+						String textContents = rs2.getString("text_contents");
+						String filePaths = rs2.getString("file_path");
+						
+						StringTokenizer tokenizer = new StringTokenizer(filePaths, "@");
+						List<String> paths = new ArrayList<String>();
+						while (tokenizer.hasMoreTokens()) {
+							paths.add("@" + tokenizer.nextToken());
+						}
+						pContent = new PostingContent(bName, pNum, textContents, paths.toArray(new String[0]));
+						
+					} else if (contentTable.equals("single_type_contents")) {
+						String filePaths = rs2.getString("file_path");
+						
+						StringTokenizer tokenizer = new StringTokenizer(filePaths, "@");
+						List<String> paths = new ArrayList<String>();
+						while (tokenizer.hasMoreTokens()) {
+							paths.add("@" + tokenizer.nextToken());
+						}
+						pContent = new PostingContent(bName, pNum, paths.toArray(new String[0]));
+						
+					} else if (contentTable.equals("text_contents")) {
+						String textContent = rs2.getString("text_contents");
+						
+						pContent = new PostingContent(bName, pNum, textContent);
+					}
+					selectedPosting = new Posting(num, title, writer, pContent, contentType,
+							readCount, regDate, likes, exposure, tags, ref, replyStep, 
+							replyDepth, replyCount, postingType, reblogCount, reblogOption);
+					
+					pList.add(selectedPosting);
+				}
+			}
+		} catch (SQLException e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			this.closeResources(null, pstmt2, rs2);
+			this.closeResources(connection, pstmt, rs);
+		}
+		
+		return pList;
+	}
+
+	@Override
+	public void insertReply(String blogName, Posting posting) {
+		String contentTable = this.getContentTable(posting);
+		String contents = "";
+		PostingContent pContent = posting.getContents();
+		
+		if (contentTable.equals("mixed_contents")) {
+			contents = "?, ?";
+		} else if (contentTable.equals("single_type_contents")) {
+			contents = "?";
+		} else if (contentTable.equals("text_contents")) {
+			contents = "?";
+		}
+		int seqNum = 0;
+		String query = "SELECT " + blogName + "_num_seq.NEXTVAL FROM dual";
+		String sql = "INSERT INTO " + blogName + " (num, writer, content_type, reg_date, exposure, ref, reply_step, reply_depth, posting_type, reblog_option) "
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql2= "INSERT INTO " + contentTable + " VALUES (?, ?, " + contents + ")";
+		
+		String sql3 = "UPDATE " + blogName + " SET reply_step=reply_step+1 WHERE ref=? AND reply_step > ?";
+		String sql4 = "UPDATE " + blogName + " SET reply_count=reply_count+1 WHERE num=?";
+		System.out.println("PostingDaoImpl insertReply() : " + sql);
 		
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		try{
+		try {
 			connection = this.obtainConnection();
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, member.getName());
+			connection.setAutoCommit(false);
+			pstmt = connection.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			
-			while (rs.next()) {
-				String blogName = rs.getString("blog_name");
-				String sql2 = "SELECT * FROM " + blogName + " WHERE num=?";
-				sssssssssssss;
+			if (rs.next()) {
+				seqNum = rs.getInt(1);
 			}
+			
+			rs.close();
+			pstmt.close();
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, seqNum);
+			pstmt.setString(2, posting.getTitle());
+			pstmt.setInt(3, posting.getContentType());
+			pstmt.setDate(4, ConvertDateType.ConvertDateUtilToSql(new java.util.Date()));
+			pstmt.setInt(5, posting.getExposure());
+			pstmt.setInt(6, posting.getRef());
+			pstmt.setInt(7, posting.getReplyStep() + 1);
+			pstmt.setInt(7, posting.getReplyDepth() + 1);
+			pstmt.setInt(9, posting.getPostingType());
+			pstmt.setInt(10, posting.getReblogOption());
+			pstmt.executeUpdate();
+			pstmt.close();
+			
+			System.out.println("PostingDaoImpl insertPosting() : " + sql2);
+			pstmt = connection.prepareStatement(sql2);
+			pstmt.setString(1, blogName);
+			pstmt.setInt(2, seqNum);
+			if (contentTable.equals("mixed_contents")) {
+				pstmt.setString(3, pContent.getTextContent());
+				pstmt.setString(4, this.getFilePaths(pContent));
+			} else if (contentTable.equals("single_type_contents")) {
+				pstmt.setString(3, this.getFilePaths(pContent));
+			} else if (contentTable.equals("text_contents")) {
+				pstmt.setString(3, pContent.getTextContent());
+			}
+			pstmt.executeUpdate();
+			pstmt.close();
+			
+			System.out.println("PostingDaoImpl insertPosting() : " + sql3);
+			pstmt = connection.prepareStatement(sql3);
+			pstmt.setInt(1, posting.getRef());
+			pstmt.setInt(2, posting.getReplyStep());
+			pstmt.executeUpdate();
+			pstmt.close();
+			
+			System.out.println("PostingDaoImpl insertPosting() : " + sql4);
+			pstmt = connection.prepareStatement(sql4);
+			pstmt.setInt(3, posting.getRef());
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			this.closeResources(connection, pstmt);
 		}
-		
-		
-		return null;
-	}
-
-	@Override
-	public List<Posting> selectReplyPostings(String tableName, int postingNum) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
