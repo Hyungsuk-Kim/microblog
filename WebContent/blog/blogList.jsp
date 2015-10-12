@@ -18,7 +18,15 @@
 </head>
 <body>
 
+
+
+
+
+
+
 <c:import url="../top.jsp"></c:import>
+
+
 	
 <div class="tableContainer" style="padding: 100px">
         <div class="tableRow">

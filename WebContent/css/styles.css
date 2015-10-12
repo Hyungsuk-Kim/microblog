@@ -22,6 +22,7 @@ body {
 
 .header {background-color:#ffffff;border-width:0;}
 .header .navbar-collapse {background-color:#ffffff;}
+
 .btn,.form-control,.panel,.list-group,.well {border-radius:1px;box-shadow:0 0 0;}
 .form-control {border-color:#d7d7d7;}
 .btn-primary {border-color:transparent;}
@@ -91,6 +92,7 @@ h3,h4,h5 {
 #subnav {
  position:fixed;
  width:100%;
+ 
 }
 
 @media (max-width: 768px) {
@@ -155,4 +157,5 @@ text-align:left;
 }
 
 .miniimg{width:150px; height: 150px; border-radius:75px;}
+
 

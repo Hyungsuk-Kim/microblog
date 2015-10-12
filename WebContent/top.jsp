@@ -1,24 +1,23 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<title>Kitsch</title>
-		<meta name="generator" content="Bootply" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		
-		<link href="css/styles.css" rel="stylesheet">
-	</head>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<title>Kitsch</title>
+<meta name="generator" content="Bootply" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+<link href="css/styles.css" rel="stylesheet">
+</head>
 <body>
-
-
-
 
 
 <nav class="navbar navbar-fixed-top header">
@@ -26,7 +25,7 @@
         <div class="navbar-header">
           
           <c:choose>
-          	<c:when test="${empty sessionScope.loginMember}"><a href="index.jsp" class="navbar-brand">Kitsch</a></c:when>
+          	<c:when test="${empty sessionScope.loginMember}"><a href="../index.jsp" class="navbar-brand">Kitsch</a></c:when>
           	<c:otherwise><a href="blog.jsp" class="navbar-brand">Kitsch</a></c:otherwise>
           </c:choose>
           
@@ -62,9 +61,34 @@
         </div>	
      </div>	
 </nav>
+<div class="navbar navbar-default" id="subnav">
+    <div class="col-md-12">
+        <div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="blogList.jsp"> </a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<!-- <li><a href="#">About</a></li>
+				<li><a href="#">Services</a></li>
+				 -->
+				 
+				<li><a href="blogList.jsp">내 블로그 목록 보기</a></li>
+				<li><a href="../blogMain.jsp">대시보드로 가기</li>
+			</ul>
+		</div>
+     </div>	
+</div>
 
 
-	
+
 
 </body>
 </html>
