@@ -95,7 +95,7 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("errorMsgs", errorMsgs);
 
 			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("userError.jsp");
+					.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 
 			return;
@@ -205,6 +205,8 @@ public class MemberController extends HttpServlet {
 			throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		
+		System.out.println("MemberController 209 line" + email +", " + password);
 
 		MemberService memberService = new MemberServiceImpl();
 		Member member = memberService.loginCheck(email, password);
@@ -213,7 +215,7 @@ public class MemberController extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loginMember", member);
 			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("index.jsp");
+					.getRequestDispatcher("blog.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} else {
@@ -224,11 +226,6 @@ public class MemberController extends HttpServlet {
 			} else if (member.getCheck() == Member.INVALID_PASSWORD) {
 				loginErrorMsg = "비밀번호가 일치하지 않습니다.";
 			}
-
-			request.setAttribute("loginErrorMsg", loginErrorMsg);
-			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("index.jsp");
-			dispatcher.forward(request, response);
 		}
 
 	}
@@ -251,7 +248,7 @@ public class MemberController extends HttpServlet {
 		}
 
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("index.jsp");
+				.getRequestDispatcher("blogMain.jsp");
 		dispatcher.forward(request, response);
 	}
 
