@@ -44,8 +44,7 @@ public class SearchController extends HttpServlet {
 		Blog[] blogs = blogService.getMyBlogs(member);
 		
 		if (member != null) {
-			System.out.println("확인" + blogs.toString());
-			if (blogs.length == 0 || blogs == null) {
+			if (blogs.length == 0) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("blogMain.jsp");
 				dispatcher.forward(request, response);
 				return;
@@ -136,16 +135,6 @@ public class SearchController extends HttpServlet {
 				request.setAttribute("memberList", memberList);
 			}
 		}
-	}
-	
-	private void goHome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
-		HttpSession session = request.getSession(false);
-		
-		Member member = (Member) session.getAttribute("loginMember");
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");
-		dispatcher.forward(request, response);
-		
 	}
 
 	/**
