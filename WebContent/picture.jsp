@@ -82,8 +82,8 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse2">
         <ul class="nav navbar-nav navbar-left">
-        	<li class="active"><a href="blogMain.jsp"><span class="glyphicon glyphicon-globe"></span> 최신 글</a></li>
-        	<li><a href="picture.jsp"><span class="glyphicon glyphicon-picture"></span> 사진</a></li>
+        	<li><a href="blogMain.jsp" ><span class="glyphicon glyphicon-globe"></span> 최신 글</a></li>
+        	<li class="active"><a href="picture.jsp"><span class="glyphicon glyphicon-picture"></span> 사진</a></li>
         	<li><a href="text.jsp"><span class="glyphicon glyphicon-font"></span> 텍스트</a></li>
         	<li><a href="video.jsp"><span class="glyphicon glyphicon-film"></span> 비디오</a></li>
         	<li><a href="audio.jsp"><span class="glyphicon glyphicon-music"></span> 오디오</a></li>
@@ -291,4 +291,4 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/scripts.js"></script>
 	</body>
-</html>
+</html>tml>
