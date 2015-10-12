@@ -1,6 +1,7 @@
 package sku.microblog.web.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 import javax.servlet.RequestDispatcher;
@@ -10,7 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import sku.microblog.business.domain.Blog;
 import sku.microblog.business.domain.Member;
+import sku.microblog.business.service.BlogService;
+import sku.microblog.business.service.BlogServiceImpl;
 import sku.microblog.business.service.MemberService;
 import sku.microblog.business.service.MemberServiceImpl;
 import sku.microblog.business.service.PostingService;
@@ -27,7 +31,7 @@ public class MemberController extends HttpServlet {
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-
+		System.out.println(action);
 		try {
 			if (action.equals("register")) {
 				this.registerMember(request, response);
@@ -49,6 +53,10 @@ public class MemberController extends HttpServlet {
 				this.removeLike(request, response);
 			} else if (action.equals("checkName")){
 				this.availableName(request, response);
+			} else if(action.equals("idcheck")){
+				idCheck(request, response);
+			}else if(action.equals("namecheck")){
+				nameCheck(request, response);
 			}
 		} catch (DataNotFoundException dne) {
 			throw new ServletException(dne);
@@ -56,6 +64,60 @@ public class MemberController extends HttpServlet {
 			throw new ServletException(dde);
 		}
 	}
+	
+	private void nameCheck(HttpServletRequest request, HttpServletResponse response)
+	         throws ServletException, IOException {
+	      response.setContentType("text/html;charset=UTF-8");
+	      response.setHeader("Cache-Control", "no-cache");
+	      System.out.println("nameCheck들어옴?");
+	      PrintWriter out = response.getWriter();
+	      // id 중복 처리
+	      String getName = request.getParameter("email");
+	      String result = "<font color=#45FF74 style='font-family:raleway-bold, sans-serif;'>&nbsp;사용할 수 있는 이름 입니다.</font>";
+
+	      MemberService service = new MemberServiceImpl();
+	      Member[] memberList = service.getAllUsers();
+	      for (Member member : memberList) {
+	         if (member.getName().equals(getName)) {
+	            // 응답 메세지 1 : 이미 등록된 ID 입니다.
+	            result = "<font color=red style='font-family:raleway-bold, sans-serif;'>&nbsp;이미 등록된 이름 입니다.</font>";
+	            break;
+	         } else {
+	            // 응답 메세지 2 : 사용할 수 있는 ID 입니다.
+	            result = "<font color=#45FF74 style='font-family:raleway-bold, sans-serif;'>&nbsp;사용할 수 있는 이름 입니다.</font>";
+	         }
+	      }
+	      System.out.println(result);
+	      out.print(result);
+
+	   }
+	
+	private void idCheck(HttpServletRequest request, HttpServletResponse response)
+	         throws ServletException, IOException {
+	      response.setContentType("text/html;charset=UTF-8");
+	      response.setHeader("Cache-Control", "no-cache");
+	      System.out.println("idCheck들어옴?");
+	      PrintWriter out = response.getWriter();
+	      // id 중복 처리
+	      String getEmail = request.getParameter("email");
+	      String result = "<font color=#45FF74 style='font-family:raleway-bold, sans-serif;'>&nbsp;사용할 수 있는 email 입니다.</font>";
+
+	      MemberService service = new MemberServiceImpl();
+	      Member[] memberList = service.getAllUsers();
+	      for (Member member : memberList) {
+	         if (member.getEmail().equals(getEmail)) {
+	            // 응답 메세지 1 : 이미 등록된 ID 입니다.
+	            result = "<font color=red style='font-family:raleway-bold, sans-serif;'>&nbsp;이미 등록된 email 입니다.</font>";
+	            break;
+	         } else {
+	            // 응답 메세지 2 : 사용할 수 있는 ID 입니다.
+	            result = "<font color=#45FF74 style='font-family:raleway-bold, sans-serif;'>&nbsp;사용할 수 있는 email 입니다.</font>";
+	         }
+	      }
+	      System.out.println(result);
+	      out.print(result);
+
+	   }
 
 
 	/**
@@ -75,6 +137,7 @@ public class MemberController extends HttpServlet {
 		String email = request.getParameter("email");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
+		String chkpassword = request.getParameter("chkpassword");
 
 		// 폼 데이터가 유효한 지 검증한다.
 		List<String> errorMsgs = new ArrayList<String>();
@@ -89,6 +152,14 @@ public class MemberController extends HttpServlet {
 
 		if (password == null || password.length() == 0) {
 			errorMsgs.add("비밀번호를 입력해주세요.");
+		}
+		
+		if(chkpassword == null || chkpassword.length() == 0) {
+			errorMsgs.add("비밀번호 확인은 입력해주세요.");
+		}
+		
+		if(password != chkpassword){
+			errorMsgs.add("비밀번호가 일치하지 않습니다.");
 		}
 
 		// 유효하지 않은 데이터가 있으면 에러 페이지를 출력한다.
@@ -209,10 +280,11 @@ public class MemberController extends HttpServlet {
 	 * @param response
 	 * @throws ServletException
 	 * @throws IOException
+	 * @throws DataNotFoundException 
 	 */
 
 	private void login(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, DataNotFoundException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
@@ -220,18 +292,21 @@ public class MemberController extends HttpServlet {
 
 		MemberService memberService = new MemberServiceImpl();
 		Member member = memberService.loginCheck(email, password);
+		
+		BlogService blogService = new BlogServiceImpl();
+		Blog[] blog = blogService.getMyBlogs(member);
 
 		if (member.getCheck() == Member.VALID_MEMBER) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loginMember", member);
-			if(){
+			if(blog.length == 0){
 			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("blog.jsp");
+					.getRequestDispatcher("blogMain.jsp");
 			dispatcher.forward(request, response);
 			return;
 			} else {
 				RequestDispatcher dispatcher = request
-						.getRequestDispatcher("blogMain.jsp");
+						.getRequestDispatcher("blog.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}

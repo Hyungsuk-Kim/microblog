@@ -44,16 +44,20 @@
 				</div>
 			</c:if>
 
-			<label for="email">email</label> <input type="email" name="email"
-				class="placeholder" placeholder="이메일"> <label for="username">name</label>
-			<input type="text" name="name" class="placeholder" placeholder="닉네임">
+			<label for="email">email</label> 
+			<input type="email" name="email" id="email" onkeyup="idcheck()"
+				class="placeholder" placeholder="이메일"> <span id="idcheckLayer"></span>
+				<label for="username">name</label>
+			<input type="text" name="name" id="name" class="placeholder" onkeyup="namechecked()" placeholder="닉네임">
+			<span id="namecheckLayer"></span>
 			<label for="password">password</label> 
-			<input type="password"
-				name="password" class="placeholder" placeholder="비밀번호"> 
-				<input type="password"
-				name="chkpassword" class="placeholder" placeholder="비밀번호 확인">
+			<input type="password" id="password" onkeyup="passwordcheck()"
+				name="password" class="placeholder" placeholder="비밀번호"> <span id="passwordcheckLayer"></span>
+				
+			<input type="password" id="chkpassword" onkeyup="chkpasswordcheck()"
+				name="chkpassword" class="placeholder" placeholder="비밀번호 확인"><span id="chkpasswordcheckLayer"></span>
 				<input
-				type="submit" value="회원가입"> <input type="hidden"
+				type="submit" id="join" value="회원가입"> <input type="hidden"
 				name="${errorMsgs}" value="${errorMsgs}" />
 
 		</form>

@@ -135,6 +135,12 @@ public class SearchController extends HttpServlet {
 				request.setAttribute("memberList", memberList);
 			}
 		}
+	}
+	
+	private void goHome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
+		HttpSession session = request.getSession(false);
+		
+		Member member = (Member) session.getAttribute("loginMember");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(arg0);
 		dispatcher.forward(request, response);
