@@ -86,4 +86,6 @@ public interface BlogService {
 	public abstract void visitBlog(Member member, String blogName) throws DataNotFoundException;
 	
 	public abstract boolean checkValidBlogName(String blogName);
+	
+	public abstract Blog[] getMyBlogs(Member member) throws DataNotFoundException;
 }

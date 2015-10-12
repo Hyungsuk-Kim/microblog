@@ -608,5 +608,36 @@ public class BlogDaoImpl implements BlogDao{
 			this.closeResources(connection, pstmt);
 		}
 	}
+
+	@Override
+	public List<Blog> selectMemberBlogs(Member member) {
+		List<Blog> bList = new ArrayList<Blog>();
+		Blog memberBlog = null;
+		
+		String sql = "SELECT * FROM blog WHERE member_name=?";
+		System.out.println("BlogDaoImpl selectMemberBlogs() query : " + sql);
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			connection = this.obtainConnection();
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, member.getName());
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				memberBlog = new Blog(rs.getString("blog_name"), rs.getString("member_name"), rs.getInt("follower_count"), rs.getInt("visit_count"), rs.getInt("background_color"), rs.getString("header_image"), rs.getString("profile_image"), rs.getInt("blog_layout"), rs.getString("table_name"));
+				bList.add(memberBlog);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			this.closeResources(connection, pstmt, rs);
+		}
+		
+		return bList;
+	}
 	
 }

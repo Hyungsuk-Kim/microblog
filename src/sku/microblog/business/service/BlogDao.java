@@ -19,4 +19,5 @@ public interface BlogDao {
 	public abstract boolean blogExists(String blogName);
 	public abstract void addVisitCount(String blogName);
 	public abstract void updateBlogName(String originBlogName, String newBlogName);
+	public abstract List<Blog> selectMemberBlogs(Member member);
 }

@@ -212,4 +212,17 @@ public class BlogServiceImpl implements BlogService {
 		return blogDao.blogExists(blogName);
 	}
 
+	@Override
+	public Blog[] getMyBlogs(Member member) throws DataNotFoundException {
+		System.out.println("BlogServiceImpl getMyBlogs()");
+		BlogDao blogDao = this.getBlogDaoImplimentation();
+		MemberDao memberDao = this.getMemberDaoImplimentation();
+		
+		if (memberDao.memberNameExists(member.getName())) {
+			return blogDao.selectMemberBlogs(member).toArray(new Blog[0]);
+		} else {
+			throw new DataNotFoundException("존재하지 않는 회원입니다. [" + member.getName() + "]");
+		}
+	}
+
 }
