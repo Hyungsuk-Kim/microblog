@@ -71,6 +71,7 @@
 				jsp, 클라이언트 구현은 HTML, CSS, JavaScript를 사용합니다. <br /> 데이터저장소는 oracle
 				데이터베이스를 사용합니다. <br />
 			</p>
+			</div>
 			</section>
 	<footer>
 		Micro Blog에 오신 걸 환영합니다. ^^ <br /> 청년 취업 아카데미 5조 김형석, 김가애, 정다혜, 박신후의

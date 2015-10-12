@@ -6751,3 +6751,6 @@ margin:0 auto; /*위에서 센터로 놨음에도 또 이걸 해 주는 건 IE�
 width:800px; 
 text-align:left;   
 }
+
+
+.miniimg{width:150px; height: 150px; border-radius:75px;}

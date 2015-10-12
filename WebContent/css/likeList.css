@@ -6698,11 +6698,16 @@ button.close {
 
 
 
-
-
 .boardpage { width: 100%; }
 .maintable { margin-top: 15px; margin-bottom: 8px; }
 .buttonbar { text-align: right; }
+
+.likepage {width: 100px;}
+
+
+
+
+
 
 .maintable { caption-side: top; border-collapse: collapse; }
 .maintable > caption { font-size : 40px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #337ab7;   }
@@ -6717,12 +6722,20 @@ button.close {
 
 #listtable .nofollow{ font-size:20px; font-weight: bold; text-align: center;}
 
+.liketable{ background-color: #444444;}
+
+.tdtitle{ text-align :center; padding:10px; font-size: 40px;}
+.tdwriter{ text-align :right;padding:10px; font-size: 25px; }
+.tdcontent{ text-align :center;padding:10px; font-size: 20px; max-width: 200px;}
+.tdtags{ text-align :center;padding:10px; font-size: 15px;}
+.tdlike{ text-align :center;padding:10px; font-size: 15px;}
+.tdreblog{ text-align :center; padding:10px; font-size: 15px;}
 
 #listtable .image > img{width : 70px; height: 70px; border-radius:35px;}
 
 #searchinput { width: 200px; }
 
-#readtable th { width: 75px;  text-align: center;}
+#readtable th { width: 75px; }
 #readtable td.image { font-weight: bold; padding-bottom:15px;}
 #readtable td.owner {  text-align: center; padding-bottom:15px; }
 #readtable td.blogname {  text-align: center; padding-bottom:15px;}		
@@ -6756,4 +6769,5 @@ margin:0 auto; /*위에서 센터로 놨음에도 또 이걸 해 주는 건 IE�
 width:800px; 
 text-align:left;   
 }
+
 
