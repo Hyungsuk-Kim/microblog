@@ -25,11 +25,12 @@
 			
 		</div>
 		<div class="panel-body">
-		<p class="title">
-		제목 : ${posting.title}
-				<p>
+			<p class="title">
+			제목 : ${posting.title}
+			</p>
 			<p>
 			내용 출력  ${posting.contents}
+			<img src="/microblog/customfiles/images/93015bear5790.jpg" width="110" height="117">
 			</p>
 			<hr>
 			<div class="comment">

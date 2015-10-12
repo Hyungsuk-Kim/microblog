@@ -31,13 +31,31 @@ public class SearchController extends HttpServlet {
 				this.goHomePage(request, response);
 			} else if (action.equals("search")) {
 				this.searching(request, response);
+			} else if (action.equals("trend")) {
+				
+			} else if (action.equals("video")) {
+				
+			} else if (action.equals("image")) {
+				
+			} else if (action.equals("audio")) {
+				
+			} else if (action.equals("text")) {
+				
+			} else if (action.equals("blogBoundary")) {
+				
+			} else if (action.equals("member")) {
+				
+			} else if (action.equals("posting")) {
+				
+			} else if (action.equals("blog")) {
+				
 			}
 		} catch (DataNotFoundException dne) {
 			throw new ServletException(dne);
 		}
 	}
 	
-	private void goHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void goHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
 		HttpSession session = request.getSession(false); 
 		Member member = (Member) session.getAttribute("loginMember");
 		BlogService blogService = new BlogServiceImpl();
@@ -45,16 +63,16 @@ public class SearchController extends HttpServlet {
 		
 		if (member != null) {
 			if (blogs.length == 0) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher(arg0);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("blogMain.jsp");
 				dispatcher.forward(request, response);
 				return;
 			} else if (blogs.length > 0) {
 				request.setAttribute("blogs", blogs);
-				RequestDispatcher dispatcher = request.getRequestDispatcher(arg0);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("blog.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher(arg0);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
@@ -135,16 +153,6 @@ public class SearchController extends HttpServlet {
 				request.setAttribute("memberList", memberList);
 			}
 		}
-	}
-	
-	private void goHome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
-		HttpSession session = request.getSession(false);
-		
-		Member member = (Member) session.getAttribute("loginMember");
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(arg0);
-		dispatcher.forward(request, response);
-		
 	}
 
 	/**

@@ -103,7 +103,7 @@
    <div class="row">
    <div class="col-md-4 col-sm-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootstrap Examples</h4></div>
+            <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootstrap Examples</h4></div>
    			<div class="panel-body">
               <div class="list-group">
                 <a href="http://bootply.com/tagged/modal" class="list-group-item">Modal / Dialog</a>
@@ -125,7 +125,7 @@
         <div class="panel panel-default">
            <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>More Templates</h4></div>
    			<div class="panel-body">
-              <img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">Free @Bootply</a>
+              <img src="/microblog/customfiles/images/93015bear5790.jpg" class="img-circle pull-right"> <a href="#">Free @Bootply</a>
               <div class="clearfix"></div>
               There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline.
               <hr>
@@ -149,7 +149,7 @@
       	 <div class="panel panel-default">
            <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootply Editor &amp; Code Library</h4></div>
    			<div class="panel-body">
-              <p><img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">The Bootstrap Playground</a></p>
+              <p><img src="/microblog/customfiles/images/93015bear5790.jpg" class="col-md-10"></p>
               <div class="clearfix"></div>
               <hr>
               Design, build, test, and prototype using Bootstrap in real-time from your Web browser. Bootply combines the power of hand-coded HTML, CSS and JavaScript with the benefits of responsive design using Bootstrap. Find and showcase Bootstrap-ready snippets in the 100% free Bootply.com code repository.
