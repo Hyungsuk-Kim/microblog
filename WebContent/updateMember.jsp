@@ -51,7 +51,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="updateMember.jsp"><span
 									class="badge pull-right"></span>회원정보</a></li>
-							<li><a href="#"><span class="badge pull-right"></span>로그아웃</a></li>
+							<li><a href="<c:url value='/member?action=logout'/>"><span class="badge pull-right"></span>로그아웃</a></li>
 							<!-- <li><a href="#"><span class="label label-info pull-right">1</span>Link</a></li> -->
 						</ul></li>
 				</ul>

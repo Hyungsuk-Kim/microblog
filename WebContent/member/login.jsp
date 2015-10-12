@@ -36,7 +36,8 @@
 			<label for="email">email</label> <input type="email" name="email"
 				class="placeholder" placeholder="이메일"> 
 			<label for="password">password</label><input type="password"
-				name="password" class="placeholder" placeholder="비밀번호"> <input
+				name="password" class="placeholder" placeholder="비밀번호">
+				 <input
 				type="submit" value="로그인">
 				
 					<input type="hidden" name="${loginErrorMsg}"

@@ -237,13 +237,14 @@
       <div class="modal-body">
           <form class="form col-md-12 center-block" action="<c:url value='/member?action=login'/>" method="POST">
             <div class="form-group">
-              <input type="text" class="form-control input-lg" placeholder="Email">
+              <input type="email" name="email" class="form-control input-lg" placeholder="Email">
             </div>
             <div class="form-group">
-              <input type="password" class="form-control input-lg" placeholder="Password">
+              <input type="password" name="password" class="form-control input-lg" placeholder="Password">
             </div>
             <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block">로그인</button>
+           <!-- <input type="submit" class="btn btn-primary btn-lg btn-block" value="로그인"> -->
+              <button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
               <span class="pull-left"><a href="index.jsp">회원가입</a></span>
             </div>
           </form>

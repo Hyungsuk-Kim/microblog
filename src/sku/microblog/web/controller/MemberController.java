@@ -205,6 +205,8 @@ public class MemberController extends HttpServlet {
 			throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		
+		System.out.println("MemberController 209 line" + email +", " + password);
 
 		MemberService memberService = new MemberServiceImpl();
 		Member member = memberService.loginCheck(email, password);
@@ -224,11 +226,6 @@ public class MemberController extends HttpServlet {
 			} else if (member.getCheck() == Member.INVALID_PASSWORD) {
 				loginErrorMsg = "비밀번호가 일치하지 않습니다.";
 			}
-
-			request.setAttribute("loginErrorMsg", loginErrorMsg);
-			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("blogMain.jsp");
-			dispatcher.forward(request, response);
 		}
 
 	}
