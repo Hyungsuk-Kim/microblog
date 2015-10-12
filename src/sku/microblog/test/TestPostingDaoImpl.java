@@ -126,9 +126,9 @@ public class TestPostingDaoImpl {
 		
 		assertTrue(postingDao.postingExists("first_blog", 4));
 		assertFalse(postingDao.postingExists("first_blog", 220));
-	}
+	}*/
 	
-	@Test
+	/*@Test
 	public void searching() {
 		Map<String, Object> searchInfo1 = new HashMap<String, Object>();
 		searchInfo1.put("target", "posting");
@@ -181,9 +181,9 @@ public class TestPostingDaoImpl {
 		assertEquals(selectedCount1, 9);
 		int selectedCount2 = postingDao.selectPostingCount(searchInfo4);
 		assertEquals(selectedCount2, 9);
-	}
+	}*/
 	
-	@Test
+	/*@Test
 	public void testLikes() {
 		Posting selectedPosting = null;
 		int beforeLikeCount = 0;
@@ -199,9 +199,9 @@ public class TestPostingDaoImpl {
 		selectedPosting = postingDao.selectPosting("first_blog", postNum);
 		assertEquals(selectedPosting.getLikes(), beforeLikeCount-1);
 		
-	}
+	}*/
 	
-	@Test
+	/*@Test
 	public void readPosting() {
 		Posting selectedPosting = null;
 		int beforeReadCount = 0;
@@ -211,14 +211,14 @@ public class TestPostingDaoImpl {
 		postingDao.addReadCount("first_blog", postNum);
 		selectedPosting = postingDao.selectPosting("first_blog", postNum);
 		assertEquals(selectedPosting.getReadCount(), beforeReadCount+1);
-	}
+	}*/
 	
-	@Test
+	/*@Test
 	public void testReblog() {
 		postingDao.reblog(testMember, "first_blog", 7, targetBlogName);
-	}
+	}*/
 	
-	@Test
+	/*@Test
 	public void testGetAndSetContent() {
 		int postNum = 4;
 		String[] newFilePaths = {"@newVideo1.mp4", "@newVideo2.mp4"};
@@ -236,7 +236,7 @@ public class TestPostingDaoImpl {
 		assertEquals(selectedContent.getTextContent(), changedContent.getTextContent());
 	}*/
 	
-	@Test
+	/*@Test
 	public void testSelectReplies() {
 		PostingContent replyContent1 = new PostingContent("This is reply1. It written by aa!");
 		PostingContent replyContent2 = new PostingContent("This is reply2. It written by aa!");
@@ -245,7 +245,7 @@ public class TestPostingDaoImpl {
 		Posting reply2 = new Posting("aa", replyContent2, PostingContent.TEXT_CONTENT, Posting.REPLY_TYPE_POSTING);
 		Posting reply3 = new Posting("aa", replyContent3, PostingContent.TEXT_CONTENT, Posting.REPLY_TYPE_POSTING);
 		
-	}
+	}*/
 	
 	@Test
 	public void testSelectLikes() {

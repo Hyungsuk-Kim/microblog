@@ -20,7 +20,7 @@ public class DatabaseUtil_old {
 	static {
 		try {
 			connectionProps = new Properties();
-			connectionProps.load(new FileInputStream("db.properties"));
+			connectionProps.load(new FileInputStream("/Users/Kimhyungsuk/db.properties"));
 			Class.forName(connectionProps.getProperty("driverClass"));
 			dbms = connectionProps.getProperty("dbms");
 			serverName = connectionProps.getProperty("serverName");

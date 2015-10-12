@@ -18,13 +18,13 @@ import sku.microblog.business.service.BlogDao;
 public class BlogDaoImpl implements BlogDao{
 
 	private Connection obtainConnection() throws SQLException{
-		//return DatabaseUtil_old.getConnection();
-		return DatabaseUtil.getConnection();
+		return DatabaseUtil_old.getConnection();
+		//return DatabaseUtil.getConnection();
 	}
 	
 	private void closeResources(Connection connection, Statement stmt, ResultSet rs){
-		//DatabaseUtil_old.close(connection, stmt, rs);
-		DatabaseUtil.close(connection, stmt, rs);
+		DatabaseUtil_old.close(connection, stmt, rs);
+		//DatabaseUtil.close(connection, stmt, rs);
 	}
 	
 	private void closeResources(Connection connection, Statement stmt){
@@ -542,7 +542,7 @@ public class BlogDaoImpl implements BlogDao{
 	public boolean blogExists(String blogName) {
 		boolean result = false;
 		
-		String sql = "SELECT blog_name FROM blog WHERE blog_name=?";
+		String sql = "SELECT * FROM blog WHERE blog_name=?";
 		System.out.println("BlogDaoImpl blogExists() query : " + sql);
 		
 		Connection connection = null;
@@ -555,9 +555,8 @@ public class BlogDaoImpl implements BlogDao{
 			pstmt.setString(1, blogName);
 			rs = pstmt.executeQuery();
 			
-			if (rs.next()) {
-				result = true;
-			}
+			result = rs.next();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

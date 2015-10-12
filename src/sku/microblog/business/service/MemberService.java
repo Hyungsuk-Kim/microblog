@@ -10,14 +10,6 @@ import sku.microblog.util.IllegalDataException;
 public interface MemberService {
 	
 	/**
-	 * 매개변수(argument)로 들어온 Member 객체 
-	 * @param email 확인하고자하는 회원의 E-Mail(ID)
-	 * @param password 확인하고자하는 회원의 password
-	 * @return 유효성 검증 정보가 포함된 Member 객체
-	 */
-	public abstract Member loginCheck(String email, String password);
-	
-	/**
 	 * 매개변수로 들어온 Member 객체 정보에 해당하는 회원을 등록(회원 가입)한다.
 	 * @param member 등록할 회원의 정보가 담긴 Member 객체
 	 */
@@ -29,6 +21,14 @@ public interface MemberService {
 	 */
 	public abstract void updateMember(Member member) throws DataNotFoundException;
 	
+	/**
+	 * 매개변수(argument)로 들어온 Member 객체 
+	 * @param email 확인하고자하는 회원의 E-Mail(ID)
+	 * @param password 확인하고자하는 회원의 password
+	 * @return 유효성 검증 정보가 포함된 Member 객체
+	 */
+	public abstract Member loginCheck(String email, String password);
+
 	/**
 	 * 매개변수로 들어온 Member 객체 정보에 해당하는 회원을 제거(회원 탈퇴)한다.
 	 * @param member 삭제할 회원의 정보가 담긴 Member 객체
