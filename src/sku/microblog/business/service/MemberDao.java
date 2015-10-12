@@ -16,6 +16,6 @@ public interface MemberDao {
 	public abstract Member[] selectMemberAsRole(int role);
 	public abstract Member[] selectAllMembers();
 	public abstract Member checkMember(String email, String password);
-	public abstract List<Member> selectMemberList(Map<String, Object> searchInfo);
-	public abstract int selectMemberCount(Map<String, Object> searchInfo);
+	public abstract List<Member> getMemberList(Map<String, Object> searchInfo);
+	public abstract int getMemberCount(Map<String, Object> searchInfo);
 }

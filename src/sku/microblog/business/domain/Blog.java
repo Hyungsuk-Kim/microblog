@@ -18,6 +18,7 @@ public class Blog implements Serializable {
 	private String headerImage; // 블로그 헤더 이미지 파일의 URL(Built-in / custom img)
 	private String profileImage; // 블로그의 사용자 프로필 이미지 파일의 URL(Built-in / custom img)
 	private int blogLayout; // 블로그의 레이아웃
+	private String tableName; // 실제 데이터베이스에서 생성되어질 블로그의 테이블 이름
 	
 	// Class Variables
 	/** 포스팅의 전체 정보를 포함한 포스팅들이 목록화 되어 보여지는 레이아웃 */
@@ -27,12 +28,21 @@ public class Blog implements Serializable {
 	/** 포스팅의 전체 정보를 포함한 포스팅들이 행렬과 유사한 형식으로 보여지는 레이아웃 */
 	public static final int GRID_LAYOUT = 2;
 	
+	public static final String DEFAULT_TABLE_NAME_PREFIX = "blog_table_";
+	
+	public static final int[] DEFAULT_BACKGROUND_COLORS = {0xffffff, 0x000000};
+	public static final String[] DEFAULT_HEADER_IMAGES = {"header1.jpg", "header2.jpg"};
+	public static final String[] DEFAULT_PROFILE_IMAGES = {"profile1.jpg", "profile2.jpg"};
+	
 	// Constructors
 	// 기본 블로그 생성
 	public Blog(String blogName, String memberName) {
 		this.blogName = blogName;
 		this.memberName = memberName;
 		this.blogLayout = LISTED_LAYOUT;
+		this.backgroundColor = DEFAULT_BACKGROUND_COLORS[this.getRandomIndex(DEFAULT_BACKGROUND_COLORS.length)];
+		this.headerImage = DEFAULT_HEADER_IMAGES[this.getRandomIndex(DEFAULT_HEADER_IMAGES.length)];
+		this.profileImage = DEFAULT_PROFILE_IMAGES[this.getRandomIndex(DEFAULT_PROFILE_IMAGES.length)];
 	}
 	
 	// 블로그 생성용
@@ -52,7 +62,7 @@ public class Blog implements Serializable {
 	}
 	
 	// 조회용
-	public Blog(String blogName, String memberName, int followerCount, int visitCount, int backgroundColor, String headerImage, String profileImage, int blogLayout) {
+	public Blog(String blogName, String memberName, int followerCount, int visitCount, int backgroundColor, String headerImage, String profileImage, int blogLayout, String tableName) {
 		this.blogName = blogName;
 		this.memberName = memberName;
 		this.blogName = blogName;
@@ -62,15 +72,19 @@ public class Blog implements Serializable {
 		this.headerImage = headerImage;
 		this.profileImage = profileImage;
 		this.blogLayout = blogLayout;
+		this.tableName = tableName;
 	}
 
 	// Methods
+	private int getRandomIndex(int length) {
+		return (int) (Math.random() * (length));
+	}
 	
 	@Override
 	public String toString() {
 		return "Blog [memberName=" + memberName + ", blogName=" + blogName + ", followerCount=" + followerCount
 				+ ", visitCount=" + visitCount + ", backgroundColor=" + backgroundColor + ", headerImage=" + headerImage
-				+ ", profileImage=" + profileImage + ", blogLayout=" + blogLayout + "]";
+				+ ", profileImage=" + profileImage + ", blogLayout=" + blogLayout + ", tableName=" + tableName + "]";
 	}
 
 	// Getters
@@ -109,6 +123,10 @@ public class Blog implements Serializable {
 	public int getBlogLayout() {
 		return blogLayout;
 	}
+	
+	public String getTableName() {
+		return tableName;
+	}
 
 	// Setters
 	public void setMemberName(String memberName) {
@@ -141,6 +159,10 @@ public class Blog implements Serializable {
 
 	public void setBlogLayout(int blogLayout) {
 		this.blogLayout = blogLayout;
+	}
+	
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
 	}
 
 }

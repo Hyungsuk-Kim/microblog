@@ -14,10 +14,10 @@ public class Posting implements Serializable {
 	private String title; // 포스팅 제목
 	private String writer; // 작성자의 name
 	private PostingContent contents; // 포스팅의 내용을 담은 PostingContent 객체
+	private int contentType; // 포스팅의 내용의 타입
 	//private String ip; // 포스팅한 client의 ip 주소
 	private int readCount; // 조회수
 	private java.util.Date regDate; // 등록 날짜
-	private String ip;
 	private int likes; // 좋아요 수
 	private int exposure; // 공개여부 (PUBLIC or PRIVATE)
 	private String tags; // 태그
@@ -47,14 +47,14 @@ public class Posting implements Serializable {
 	
 	// Constructors
 	// 조회용 - all instance variables
-	public Posting(int num, String title, String writer, PostingContent contents, String ip,
+	public Posting(int num, String title, String writer, PostingContent contents, int contentType,
 			int readCount, java.util.Date regDate, int likes, int exposure, String tags, int ref, int replyStep, 
 			int replyDepth, int replyCount, int postingType, int reblogCount, int reblogOption) {
 		this.num = num;
 		this.title = title;
 		this.writer = writer;
 		this.contents = contents;
-		//this.ip = ip;
+		this.contentType = contentType;
 		this.readCount = readCount;
 		this.regDate = regDate;
 		this.likes = likes;
@@ -70,13 +70,14 @@ public class Posting implements Serializable {
 	}
 	
 	// 포스팅용 (글 작성)
-	public Posting(String title, String writer, PostingContent contents, String ip, java.util.Date regDate,
+	public Posting(String title, String writer, PostingContent contents, int contentType, /*java.util.Date regDate,*/
 			int exposure, String tags, int postingType, int reblogOption) {
 		this.title = title;
 		this.writer = writer;
 		this.contents = contents;
 		//this.ip = ip;
-		this.regDate = regDate;
+		//this.regDate = regDate;
+		this.contentType = contentType;
 		this.exposure = exposure;
 		this.tags = tags;
 		this.postingType = postingType;
@@ -84,35 +85,35 @@ public class Posting implements Serializable {
 	}
 	
 	// 포스팅용 (글 수정)
-	public Posting(String title, String writer, PostingContent contents, String ip, int exposure, String tags, int reblogOption) {
+	public Posting(String title, String writer, PostingContent contents, int contentType, int exposure, String tags, int reblogOption) {
 		this.title = title;
 		this.writer = writer;
 		this.contents = contents;
-		this.ip = ip;
+		this.contentType = contentType;
 		this.exposure = exposure;
 		this.tags = tags;
 		this.reblogOption = reblogOption;
 		}
 	
 	// 댓글용 (댓글 작성)
-	public Posting(String title, String writer, PostingContent contents, String ip, int postingType) {
+	public Posting(String title, String writer, PostingContent contents, int contentType, int postingType) {
 		this.title = title;
 		this.writer = writer;
 		this.contents = contents;
-		//this.ip = ip;
+		this.contentType = contentType;
 		this.regDate = new java.util.Date();
 		this.postingType = postingType;
 		this.exposure = PUBLIC_ALLOW_REPLY_AND_NO_REBLOG;
 	}
-	
+
 	// Methods
 	@Override
 	public String toString() {
-		return "Posting [num=" + num + ", title=" + title + ", writer=" + writer + ", contents=" + contents + ", ip="
-				+ ip + ", readCount=" + readCount + ", regDate=" + regDate + ", likes=" + likes + ", exposure="
-				+ exposure + ", tags=" + tags + ", ref=" + ref + ", replyStep=" + replyStep + ", replyDepth="
-				+ replyDepth + ", replyCount=" + replyCount + ", postingType=" + postingType + ", reblogCount=" + reblogCount
-				+ ", reblogOption=" + reblogOption + "]";
+		return "Posting [num=" + num + ", title=" + title + ", writer=" + writer + ", contents=" + contents
+				+ ", contentType=" + contentType + ", readCount=" + readCount + ", regDate=" + regDate + ", likes="
+				+ likes + ", exposure=" + exposure + ", tags=" + tags + ", ref=" + ref + ", replyStep=" + replyStep
+				+ ", replyDepth=" + replyDepth + ", replyCount=" + replyCount + ", postingType=" + postingType
+				+ ", reblogCount=" + reblogCount + ", reblogOption=" + reblogOption + "]";
 	}
 
 	// Getters
@@ -132,8 +133,8 @@ public class Posting implements Serializable {
 		return contents;
 	}
 
-	public String getIp() {
-		return ip;
+	public int getContentType() {
+		return contentType;
 	}
 
 	public int getReadCount() {
@@ -201,8 +202,8 @@ public class Posting implements Serializable {
 		this.contents = contents;
 	}
 
-	public void setIp(String ip) {
-		this.ip = ip;
+	public void setContentType(int contentType) {
+		this.contentType = contentType;
 	}
 
 	public void setReadCount(int readCount) {
@@ -252,5 +253,6 @@ public class Posting implements Serializable {
 	public void setReblogOption(int reblogOption) {
 		this.reblogOption = reblogOption;
 	}
+	
 	
 }
