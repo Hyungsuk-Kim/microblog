@@ -26,12 +26,24 @@
 			 		
 			 		<hr>
 			 		
+			 								
+			 		
 				<table id="listtable" class="maintable">
 
 			 		
 			 		
 				<thead>
-				
+				<c:if test="${empty blogList}">
+							<tr>
+								<td colspan="5" class = "nofollow">아직 생성한 블로그가 없어요.</td>
+							</tr>
+							<tr>
+							<td colspan="5" " class = "nofollow">
+								<a href = "../blog/createBlogForm.jsp"><h2>블로그생성하기</h2></a>
+								</td>
+							</tr>
+							
+						</c:if>
 						<tr>
 						
 							<th class="image">블로그 이미지</th>
@@ -41,14 +53,10 @@
 						</tr>
 					</thead>
 					<tbody>
-					<!--  
-						<c:if test="${empty requestScope.followingList}">
-							<tr>
-								<td colspan="5" class = "nofollow">아직 팔로우 한 사람이 없어요.</td>
-							</tr>
-						</c:if>
+					 
+
 						
-					-->
+					
 
 	<c:forEach items="${blogList}" var="blogItem">
 

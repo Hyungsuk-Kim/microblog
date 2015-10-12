@@ -33,7 +33,8 @@ public class BlogController extends HttpServlet {
         try {
             if (action.equals("create")) {
                 this.createBlog(request, response);
-            } else if (action.equals("createBlogForm")) {
+                System.out.println("creat가 될까요??");
+            } else if (action.equals("createBlog")) {
                 this.createBlogForm(request, response);
             } else if (action.equals("find")) {
                 this.findBlog(request, response);
@@ -279,31 +280,21 @@ public class BlogController extends HttpServlet {
     private void createBlogForm(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException,
             DataDuplicatedException, DataNotFoundException {
-
+ 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("/WEB-INF/blog/createBlogForm.jsp");
+                .getRequestDispatcher("createBlogForm.jsp");
         dispatcher.forward(request, response);
     }
 
     private void createBlog(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException,
             DataDuplicatedException, DataNotFoundException {
-
-        HttpSession session = request.getSession(false);
-
-        if (session == null) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
-            return;
-        }
-
-        Member isLoginMember = (Member) session.getAttribute("loginMember");
-        if (isLoginMember == null) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
-            return;
-        }
-
-        String email = request.getParameter("email");
+        
+                String email = request.getParameter("email");
         String password = request.getParameter("password");
+        
+        
+        System.out.println("email값과 p패스워드값이 들어가나요?" + email + password);
 
         Member member = new Member(email, password);
 
@@ -322,7 +313,7 @@ public class BlogController extends HttpServlet {
         blogService.createBlog(member, blogName);
 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("/blog/blogList");
+                .getRequestDispatcher("/blog/blogList.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -354,7 +345,7 @@ public class BlogController extends HttpServlet {
         request.setAttribute("blog", blog);
 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("updateForm.jsp");
+                .getRequestDispatcher("/WEB-INF/blog/updateForm.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -396,7 +387,7 @@ public class BlogController extends HttpServlet {
         blogService.updateBlog(member, blog);
 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("blogList.jsp");
+                .getRequestDispatcher("microblog/blog/blogList");
         dispatcher.forward(request, response);
 
     }
@@ -532,8 +523,9 @@ public class BlogController extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 
-        response.getWriter().append("Served at: ")
-                .append(request.getContextPath());
+       
+       response.getWriter().append("Served at: ")
+               .append(request.getContextPath());
     }
 
     /**
