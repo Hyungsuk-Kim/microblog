@@ -23,7 +23,7 @@ public class BlogDaoImpl implements BlogDao{
 	}
 	
 	private void closeResources(Connection connection, Statement stmt, ResultSet rs){
-		DatabaseUtil_old.close(connection, stmt, rs);
+	    DatabaseUtil_old.close(connection, stmt, rs);
 		//DatabaseUtil.close(connection, stmt, rs);
 	}
 	

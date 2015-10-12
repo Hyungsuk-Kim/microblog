@@ -206,7 +206,7 @@ public class BlogController extends HttpServlet {
 
         // RequestDispatcher 객체를 통해 뷰 페이지(list.jsp)로 요청을 전달한다.
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("index.jsp");
+                .getRequestDispatcher("blogList.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -281,7 +281,7 @@ public class BlogController extends HttpServlet {
             DataDuplicatedException, DataNotFoundException {
 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("createForm.jsp");
+                .getRequestDispatcher("/WEB-INF/blog/createBlogForm.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -322,7 +322,7 @@ public class BlogController extends HttpServlet {
         blogService.createBlog(member, blogName);
 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("blogList.jsp");
+                .getRequestDispatcher("/blog/blogList");
         dispatcher.forward(request, response);
 
     }

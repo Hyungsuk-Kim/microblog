@@ -62,8 +62,7 @@ public class PostingController extends HttpServlet {
 			}
 	    }
 	
-	private void readPosting(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException, NumberFormatException, DataNotFoundException {
+	private void readPosting(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NumberFormatException, DataNotFoundException {
 				String num = request.getParameter("num");
 				String blogName = request.getParameter("blogName");
 				
@@ -72,7 +71,7 @@ public class PostingController extends HttpServlet {
 				
 				request.setAttribute("posting", posting);
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("blog.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher();
 				dispatcher.forward(request, response);
 	}
 	

@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+
+
 /*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -1428,6 +1430,8 @@ ol ol {
 }
 
 body{
+	
+
 background-size: 100% 290px;
 background-repeat: no-repeat;
 }
@@ -1443,6 +1447,8 @@ background-repeat: no-repeat;
 		text-align: center;
 		padding-top : 30pxl;
 		padding-bottom : 30px;
+	
+	
 }
 
 
@@ -1455,10 +1461,13 @@ background-repeat: no-repeat;
 
 
 .blogNameSize{
+	
 	width: 40%;
 	margin:auto;
 }
 .blogName{
+	
+	
 	text-align : center;
 }
 
@@ -1495,11 +1504,16 @@ background-repeat: no-repeat;
 	
 	}
 
+
+
 .myBlogImage{
+	
 width: 230px;
 height: 230px;
 
 border-radius: 110px;
+	
+
 }
 .list-unstyled {
   padding-left: 0;
@@ -3813,13 +3827,8 @@ tbody.collapse.in {
 }
 
 .input-group > .myBlogImage{
-<<<<<<< HEAD
- width: 100px;
- height: 100px;
-=======
 	width: 100px;
 	height: 100px;
->>>>>>> gaae-view3
 }
 .input-group[class*="col-"] {
   float: none;
@@ -4223,6 +4232,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     max-height: 200px;
   }
 }
+
+
 
 
 .container > .navbar-header,
@@ -5790,6 +5801,8 @@ a.list-group-item-danger.active:focus {
   border-radius: 3px;
 }
 
+
+
 .close {
   float: right;
   font-size: 21px;
@@ -6683,9 +6696,18 @@ button.close {
 
 /*# sourceMappingURL=bootstrap.css.map */
 
+
+
 .boardpage { width: 100%; }
 .maintable { margin-top: 15px; margin-bottom: 8px; }
 .buttonbar { text-align: right; }
+
+.likepage {width: 100px;}
+
+
+
+
+
 
 .maintable { caption-side: top; border-collapse: collapse; }
 .maintable > caption { font-size : 40px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #337ab7;   }
@@ -6700,16 +6722,26 @@ button.close {
 
 #listtable .nofollow{ font-size:20px; font-weight: bold; text-align: center;}
 
+.liketable{ background-color: #444444;}
+
+.tdtitle{ text-align :center; padding:10px; font-size: 40px;}
+.tdwriter{ text-align :right;padding:10px; font-size: 25px; }
+.tdcontent{ text-align :center;padding:10px; font-size: 20px; max-width: 200px;}
+.tdtags{ text-align :center;padding:10px; font-size: 15px;}
+.tdlike{ text-align :center;padding:10px; font-size: 15px;}
+.tdreblog{ text-align :center; padding:10px; font-size: 15px;}
 
 #listtable .image > img{width : 70px; height: 70px; border-radius:35px;}
 
 #searchinput { width: 200px; }
 
-#readtable th { width: 75px;  text-align: center;}
+#readtable th { width: 75px; }
 #readtable td.image { font-weight: bold; padding-bottom:15px;}
 #readtable td.owner {  text-align: center; padding-bottom:15px; }
 #readtable td.blogname {  text-align: center; padding-bottom:15px;}		
 #readtable td.isfollow {  text-align: center;padding-bottom:15px; }
+
+
 
 #writetable .titleinput, #updatetable .titleinput, #replytable .titleinput { width: 496px; }
 #writetable .writerinput, #updatetable .writerinput, #replytable .writerinput { width: 150px; }
@@ -6729,6 +6761,7 @@ button.close {
 #align{
 	width:100%;   
 text-align:center; 
+	
 }
 
 #content{
@@ -6737,4 +6770,4 @@ width:800px;
 text-align:left;   
 }
 
-.miniimg{width:150px; height: 150px; border-radius:75px;}
+

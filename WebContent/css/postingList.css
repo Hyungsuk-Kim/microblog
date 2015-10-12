@@ -1,5 +1,3 @@
-@charset "utf-8";
-
 /*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -1428,6 +1426,8 @@ ol ol {
 }
 
 body{
+	
+
 background-size: 100% 290px;
 background-repeat: no-repeat;
 }
@@ -1443,6 +1443,8 @@ background-repeat: no-repeat;
 		text-align: center;
 		padding-top : 30pxl;
 		padding-bottom : 30px;
+	
+	
 }
 
 
@@ -1455,10 +1457,13 @@ background-repeat: no-repeat;
 
 
 .blogNameSize{
+	
 	width: 40%;
 	margin:auto;
 }
 .blogName{
+	
+	
 	text-align : center;
 }
 
@@ -1495,11 +1500,16 @@ background-repeat: no-repeat;
 	
 	}
 
+
+
 .myBlogImage{
+	
 width: 230px;
 height: 230px;
 
 border-radius: 110px;
+	
+
 }
 .list-unstyled {
   padding-left: 0;
@@ -2343,8 +2353,6 @@ th {
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
-}
-
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -3813,13 +3821,8 @@ tbody.collapse.in {
 }
 
 .input-group > .myBlogImage{
-<<<<<<< HEAD
- width: 100px;
- height: 100px;
-=======
 	width: 100px;
 	height: 100px;
->>>>>>> gaae-view3
 }
 .input-group[class*="col-"] {
   float: none;
@@ -4223,6 +4226,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     max-height: 200px;
   }
 }
+
+
 
 
 .container > .navbar-header,
@@ -5790,6 +5795,8 @@ a.list-group-item-danger.active:focus {
   border-radius: 3px;
 }
 
+
+
 .close {
   float: right;
   font-size: 21px;
@@ -6681,60 +6688,17 @@ button.close {
   }
 }
 
-/*# sourceMappingURL=bootstrap.css.map */
-
-.boardpage { width: 100%; }
-.maintable { margin-top: 15px; margin-bottom: 8px; }
-.buttonbar { text-align: right; }
-
-.maintable { caption-side: top; border-collapse: collapse; }
-.maintable > caption { font-size : 40px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #337ab7;   }
-.maintable th, .maintable td {padding-bottom:10px; height: 21px; }
-/* .maintable th, .maintable td { border-top: 1px solid black; border-bottom: 1px solid black; padding: 2px; height: 21px; } */
-.maintable th { background-color: #ffffff; text-align: center;}
-
-#listtable .image { width: 25%; text-align: center; padding-bottom:15px; font-size: 15px;}
-#listtable .owner { width: 25%; text-align: center;  padding-bottom:15px; font-size: 15px;}
-#listtable .blogname { width: 35%; text-align: center;  padding-bottom:15px; font-size: 15px;}
-#listtable .isfollow { width: 15%; text-align: center;  padding-bottom:15px; font-size: 15px;}
-
-#listtable .nofollow{ font-size:20px; font-weight: bold; text-align: center;}
-
-
-#listtable .image > img{width : 70px; height: 70px; border-radius:35px;}
-
-#searchinput { width: 200px; }
-
-#readtable th { width: 75px;  text-align: center;}
-#readtable td.image { font-weight: bold; padding-bottom:15px;}
-#readtable td.owner {  text-align: center; padding-bottom:15px; }
-#readtable td.blogname {  text-align: center; padding-bottom:15px;}		
-#readtable td.isfollow {  text-align: center;padding-bottom:15px; }
-
-#writetable .titleinput, #updatetable .titleinput, #replytable .titleinput { width: 496px; }
-#writetable .writerinput, #updatetable .writerinput, #replytable .writerinput { width: 150px; }
-#writetable .contentsinput, #updatetable .contentsinput, #replytable .contentsinput { width: 588px; height: 250px; }
-#writetable th, #updatetable th, #replytable th { width: 89px; }
-
-#pagenavigator { text-align: center; }
-#pagenavigator > a.pagenumber { padding: 2px 4px 1px 4px; border-width: 0px; font-weight: bold;}
-#pagenavigator > a.pagenumber:hover { padding: 1px 3px 0px 3px; border-width: 1px; border-style: solid;}
-#pagenavigator > a.currpage { text-decoration: underline; }
-
-.des1 {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #337ab7;}
-.des2 {font-size : 13px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: gray;}
-
-.nolike { font-size:20px; font-weight: bold; text-align: center; margin-bottom: 200px;}
 
 #align{
 	width:100%;   
 text-align:center; 
+	
 }
 
 #content{
-margin:0 auto; /*ìœ„ì—ì„œ ì„¼í„°ë¡œ ë†¨ìŒì—ë„ ë˜ ì´ê±¸ í•´ ì£¼ëŠ” ê±´ IEì™¸ì˜ ë‹¤ë¥¸ ë¸Œë¼ìš°ì €ì—ì„  ì´ê²Œ ì—†ìœ¼ë©´ ë‹¤ì‹œ ì™¼ìª½ìœ¼ë¡œ ë¶™ê¸° ë•Œë¬¸ì´ì—ìš”*/  
+margin:0 auto; /*À§¿¡¼­ ¼¾ÅÍ·Î ³ùÀ½¿¡µµ ¶Ç ÀÌ°É ÇØ ÁÖ´Â °Ç IE¿ÜÀÇ ´Ù¸¥ ºê¶ó¿ìÀú¿¡¼± ÀÌ°Ô ¾øÀ¸¸é ´Ù½Ã ¿ŞÂÊÀ¸·Î ºÙ±â ¶§¹®ÀÌ¿¡¿ä*/  
 width:800px; 
 text-align:left;   
 }
 
-.miniimg{width:150px; height: 150px; border-radius:75px;}
+/*# sourceMappingURL=bootstrap.css.map */

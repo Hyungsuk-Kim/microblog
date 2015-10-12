@@ -11,7 +11,7 @@
 <title>Blog Home - Start Bootstrap Template</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="css/blog.css" rel="stylesheet">
+<link href="../css/blog.css" rel="stylesheet">
 
 <!-- Custom CSS
     <link href="css/blog-home.css" rel="stylesheet"> -->
@@ -25,7 +25,7 @@
 
 </head>
 
-<body background="image/yellow.jpg">
+<body background="../image/blue.jpg">
 
 
 
@@ -60,7 +60,7 @@
 
 
 		<div class="imgContainer">
-			<img class="myBlogImage" src="image/team2.png" alt="myBlogImage">
+			<a href="blog.jsp"><img class="myBlogImage" src="../image/team2.png" alt="myBlogImage"></a>
 			<br>
 			<br>
 
@@ -97,8 +97,11 @@
 
 
 	<div class="updateBlog">
-		<a class="btn btn-info btn-sm" href="#">수정하기 <spanclass="glyphiconglyphicon-chevron-center">
-			</span></a> <a class="btn btn-info btn-sm" href="#">취소하기 <spanclass="glyphiconglyphicon-chevron-center">
+		<a class="btn btn-info btn-sm" href="blog.jsp">수정완료 <spanclass="glyphiconglyphicon-chevron-center">
+		
+			</span></a> 
+			
+			<a class="btn btn-info btn-sm" href="blog.jsp">돌아가기 <spanclass="glyphiconglyphicon-chevron-center">
 			</span></a>
 
 	</div>
