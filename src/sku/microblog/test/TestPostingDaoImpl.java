@@ -133,7 +133,7 @@ public class TestPostingDaoImpl {
 		Map<String, Object> searchInfo1 = new HashMap<String, Object>();
 		searchInfo1.put("target", "posting");
 		searchInfo1.put("searchType", "title");
-		searchInfo1.put("searchText", "Mixed");
+		searchInfo1.put("searchText", "mixed");
 		searchInfo1.put("startRow", 1);
 		searchInfo1.put("endRow", 4);
 		

@@ -725,7 +725,7 @@ public class PostingDaoImpl implements PostingDao {
 						+ "SELECT ROWNUM AS row_num, num, title, writer, content_type, read_count, reg_date, "
 							+ "likes, exposure, tags, ref, reply_step, reply_depth, reply_count, "
 							+ "posting_type, reblog_count, reblog_option FROM "
-								+ "(SELECT * FROM " + blogTable + whereSyntax + "))"
+								+ "(SELECT * FROM " + blogTable + whereSyntax + orderBySyntax + "))"
 						+ " WHERE row_num BETWEEN ? AND ?";
 				System.out.println("PostingDaoImpl getPostingList() second query : " + sql2);
 				
