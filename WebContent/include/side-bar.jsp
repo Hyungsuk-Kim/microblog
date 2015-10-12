@@ -28,15 +28,16 @@
 						
 						<img class="myImage" src="image/team1.png" alt="내 프로필이미지" />
 						
-					<p>박신후님 환영합니다.</p>
+					<br/><br/><p>박신후님 환영합니다.</p>
 
 					</div>
 
 					<ul class="nav hidden-xs" id="lg-menu">
-                    <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Featured</a></li>
-                    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Stories</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Saved</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> Refresh</a></li>
+                    <li class="active">
+                    <a href="member/updateMember.jsp"><i class="glyphicon glyphicon-list-alt"></i> 회원정보수정</a></li>
+                    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> 블로그</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> 팔로잉</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> 좋아요</a></li>
                 </ul>
                 <ul class="list-unstyled hidden-xs" id="sidebar-footer">
                     <li>

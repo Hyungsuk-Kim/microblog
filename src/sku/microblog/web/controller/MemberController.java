@@ -213,7 +213,7 @@ public class MemberController extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loginMember", member);
 			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("blogMain.jsp");
+					.getRequestDispatcher("blog.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} else {
@@ -251,7 +251,7 @@ public class MemberController extends HttpServlet {
 		}
 
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("index.jsp");
+				.getRequestDispatcher("blogMain.jsp");
 		dispatcher.forward(request, response);
 	}
 

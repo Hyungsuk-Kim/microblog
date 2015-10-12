@@ -15,7 +15,7 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 <link rel="stylesheet" href="css/style.css">
-<title>Micro Blog</title>
+<title>Kitsch</title>
 </head>
 <body>
 	<header>
@@ -60,10 +60,11 @@
 		</form>
 		<br />
 		<br />
-		<br /> <a href="searchPassword.jsp">비밀번호를 잊어 버리셨나요?</a>
+		<br /> <a href="blogMain.jsp">Kitsch 둘러보기</a>
 	</section>
+	
 	<section id="about">
-		<div class="wrap">
+	<div class="wrap">
 			<h2>About Micro Blog</h2>
 			<p>
 				This is the Web Projects. That name is Micro Blog : ) <br /> 이 프로젝트는
@@ -71,6 +72,7 @@
 				jsp, 클라이언트 구현은 HTML, CSS, JavaScript를 사용합니다. <br /> 데이터저장소는 oracle
 				데이터베이스를 사용합니다. <br />
 			</p>
+			</div>
 			</section>
 	<footer>
 		Micro Blog에 오신 걸 환영합니다. ^^ <br /> 청년 취업 아카데미 5조 김형석, 김가애, 정다혜, 박신후의
