@@ -20,7 +20,12 @@
  	<div class="col-md-12">
         <div class="navbar-header">
           
-          <a href="index.jsp" class="navbar-brand">Kitsch</a>
+          <c:choose>
+          	<c:when test="${empty sessionScope.loginMember}"><a href="index.jsp" class="navbar-brand">Kitsch</a></c:when>
+          	<c:otherwise><a href="blog.jsp" class="navbar-brand">Kitsch</a></c:otherwise>
+          </c:choose>
+          
+          
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
           <i class="glyphicon glyphicon-search"></i>
           </button>
