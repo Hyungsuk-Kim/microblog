@@ -87,6 +87,14 @@
 									<form id ="updateForm" action="<c:url value='/member?action=update'/>" method="POST">
 									<div class="well well-sm">
 									
+									<c:if test="${not empty updateErrorMsgs}">
+				<div class="error">
+					<c:forEach items="${updateErrorMsgs}" var="msgs">
+						<li>${msgs}</li>
+					</c:forEach>
+				</div>
+			</c:if>
+									
 									<label for="password">비밀번호</label> 
 			<input type="password" id="password" class="placeholder" placeholder="비밀번호"> <span id="passwordcheckLayer"></span><br/>
 				
@@ -94,6 +102,9 @@
 			<input type="password" id="chkpassword" class="placeholder" placeholder="비밀번호 확인">
 				
 				<input type="submit" value="수정">
+				
+				<input type="hidden"
+				name="${updateErrorMsgs}" value="${updateErrorMsgs}" />
 									</div>
 										</form>
 								</div>

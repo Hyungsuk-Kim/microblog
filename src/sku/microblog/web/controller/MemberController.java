@@ -469,7 +469,7 @@ public class MemberController extends HttpServlet {
 			String updateErrorMsgs = "비밀번호가 일치하지 않습니다.";
 			request.setAttribute("updateErrorMsgs", updateErrorMsgs);
 			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("blogMain.jsp");
+					.getRequestDispatcher("updateMember.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
