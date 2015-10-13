@@ -24,7 +24,7 @@
 
 
 
-<c:import url="../top.jsp"></c:import>
+<c:import url="../top2.jsp"></c:import>
 
 
 	
@@ -33,30 +33,16 @@
            
 			<div class="boardpage">
 		
-			
-					<h1 class="des1">Blog List </h1>
-			 		<h1 class="des2">이 곳에서 내 블로그 목록을 볼 수 있어요.</h1>
-			 		
-			 		<hr>
-			 		
-			 								
+						 								
 			 		
 				<table id="listtable" class="maintable">
 
-			 		
-			 		
-				<thead>
-				<c:if test="${empty blogList}">
-							<tr>
-								<td colspan="5" class = "nofollow">아직 생성한 블로그가 없어요.</td>
-							</tr>
-							<tr>
-							<td colspan="5" " class = "nofollow">
-								<a href = "../blog/createBlogForm.jsp"><h2>블로그생성하기</h2></a>
-								</td>
-							</tr>
-							
-						</c:if>
+					<h1 class="des1">블로그 목록</h1>
+					<h1 class="des2">내 블로그 목록을 볼 수 있어요.</h1>
+
+
+					<thead>
+				
 						<tr>
 						
 							<th class="image">블로그 이미지</th>
@@ -82,47 +68,28 @@
 	 </c:forEach>
 						
 						<tr>
-							<td class="image"><img class = "miniimg" src = "../image/team3.png"></td>
-							<td class="blogname"> 1가애킴의 테스트블로그</td>
-							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
+							<td class="image"><img class = "miniimg" src = "../image/blog1.JPG"></td>
+							<td class="blogname"> Kitsch의 블로그</td>
+							<td class="update"><a class="btn btn-primary" href="../blog/updateBlogForm.jsp">수정하기</a></td>
 							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "../image/team1.png"></td>
-							<td class="blogname"> 가애킴의 테스트블로그</td>
-							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
+							<td class="image"><img class = "miniimg" src = "../image/blog2.JPG"></td>
+							<td class="blogname"> 멍멍도 좋아해</td>
+							<td class="update"><a class="btn btn-primary"href="../blog/updateBlogForm.jsp">수정하기</a></td>
 							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
 						</tr>
 	
 						<tr>
-							<td class="image"><img class = "miniimg" src = "../image/team3.png"></td>
-							<td class="blogname"> 가애킴의 테스트블로그</td>
-							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
+							<td class="image"><img class = "miniimg" src = "../image/blog3.JPG"></td>
+							<td class="blogname"> Kitsch's Hello my blog!</td>
+							<td class="update"><a class="btn btn-primary" href="../blog/updateBlogForm.jsp">수정하기</a></td>
 							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
 						</tr>
 	
-						<tr>
-							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
-							<td class="blogname"> 가애킴의 테스트블로그</td>
-							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
-							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
-						</tr>
 	
-						<tr>
-							<td class="image"><img class = "miniimg" src = "../image/team1.png"></td>
-							<td class="blogname"> 가애킴의 테스트블로그</td>
-							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
-							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
-						</tr>
-	
-						<tr>
-							<td class="image"><img class = "miniimg" src = "../image/team2.png"></td>
-							<td class="blogname"> 가애킴의 테스트블로그</td>
-							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
-							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
-						</tr>
-	
+
 						
 
 

@@ -32,7 +32,7 @@
 <body background="../image/blue.jpg">
 
 
-<c:import url="../top.jsp"></c:import>
+<c:import url="../top2.jsp"></c:import>
 
 
 
@@ -40,18 +40,18 @@
 
 
 	<div class="imgContainer">
-		<img class="myBlogImage" src="../image/team2.png" alt="myBlogImage">
+		<img class="myBlogImage" src="../image/blog1.JPG" alt="myBlogImage">
 	</div>
 
 
 
 
 	<div class="blogName">
-		<h1 class="page-header"> 가애의 테스트블로그
+		<h1 class="page-header"> Kitsch의 블로그
 			<a class="btn btn-primary" href="#">Follow</a>
 
 		</h1>
-		<h3 class="user-name">By. 가애가애</h3>
+		<h3 class="user-name">By. Kitsch</h3>
 		<hr />
 	</div>
 

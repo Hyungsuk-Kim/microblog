@@ -81,10 +81,10 @@
 
 									<div class ="puttable">
 										<input class="btn btn-primary" type="button" value="작성"
-											onclick="goUrl('../posting.jsp');"> 
+											onclick="goUrl('/microblog/blog/blog.jsp');"> 
 											<input
 											class="btn" type="button" value="취소"
-											onclick="goUrl('../posting.jsp');">
+											onclick="goUrl('/microblog/blog/blog.jsp');">
 									</div>
 								</td>
 

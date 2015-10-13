@@ -17,8 +17,6 @@
 <body>
 
 
-<c:import url="/top.jsp"></c:import>
-
 		<div class="tableContainer">
 			<div class="tableRow">
 
@@ -32,7 +30,7 @@
 
 							<tr>
 
-								<th class="image">블로dfsdf그 이미지</th>
+								<th class="image">블로그 이미지</th>
 								<th class="blogname">블로그 이름</th>
 								<th class="update">블로그 수정</th>
 								<th class="del">블로그 삭제</th>

@@ -387,7 +387,7 @@ public class BlogController extends HttpServlet {
         blogService.updateBlog(member, blog);
 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("microblog/blog/blogList");
+                .getRequestDispatcher("microblog/blog/blogList.jsp");
         dispatcher.forward(request, response);
 
     }

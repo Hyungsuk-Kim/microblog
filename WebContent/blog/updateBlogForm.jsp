@@ -33,17 +33,17 @@
 
 
 
-<c:import url="../top.jsp"></c:import>
+<c:import url="../top2.jsp"></c:import>
 
 
 	<div class="updateBlog">
-		<form id="updateBlog" action="update" method="POST">
+		<!-- <form id="updateBlog" action="/microblog/blog?action=update" method="POST">  -->
 
 			<div class="imgContainer">
 
 
 				<a href="blog.jsp"><img class="myBlogImage"
-					src="../image/team2.png" alt="myBlogImage"></a> <br> <br>
+					src="../image/blog1.JPG" alt="myBlogImage"></a> <br> <br>
 			</div>
 			<input type="submit" class="btn btn" value="이미지 변경하기">
 
@@ -74,8 +74,9 @@
 
 	<div class="updateBlog">
 
-		<input type="submit" class="btn btn-primary" value="수정완료"> <input
-			type="button" class="btn" value="취소" onclick="goUrl('blog.jsp');">
+		<input type="button" class="btn btn-primary" value="수정완료" onclick="goUrl('/microblog/blog/blog.jsp');"> 
+		<input
+			type="button" class="btn" value="취소" onclick="goUrl('/microblog/blog/blog.jsp');">
 
 
 	</div>
