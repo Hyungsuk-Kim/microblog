@@ -56,68 +56,36 @@
 							<tr>
 								<td class="image"><img class="miniimg"
 									src="../image/team2.png"></td>
-								<td class="owner">가애킴</td>
-								<td class="blogname">가애킴의 블로그입니다.</td>
+								<td class="owner">팔로우녀</td>
+								<td class="blogname">안녕하세요!팔로우녀의 블로그입니다.</td>
 								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
 							</tr>
 
 							<tr>
 								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
-								<td class="owner">가애킴</td>
-								<td class="blogname">가애킴의 블로그입니다.</td>
+									src="../image/team1.png"></td>
+								<td class="owner">아자아자</td>
+								<td class="blogname">아자아자님의 개인 블로그</td>
 								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
 							</tr>
 
 							<tr>
 								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
-								<td class="owner">가애킴</td>
-								<td class="blogname">가애킴의 블로그입니다.</td>
+									src="../image/blog4.JPG"></td>
+								<td class="owner">송이송이</td>
+								<td class="blogname">송이나라</td>
 								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
 							</tr>
 
 							<tr>
 								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
-								<td class="owner">가애킴</td>
-								<td class="blogname">가애킴의 블로그입니다.</td>
+									src="../image/blog5.JPG"></td>
+								<td class="owner">A-In</td>
+								<td class="blogname">A-In's blog</td>
 								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
 							</tr>
 
-							<tr>
-								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
-								<td class="owner">가애킴</td>
-								<td class="blogname">가애킴의 블로그입니다.</td>
-								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
-							</tr>
-
-							<tr>
-								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
-								<td class="owner">가애킴</td>
-								<td class="blogname">가애킴의 블로그입니다.</td>
-								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
-							</tr>
-
-							<tr>
-								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
-								<td class="owner">가애킴</td>
-								<td class="blogname">가애킴의 블로그입니다.</td>
-								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
-							</tr>
-
-							<tr>
-								<td class="image"><img class="miniimg"
-									src="../image/team2.png"></td>
-								<td class="owner">가애킴</td>
-								<td class="blogname">가애킴의 블로그입니다.</td>
-								<td class="isfollow"><a class="btn btn-primary" href="#">Follow</a></td>
-							</tr>
-
-
+							
 
 
 							<!--  
