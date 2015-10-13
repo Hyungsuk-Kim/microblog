@@ -39,8 +39,7 @@
 							
 								<tr>
 									<th>내용</th>
-									<td colspan="2"><textarea
-											class=" form-control contentsinput" name="textContent"></textarea>
+									<td colspan="2"><textarea class=" form-control contentsinput" name="textContent"></textarea>
 										<script>
 											CKEDITOR.replace('contents')
 										</script></td>
@@ -62,12 +61,37 @@
 								</td>
 							</tr>
 							<%-- 
+=======
+
+
+							
+							<tr>
+								<th>tags</th>
+								<td><input class="form-control titleinput" type="text"
+									name="title" maxlength="100"></td>
+							</tr>
+
+							<tr>
+								<th>공개여부</th>
+								<td><div class=btn-group " data-toggle="buttons">
+
+										<input type="radio" name="options" id="option1">공개
+
+
+										<input type="radio" name="options" id="option2">비공개
+
+
+
+									</div></td>
+							</tr>
+>>>>>>> gaae-view3
 							<tr>
 								<th>파일첨부</th>
 								<td>
 									<button class="btn">첨부하기</button>
 								</td>
 							</tr>
+<<<<<<< HEAD
 							 --%>
 
 							<tr class="buttonbar" >

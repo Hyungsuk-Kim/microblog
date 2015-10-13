@@ -13,6 +13,7 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="../css/createBlog.css" rel="stylesheet">
+<script src="<c:url value='/js/board.js'/>"></script>
 </head>
 
 <body>
@@ -25,8 +26,8 @@
 
 		<p class="step1">STEP 1.</p>
 		<p class="des2">사용할 블로그 이름을 정해 주세요.</p>
-
-		<form name = "createBlog"action= "create" method="POST">
+		
+		<form id="createBlog" action="/microblog/blog?action=create" method="POST">
 
 
 			<table class="registertable">
@@ -52,7 +53,7 @@
 						maxlength="15" class="form-control"></td>
 						
 						<td>&nbsp;</td>
-					<td><input type="submit" value="찾아보기" class="btn"></td>
+					<td><input type="button" value="찾아보기" class="btn"></td>
 				</tr>
 
 
@@ -63,8 +64,16 @@
 
 			<br /> <br /> 
 			<!-- <div class = "btncenter"> -->
-			<input type="submit" value="블로그생성" class="btn btn-primary"> 
-			<input type="reset" value="취소" class="btn" onclick="goUrl('blog.jsp');">
+		<!-- 
+			<input type="button" value="블로그생성" class="btn btn-primary"> 
+			<input type="button" value="취소" class="btn" onclick="goUrl('blog.jsp');">
+			 -->
+			
+			
+			<input type="submit" class="btn btn-primary" value="블로그생성">
+			
+			<input type="button" class="btn" value="취소" onclick="goUrl('blog.jsp');">
+
 			
 			<!-- </div> -->
 

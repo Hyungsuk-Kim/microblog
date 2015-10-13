@@ -134,7 +134,9 @@ public class MemberController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException,
 			DataDuplicatedException, DataNotFoundException {
 		// 요청 파라미터를 통해 HTML 등 데이터를 얻어낸다.
-		String email = request.getParameter("email");
+	    
+	    
+	    String email = request.getParameter("email");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		String chkpassword = request.getParameter("chkpassword");
