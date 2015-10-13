@@ -88,13 +88,12 @@
 									<div class="well well-sm">
 									
 									<label for="password">비밀번호</label> 
-			<input type="password" 
-				name="password" class="placeholder" placeholder="비밀번호"><br/>
+			<input type="password" id="password" class="placeholder" placeholder="비밀번호"> <span id="passwordcheckLayer"></span><br/>
+				
 				<label for="password">비밀번호 확인</label> 
-			<input type="password" 
-				name="chkpassword" class="placeholder" placeholder="비밀번호 확인">
-				<input
-				type="submit" id="join" value="수정">
+			<input type="password" id="chkpassword" class="placeholder" placeholder="비밀번호 확인">
+				
+				<input type="submit" value="수정">
 									</div>
 										</form>
 								</div>

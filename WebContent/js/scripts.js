@@ -103,8 +103,8 @@ var chkpassword;
 function passwordcheck(){
 	password = document.getElementById("password").value;
        registerCheck();
-       if(password.length<6){
-           document.getElementById("passwordcheckLayer").innerHTML = "<font color=red style='font-family:raleway-bold, sans-serif;'>&nbsp;6자리 이상 입력하세요.</font>";     
+       if(password.length<5){
+           document.getElementById("passwordcheckLayer").innerHTML = "<font color=red style='font-family:raleway-bold, sans-serif;'>&nbsp;5자리 이상 입력하세요.</font>";     
        }else{
           document.getElementById("passwordcheckLayer").innerHTML = "<font color=#45FF74 style='font-family:raleway-bold, sans-serif;'>&nbsp;적절한 패스워드입니다.</font>";   
        }
@@ -114,8 +114,8 @@ function passwordcheck(){
 function chkpasswordcheck(){
 	chkpassword = document.getElementById("chkpassword").value;
       registerCheck();
-      if(chkpassword.length<6){
-          document.getElementById("chkpasswordcheckLayer").innerHTML = "<font color=red style='font-family:raleway-bold, sans-serif;'>&nbsp;6자리 이상 입력하세요.</font>";     
+      if(chkpassword.length<5){
+          document.getElementById("chkpasswordcheckLayer").innerHTML = "<font color=red style='font-family:raleway-bold, sans-serif;'>&nbsp;5자리 이상 입력하세요.</font>";     
       }else if(password===chkpassword){
          document.getElementById("chkpasswordcheckLayer").innerHTML = "<font color=#45FF74 style='font-family:raleway-bold, sans-serif;'>&nbsp;동일한 패스워드 입니다.</font>";   
       }else{

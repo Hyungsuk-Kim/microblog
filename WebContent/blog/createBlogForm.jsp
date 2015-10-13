@@ -37,13 +37,13 @@
 		<div class="step1">STEP 1.</div>
 		<div class="des2">사용할 블로그 이름을 정해 주세요.</div>
 
-		<form name = "createBlog"action= "create" method="POST">
+		<form name = "createBlog"action= "../blog?action=create" method="POST">
 
 
 			<table class="registertable">
 				<tr>
 
-					<td><input type="text" name="blogNameinput" size="60" maxlength="15" class="form-control"></td>
+					<td><input type="text" name="blogName" size="60" maxlength="15" class="form-control"></td>
 							<td>&nbsp;</td>
 					<!--  <td><input type="submit" value="중복확인" class="btn"></td> -->
 				</tr>
@@ -52,24 +52,6 @@
 			</table>
 
 			<br /> <br />
-
-			<div class="step1">STEP 2.</div>
-			<div class="des2">내 프로필 이미지를 선택해 주세요.</div>
-
-			<table id="newblogtable">
-				<tr>
-
-					<td ><input type="text" name="blogImginput" size="60"
-						maxlength="15" class="form-control"></td>
-						
-						<td>&nbsp;</td>
-					<td><input type="submit" value="찾아보기" class="btn"></td>
-				</tr>
-
-
-
-
-			</table>
 
 
 			<br /> <br /> 

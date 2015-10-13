@@ -29,10 +29,10 @@ function loginPassCheck(){
 	 var loginpassword = document.getElementById("loginpassword").value;
 	 var loginemail = document.getElementById("loginemail").value;
 	    var queryString = "&password="+loginpassword+"&email="+loginemail;
-	    if (loginpassword.length<6) {
-	    	document.getElementById("loginpasscheckLayer").innerHTML = "<font color=red style='font-family:raleway-bold, sans-serif;'>&nbsp;6자리 이상 입력하세요.</font>";   
+	    if (loginpassword.length<5) {
+	    	document.getElementById("loginpasscheckLayer").innerHTML = "<font color=red style='font-family:raleway-bold, sans-serif;'>&nbsp;5자리 이상 입력하세요.</font>";   
 		}else{
-			loginEmailCheck();
+			//loginEmailCheck();
 	        // 1. XMLHttpReqeust 객체 생성
 	        // 2. 이벤트 핸들러 등록
 	        xhr2.onreadystatechange = callback2;  // callback 함수를 등록

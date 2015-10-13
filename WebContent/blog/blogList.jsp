@@ -54,52 +54,31 @@
 							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
 						</tr>
 	 </c:forEach>
-						
-						<tr>
-							<td class="image"><img class = "miniimg" src = "<c:url value='../image/team2.png'/>"></td>
-							<td class="blogname"> 1가애킴의 테스트블로그</td>
-							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
-							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
-						</tr>
-	
-						<tr>
-							<td class="image"><img class = "miniimg" src = "<c:url value='../image/team2.png'/>"></td>
-							<td class="blogname"> 가애킴의 테스트블로그</td>
-							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
-							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
-						</tr>
-	
-						<tr>
-							<td class="image"><img class = "miniimg" src = "<c:url value='../image/team2.png'/>"></td>
-							<td class="blogname"> 가애킴의 테스트블로그</td>
-							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
-							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
-						</tr>
-	
-						<tr>
-							<td class="image"><img class = "miniimg" src = "<c:url value='../image/team2.png'/>"></td>
-							<td class="blogname"> 가애킴의 테스트블로그</td>
-							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
-							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
-						</tr>
-	
-						<tr>
-							<td class="image"><img class = "miniimg" src = "<c:url value='../image/team2.png'/>"></td>
-							<td class="blogname"> 가애킴의 테스트블로그</td>
-							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
-							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
-						</tr>
-	
-						<tr>
-							<td class="image"><img class = "miniimg" src = "<c:url value='../image/team2.png'/>"></td>
-							<td class="blogname"> 가애킴의 테스트블로그</td>
-							<td class="update"><a class="btn btn-primary" href="#">수정하기</a></td>
-							<td class="del"><a class="btn btn-warning" href="#">삭제하기</a></td>
-						</tr>
-	
-						
-
-
+					</tbody>
+					<tfoot>
+					<tr>
+					<td id="pagenavigator" colspan="5">
+					<c:if test="${startPageNumber >1 }">
+                           <a
+                              href="list?pageNumber=${startPageNumber-1 }&searchType=${param.searchType}&searchText=${param.searchText}">이전</a>
+                        </c:if> <c:forEach begin="${startPageNumber}" end="${endPageNumber}"
+                           var="pageNumber">
+                           <c:choose>
+                              <c:when test="${pageNumber eq currentPageNumber }">
+                                 <a class="pagenumber currpage">${ pageNumber}</a>
+                              </c:when>
+                              <c:otherwise>
+                                 <a class="pagenumber"
+                                    href="list?pageNumber=${pageNumber}&searchType=${param.searchType}&searchText=${param.searchText}">${pageNumber}</a>
+                              </c:otherwise>
+                           </c:choose>
+                        </c:forEach> <c:if test="${endPageNumber < totalPageCount}">
+                           <a
+                              href="list?pageNumber=${endPageNumber+1 }&searchType=${param.searchType}&searchText=${param.searchText}">다음</a>
+                        </c:if>
+                     </td>
+                  </tr>
+					</tfoot>
 
 						<!--  
 						<c:forEach var="following" items="${requestScope.getfollowingList}">
@@ -118,7 +97,6 @@
 								<td class="readcount">${following.readCount}</td>
 							</tr>
 						 </c:forEach> -->
-					</tbody>
 					
 				</table>
 				

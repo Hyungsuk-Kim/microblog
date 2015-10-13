@@ -109,7 +109,7 @@ public class MemberController extends HttpServlet {
 	      if (member.getCheck()==Member.INVALID_PASSWORD) {
 	    	  result = "<font color=red style='font-family:raleway-bold, sans-serif;'>&nbsp;비밀번호가 틀렸습니다.</font>";
 		}else if (member.getCheck() == Member.VALID_MEMBER) {
-			result = "얘도 짜증나";
+			result = "";
 		}
 	      out.print(result);
 	}
@@ -135,7 +135,7 @@ public class MemberController extends HttpServlet {
 		 
 		         } else if (member.getEmail().equals(getEmail)) {
 		        	 System.out.println("동일한거 "+member.getEmail());
-		        	 result = "아이 짜증나";
+		        	 result = "";
 		        	 break;
 				}
 		      }
@@ -450,11 +450,11 @@ public class MemberController extends HttpServlet {
 			return;
 		}
 
-		String email = member.getEmail();
-		String name = member.getName();
-		String password = member.getPassword();
+		String password = request.getParameter("password");
+		String chkpassword = request.getParameter("chkpassword");
 
-		member = new Member(email, name, password);
+		if(password.equals(chkpassword)){
+		
 		MemberService memberService = new MemberServiceImpl();
 		memberService.updateMember(member);
 
@@ -464,6 +464,14 @@ public class MemberController extends HttpServlet {
 		RequestDispatcher dispatcher = request
 				.getRequestDispatcher("blogMain.jsp");
 		dispatcher.forward(request, response);
+		return;
+		} else {
+			String updateErrorMsgs = "비밀번호가 일치하지 않습니다.";
+			request.setAttribute("updateErrorMsgs", updateErrorMsgs);
+			RequestDispatcher dispatcher = request
+					.getRequestDispatcher("blogMain.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**
