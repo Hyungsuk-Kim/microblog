@@ -628,6 +628,11 @@ public class PostingDaoImpl implements PostingDao {
 			return pList;
 		}
 		
+		for (String temp : searchInfo.keySet()){
+			System.out.println(searchInfo.get(temp));
+		}
+		
+		
 		String target = (String) searchInfo.get("target");
 		String searchType = (String) searchInfo.get("searchType");
 		String searchText = (String) searchInfo.get("searchText");

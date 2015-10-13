@@ -101,7 +101,11 @@
 <!--main-->
 <div class="container" id="main">
    <div class="row">
+   		<c:if test="${empty requestScope.boardList}">
+			<p>등록된 포스팅이 없습니다.</p>				
+		</c:if>
    <div class="col-md-4 col-sm-6">
+        <%--
         <div class="panel panel-default">
             <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootstrap Examples</h4></div>
    			<div class="panel-body">
@@ -121,21 +125,165 @@
               <button class="btn btn-success pull-right" type="button">Post</button><ul class="list-inline"><li><a href="#"><i class="glyphicon glyphicon-align-left"></i></a></li><li><a href="#"><i class="glyphicon glyphicon-align-center"></i></a></li><li><a href="#"><i class="glyphicon glyphicon-align-right"></i></a></li></ul>
             </form>
         </div>
-     
-        <div class="panel panel-default">
-           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>More Templates</h4></div>
-   			<div class="panel-body">
-              <img src="/microblog/customfiles/images/93015bear5790.jpg" class="img-circle pull-right"> <a href="#">Free @Bootply</a>
-              <div class="clearfix"></div>
-              There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline.
-              <hr>
-              <ul class="list-unstyled"><li><a href="http://www.bootply.com/templates">Dashboard</a></li><li><a href="http://www.bootply.com/templates">Darkside</a></li><li><a href="http://www.bootply.com/templates">Greenfield</a></li></ul>
-            </div>
-         </div> 
+        --%>
+     	<c:forEach var="posting" items="${requestScope.postingList}">
+			<c:if test="${posting.contentType eq 310}">
+		        <div class="panel panel-default">
+		           <div class="panel-heading"><a href="#" class="pull-right">likes</a> <h4>${posting.title}</h4></div>
+		   			<div class="panel-body">
+		              <a href="#">${posting.writer}</a>
+		              <div class="clearfix"></div>
+		              ${posting.textContent}
+		              <hr>
+		              <div>
+		              	<span class="col-md-2">${posting.readCount}</span>
+		              	<span class="col-md-2">${posting.likes}</span>
+		              	<span class="col-md-6"></span>
+		              	<span class="col-md-2"><button>댓글보기</button></span>
+		              </div>
+		              <%-- <ul class="list-unstyled"><li><a href="http://www.bootply.com/templates">Dashboard</a></li><li><a href="http://www.bootply.com/templates">Darkside</a></li><li><a href="http://www.bootply.com/templates">Greenfield</a></li></ul> --%>
+		            </div>
+		        </div> 
+			</c:if>
+			
+			<c:if test="${posting.contentType eq 220}">
+		        <div class="panel panel-default">
+		           <div class="panel-heading"><a href="#" class="pull-right">likes</a> <h4>${posting.title}</h4></div>
+		   			<div class="panel-body">
+		   			<a href="#">${posting.writer}</a>
+		              <p><img src="/microblog/customfiles/images/93015bear5790.jpg" class="col-md-10"></p>
+		              <div class="clearfix"></div>
+		              ${posting.textContent}
+		              <hr>
+		              <div>
+		              	<span class="col-md-2">${posting.readCount}</span>
+		              	<span class="col-md-2">${posting.likes}</span>
+		              	<span class="col-md-6"></span>
+		              	<span class="col-md-2"><button>댓글보기</button></span>
+		              </div>
+		            </div>
+		        </div>
+			</c:if>
+
+			<c:if test="${posting.contentType eq 240}">
+		        <div class="panel panel-default">
+		           <div class="panel-heading"><a href="#" class="pull-right">likes</a> <h4>${posting.title}</h4></div>
+		   			<div class="panel-body">
+		   			<a href="#">${posting.writer}</a>
+		              <p><video src="" class="col-md-10"></video></p>
+		              <div class="clearfix"></div>
+		              ${posting.textContent}
+		              <hr>
+		              <div>
+		              	<span class="col-md-2">${posting.readCount}</span>
+		              	<span class="col-md-2">${posting.likes}</span>
+		              	<span class="col-md-6"></span>
+		              	<span class="col-md-2"><button>댓글보기</button></span>
+		              </div>
+		            </div>
+		        </div>
+			</c:if>
+
+			<c:if test="${posting.contentType eq 230}">
+		        <div class="panel panel-default">
+		           <div class="panel-heading"><a href="#" class="pull-right">likes</a> <h4>${posting.title}</h4></div>
+		   			<div class="panel-body">
+		   			<a href="#">${posting.writer}</a>
+		              <p><audio src=""></audio></p>
+		              <div class="clearfix"></div>
+		              ${posting.textContent}
+		              <hr>
+		              <div>
+		              	<span class="col-md-2">${posting.readCount}</span>
+		              	<span class="col-md-2">${posting.likes}</span>
+		              	<span class="col-md-6"></span>
+		              	<span class="col-md-2"><button>댓글보기</button></span>
+		              </div>
+		            </div>
+		        </div>
+			</c:if>
+		</c:forEach>
 
 	</div>
   	<div class="col-md-4 col-sm-6">
-      	 
+  		<c:forEach var="posting" items="${requestScope.postingList}">
+			<c:if test="${posting.contentType eq 310}">
+		        <div class="panel panel-default">
+		           <div class="panel-heading"><a href="#" class="pull-right">likes</a> <h4>${posting.title}</h4></div>
+		   			<div class="panel-body">
+		              <a href="#">${posting.writer}</a>
+		              <div class="clearfix"></div>
+		              ${posting.textContent}
+		              <hr>
+		              <div>
+		              	<span class="col-md-2">${posting.readCount}</span>
+		              	<span class="col-md-2">${posting.likes}</span>
+		              	<span class="col-md-6"></span>
+		              	<span class="col-md-2"><button>댓글보기</button></span>
+		              </div>
+		              <%-- <ul class="list-unstyled"><li><a href="http://www.bootply.com/templates">Dashboard</a></li><li><a href="http://www.bootply.com/templates">Darkside</a></li><li><a href="http://www.bootply.com/templates">Greenfield</a></li></ul> --%>
+		            </div>
+		        </div> 
+			</c:if>
+			
+			<c:if test="${posting.contentType eq 220}">
+		        <div class="panel panel-default">
+		           <div class="panel-heading"><a href="#" class="pull-right">likes</a> <h4>${posting.title}</h4></div>
+		   			<div class="panel-body">
+		   			<a href="#">${posting.writer}</a>
+		              <p><img src="<c:url value='${posting.contents.filePaths}' />" class="col-md-10"></p>
+		              <div class="clearfix"></div>
+		              ${posting.textContent}
+		              <hr>
+		              <div>
+		              	<span class="col-md-2">${posting.readCount}</span>
+		              	<span class="col-md-2">${posting.likes}</span>
+		              	<span class="col-md-6"></span>
+		              	<span class="col-md-2"><button>댓글보기</button></span>
+		              </div>
+		            </div>
+		        </div>
+			</c:if>
+
+			<c:if test="${posting.contentType eq 240}">
+		        <div class="panel panel-default">
+		           <div class="panel-heading"><a href="#" class="pull-right">likes</a> <h4>${posting.title}</h4></div>
+		   			<div class="panel-body">
+		   			<a href="#">${posting.writer}</a>
+		              <p><video src="<c:url value='${posting.contents.filePaths}' />" class="col-md-10"></video></p>
+		              <div class="clearfix"></div>
+		              ${posting.textContent}
+		              <hr>
+		              <div>
+		              	<span class="col-md-2">${posting.readCount}</span>
+		              	<span class="col-md-2">${posting.likes}</span>
+		              	<span class="col-md-6"></span>
+		              	<span class="col-md-2"><button>댓글보기</button></span>
+		              </div>
+		            </div>
+		        </div>
+			</c:if>
+
+			<c:if test="${posting.contentType eq 230}">
+		        <div class="panel panel-default">
+		           <div class="panel-heading"><a href="#" class="pull-right">likes</a> <h4>${posting.title}</h4></div>
+		   			<div class="panel-body">
+		   			<a href="#">${posting.writer}</a>
+		              <p><audio src="<c:url value='${posting.contents.filePaths}' />"></audio></p>
+		              <div class="clearfix"></div>
+		              ${posting.textContent}
+		              <hr>
+		              <div>
+		              	<span class="col-md-2">${posting.readCount}</span>
+		              	<span class="col-md-2">${posting.likes}</span>
+		              	<span class="col-md-6"></span>
+		              	<span class="col-md-2"><button>댓글보기</button></span>
+		              </div>
+		            </div>
+		        </div>
+			</c:if>
+		</c:forEach>
+      	<%--
           <div class="well"> 
              <form class="form">
               <h4>Sign-up</h4>
@@ -145,7 +293,6 @@
               </div>
             </form>
           </div>
-
       	 <div class="panel panel-default">
            <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootply Editor &amp; Code Library</h4></div>
    			<div class="panel-body">
@@ -155,7 +302,6 @@
               Design, build, test, and prototype using Bootstrap in real-time from your Web browser. Bootply combines the power of hand-coded HTML, CSS and JavaScript with the benefits of responsive design using Bootstrap. Find and showcase Bootstrap-ready snippets in the 100% free Bootply.com code repository.
             </div>
          </div>
-      
       	 <div class="panel panel-default">
            <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Portlet Heading</h4></div>
    			<div class="panel-body">
@@ -166,9 +312,88 @@
               </ul>
             </div>
    		 </div>
+      --%>
       
   	</div>
   	<div class="col-md-4 col-sm-6">
+  	<c:forEach var="posting" items="${requestScope.postingList}">
+			<c:if test="${posting.contentType eq 310}">
+		        <div class="panel panel-default">
+		           <div class="panel-heading"><a href="#" class="pull-right">likes</a> <h4>${posting.title}</h4></div>
+		   			<div class="panel-body">
+		              <a href="#">${posting.writer}</a>
+		              <div class="clearfix"></div>
+		              ${posting.textContent}
+		              <hr>
+		              <div>
+		              	<span class="col-md-2">${posting.readCount}</span>
+		              	<span class="col-md-2">${posting.likes}</span>
+		              	<span class="col-md-6"></span>
+		              	<span class="col-md-2"><button>댓글보기</button></span>
+		              </div>
+		              <%-- <ul class="list-unstyled"><li><a href="http://www.bootply.com/templates">Dashboard</a></li><li><a href="http://www.bootply.com/templates">Darkside</a></li><li><a href="http://www.bootply.com/templates">Greenfield</a></li></ul> --%>
+		            </div>
+		        </div> 
+			</c:if>
+			
+			<c:if test="${posting.contentType eq 220}">
+		        <div class="panel panel-default">
+		           <div class="panel-heading"><a href="#" class="pull-right">likes</a> <h4>${posting.title}</h4></div>
+		   			<div class="panel-body">
+		   			<a href="#">${posting.writer}</a>
+		              <p><img src="/microblog/customfiles/images/93015bear5790.jpg" class="col-md-10"></p>
+		              <div class="clearfix"></div>
+		              ${posting.textContent}
+		              <hr>
+		              <div>
+		              	<span class="col-md-2">${posting.readCount}</span>
+		              	<span class="col-md-2">${posting.likes}</span>
+		              	<span class="col-md-6"></span>
+		              	<span class="col-md-2"><button>댓글보기</button></span>
+		              </div>
+		            </div>
+		        </div>
+			</c:if>
+
+			<c:if test="${posting.contentType eq 240}">
+		        <div class="panel panel-default">
+		           <div class="panel-heading"><a href="#" class="pull-right">likes</a> <h4>${posting.title}</h4></div>
+		   			<div class="panel-body">
+		   			<a href="#">${posting.writer}</a>
+		              <p><video src="" class="col-md-10"></video></p>
+		              <div class="clearfix"></div>
+		              ${posting.textContent}
+		              <hr>
+		              <div>
+		              	<span class="col-md-2">${posting.readCount}</span>
+		              	<span class="col-md-2">${posting.likes}</span>
+		              	<span class="col-md-6"></span>
+		              	<span class="col-md-2"><button>댓글보기</button></span>
+		              </div>
+		            </div>
+		        </div>
+			</c:if>
+
+			<c:if test="${posting.contentType eq 230}">
+		        <div class="panel panel-default">
+		           <div class="panel-heading"><a href="#" class="pull-right">likes</a> <h4>${posting.title}</h4></div>
+		   			<div class="panel-body">
+		   			<a href="#">${posting.writer}</a>
+		              <p><audio src=""></audio></p>
+		              <div class="clearfix"></div>
+		              ${posting.textContent}
+		              <hr>
+		              <div>
+		              	<span class="col-md-2">${posting.readCount}</span>
+		              	<span class="col-md-2">${posting.likes}</span>
+		              	<span class="col-md-6"></span>
+		              	<span class="col-md-2"><button>댓글보기</button></span>
+		              </div>
+		            </div>
+		        </div>
+			</c:if>
+		</c:forEach>
+  	<%--
          <div class="panel panel-default">
            <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Portlet Heading</h4></div>
    			<div class="panel-body">
@@ -212,6 +437,7 @@
               </div>
             </div>
    		</div>
+  	--%>
       
     </div>
   </div>

@@ -1,6 +1,10 @@
 package sku.microblog.web.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,35 +34,36 @@ public class ExplorController extends HttpServlet {
 		}
 	}
 	
-
 	private void viewTrendPosting(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		// TODO Auto-generated method stub
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/search?action=trend");
+		dispatcher.include(request, response);
+		System.out.println("Explor 40 line");
+		dispatcher = request.getRequestDispatcher("../blogMain.jsp");
 	}
 
 	private void viewImagePosting(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		// TODO Auto-generated method stub
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/search?action=");
+		dispatcher.include(request, response);
 	}
 
 	private void viewTextPosting(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		// TODO Auto-generated method stub
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/search?action=");
+		dispatcher.include(request, response);
 	}
 	
 	private void viewVideoPosting(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		// TODO Auto-generated method stub
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/search?action=");
+		dispatcher.include(request, response);
 	}
 
 	private void viewAudioPosting(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		// TODO Auto-generated method stub
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/search?action=");
+		dispatcher.include(request, response);
 	}
 
 	private void qna(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		// TODO Auto-generated method stub
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/search?action=");
+		dispatcher.include(request, response);
 	}
 
 	/**

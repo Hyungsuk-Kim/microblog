@@ -32,29 +32,192 @@ public class SearchController extends HttpServlet {
 			} else if (action.equals("search")) {
 				this.searching(request, response);
 			} else if (action.equals("trend")) {
-				
+				this.trendPosting(request, response);
 			} else if (action.equals("video")) {
-				
+				this.videoPosting(request, response);
 			} else if (action.equals("image")) {
-				
+				this.imagePosting(request, response);
 			} else if (action.equals("audio")) {
-				
+				this.audioPosting(request, response);
 			} else if (action.equals("text")) {
-				
+				this.trendPosting(request, response);
 			} else if (action.equals("blogBoundary")) {
-				
-			} else if (action.equals("member")) {
-				
-			} else if (action.equals("posting")) {
-				
-			} else if (action.equals("blog")) {
-				
+				this.blogBoundary(request, response);
+			} else if (action.equals("memberList")) {
+				this.selectMemberList(request, response);
+			} else if (action.equals("postingList")) {
+				this.selectPostingList(request, response);
+			} else if (action.equals("blogList")) {
+				this.selectPostingList(request, response);
+			} else if (action.equals("blogPosting")) {
+				this.blogListUp(request, response);
 			}
 		} catch (DataNotFoundException dne) {
 			throw new ServletException(dne);
 		}
 	}
 	
+	private void videoPosting(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
+		Map<String, Object> searchInfo = new HashMap<String, Object>();
+		searchInfo.put("target", "posting");
+		searchInfo.put("contentType", PostingContent.MIXED_VIDEO_FILE_CONTENT);
+		
+		PostingService postingService = new PostingServiceImpl();
+		Posting[] postingList = postingService.getPostingList(searchInfo);
+		
+		request.setAttribute("postingList", postingList);
+	}
+
+	private void imagePosting(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
+		Map<String, Object> searchInfo = new HashMap<String, Object>();
+		searchInfo.put("target", "posting");
+		searchInfo.put("contentType", PostingContent.MIXED_IMAGE_FILE_CONTENT);
+		
+		PostingService postingService = new PostingServiceImpl();
+		Posting[] postingList = postingService.getPostingList(searchInfo);
+		
+		request.setAttribute("postingList", postingList);
+	}
+
+	private void audioPosting(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
+		Map<String, Object> searchInfo = new HashMap<String, Object>();
+		searchInfo.put("target", "posting");
+		searchInfo.put("contentType", PostingContent.MIXED_AUDIO_FILE_CONTENT);
+		
+		PostingService postingService = new PostingServiceImpl();
+		Posting[] postingList = postingService.getPostingList(searchInfo);
+		
+		request.setAttribute("postingList", postingList);
+	}
+
+	private void blogBoundary(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
+		String blogName = request.getParameter("blogName");
+		String searchType = request.getParameter("searchType");
+		String searchText = request.getParameter("searchText");
+		String startRow = request.getParameter("startRow");
+		String endRow = request.getParameter("endRow");
+		
+		Map<String, Object> searchInfo = new HashMap<String, Object>();
+		searchInfo.put("target", "posting");
+		searchInfo.put("blogName", blogName);
+		if (searchType != null) {
+			searchInfo.put("searchType", searchType);
+		}
+		if (searchText != null) {
+			searchInfo.put("searchText", searchText);
+		}
+		if (startRow != null) {
+			searchInfo.put("startRow", Integer.parseInt(startRow));
+		}
+		if (endRow != null) {
+			searchInfo.put("endRow", Integer.parseInt(endRow));
+		}
+		
+		PostingService postingService = new PostingServiceImpl();
+		Posting[] postingList = postingService.getPostingList(searchInfo);
+		
+		request.setAttribute("postingList", postingList);
+	}
+
+	private void selectMemberList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String searchType = request.getParameter("searchType");
+		String searchText = request.getParameter("searchText");
+		String startRow = request.getParameter("startRow");
+		String endRow = request.getParameter("endRow");
+		
+		Map<String, Object> searchInfo = new HashMap<String, Object>();
+		searchInfo.put("target", "member");
+		searchInfo.put("contentType", PostingContent.MIXED_AUDIO_FILE_CONTENT);
+		if (searchType != null) {
+			searchInfo.put("searchType", searchType);
+		}
+		if (searchText != null) {
+			searchInfo.put("searchText", searchText);
+		}
+		if (startRow != null) {
+			searchInfo.put("startRow", Integer.parseInt(startRow));
+		}
+		if (endRow != null) {
+			searchInfo.put("endRow", Integer.parseInt(endRow));
+		}
+		MemberService memberService = new MemberServiceImpl();
+		Member[] memberList = memberService.getMemberList(searchInfo);
+		
+		request.setAttribute("memberList", memberList);
+	}
+
+	private void selectPostingList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
+		String searchType = request.getParameter("searchType");
+		String searchText = request.getParameter("searchText");
+		String startRow = request.getParameter("startRow");
+		String endRow = request.getParameter("endRow");
+		
+		Map<String, Object> searchInfo = new HashMap<String, Object>();
+		searchInfo.put("target", "posting");
+		searchInfo.put("contentType", PostingContent.MIXED_AUDIO_FILE_CONTENT);
+		if (searchType != null) {
+			searchInfo.put("searchType", searchType);
+		}
+		if (searchText != null) {
+			searchInfo.put("searchText", searchText);
+		}
+		if (startRow != null) {
+			searchInfo.put("startRow", Integer.parseInt(startRow));
+		}
+		if (endRow != null) {
+			searchInfo.put("endRow", Integer.parseInt(endRow));
+		}
+		PostingService postingService = new PostingServiceImpl();
+		Posting[] postingList = postingService.getPostingList(searchInfo);
+		
+		request.setAttribute("postingList", postingList);
+	}
+
+	private void trendPosting(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
+		String searchType = request.getParameter("searchType");
+		String searchText = request.getParameter("searchText");
+		String startRow = request.getParameter("startRow");
+		String endRow = request.getParameter("endRow");
+		
+		PostingService postingService = new PostingServiceImpl();
+		
+		Map<String, Object> searchInfo = new HashMap<String, Object>();
+		searchInfo.put("sortOption", "popularity");
+		searchInfo.put("target", "posting");
+		searchInfo.put("searchType", "all");
+		if (searchText != null) {
+			searchInfo.put("searchText", searchText);
+		}
+		if (searchType != null) {
+			searchInfo.put("searchText", searchText);
+		}
+		if (startRow != null) {
+			searchInfo.put("startRow", Integer.parseInt(startRow));
+		}
+		if (endRow != null) {
+			searchInfo.put("endRow", Integer.parseInt(endRow));
+		}
+		searchInfo.put("startRow", 1);
+		searchInfo.put("endRow", 4);
+		
+		Posting[] postingList = postingService.getPostingList(searchInfo);
+		/*Posting[] postingList = new Posting[2];
+		
+		PostingContent testPostingContent1 = new PostingContent("blog_table_208", 1, "This is test PostingContent written by admin.\n", "@content1.jpg",);
+		PostingContent testPostingContent2 = new PostingContent(null, "@content1.mp4");
+		
+		Posting testPosting1 = new Posting(1, "Test posting. Mixed type posting. It contains multiple image files.", "admin", testPostingContent1, PostingContent.MIXED_IMAGE_FILE_CONTENT,
+				Posting.PUBLIC_ALLOW_BOTH_REPLY_AND_REBLOG, "#test#testing#admin", Posting.NORMAL_TYPE_POSTING, Posting.ON_UPDATE_AND_DELETE_CASCADE);
+		Posting testPosting2 = new Posting(2, "Test posting. Single type posting. It contains a video file.", "admin", testPostingContent2, PostingContent.SINGLE_VIDEO_FILE_CONTENT,
+				Posting.PUBLIC_ALLOW_BOTH_REPLY_AND_REBLOG, "#test#testing#admin", Posting.NORMAL_TYPE_POSTING, Posting.ON_UPDATE_AND_DELETE_CASCADE);*/
+		
+		
+		request.setAttribute("postingList", postingList);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/blogMain.jsp");
+		dispatcher.forward(request, response);
+	}
+
 	private void goHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
 		HttpSession session = request.getSession(false); 
 		Member member = (Member) session.getAttribute("loginMember");
@@ -77,6 +240,25 @@ public class SearchController extends HttpServlet {
 		}
 	}
 
+	private void blogListUp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
+		String blogName = request.getParameter("blogName");
+		String startRow = request.getParameter("startRow");
+		String endRow = request.getParameter("endRow");
+		
+		PostingService postingService = new PostingServiceImpl();
+		Map<String, Object> searchInfo = new HashMap<String, Object>();
+		searchInfo.put("target", "posting");
+		searchInfo.put("blogName", blogName);
+		if (startRow != null) {
+			searchInfo.put("startRow", Integer.parseInt(startRow));
+		}
+		if (endRow != null) {
+			searchInfo.put("endRow", Integer.parseInt(endRow));
+		}
+		Posting[] postingList = postingService.getPostingList(searchInfo);
+		request.setAttribute("postingList", postingList);
+	}
+	
 	private void searching(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
 		MemberService memberService = new MemberServiceImpl();
 		BlogService blogService = new BlogServiceImpl();

@@ -36,7 +36,7 @@ public class PostingController extends HttpServlet {
 	        if (action.equals("read")) {
 			    this.readPosting(request, response);
 			} else if (action.equals("list")) {
-			    this.findPosting(request, response);
+			    this.selectPosting(request, response);
 			} else if (action.equals("update")) {
 			    this.updatePosting(request, response);
 			} else if (action.equals("updateForm")) {
@@ -74,7 +74,7 @@ public class PostingController extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 	
-	private void findPosting(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
+	private void selectPosting(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
 		/*String searchType = request.getParameter("searchType");
 		String searchText = request.getParameter("searchText");
 		
@@ -127,16 +127,16 @@ public class PostingController extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		Member member = (Member) session.getAttribute("loginMember");
 		
-		String blogName = request.getParameter("blogName");
-		String textContent = request.getParameter("textContent");
+		String blogName = request.getParameter("blogName"); System.out.println(blogName);
+		String textContent = request.getParameter("textContent"); System.out.println(textContent);
 		String filePaths = request.getParameter("filePaths");
-		String title = request.getParameter("title");
+		String title = request.getParameter("title"); System.out.println(title);
 		//String writer = request.getParameter("writer");
-		String contentType = request.getParameter("contentType");
-		String exposure = request.getParameter("exposure");
-		String tags = request.getParameter("tags");
-		String postingType = request.getParameter("postingType");
-		String reblogOption = request.getParameter("reblogOption");
+		String contentType = request.getParameter("contentType"); System.out.println(contentType);
+		String exposure = request.getParameter("exposure"); System.out.println(exposure);
+		String tags = request.getParameter("tags"); System.out.println(tags);
+		String postingType = request.getParameter("postingType"); System.out.println(postingType);
+		String reblogOption = request.getParameter("reblogOption"); System.out.println(reblogOption);
 		
 		Posting posting = null;
 		PostingContent content = null;
@@ -145,7 +145,7 @@ public class PostingController extends HttpServlet {
 		int postType = 0;
 		
 		// 공개여부 결정
-		if (exposure.equals("")) {
+		if (exposure.equals("public_all")) {
 			expose = Posting.PUBLIC_ALLOW_BOTH_REPLY_AND_REBLOG; // 답글, 리블로그 모두 허용
 		} else if (exposure.equals("")) {
 			expose = Posting.PUBLIC_ALLOW_REPLY_AND_NO_REBLOG; // 답글만 허용
@@ -153,7 +153,7 @@ public class PostingController extends HttpServlet {
 			expose = Posting.PUBLIC_NO_REPLY_AND_ALLOW_REBLOG; // 리블로그만 허용
 		} else if (exposure.equals("")) {
 			expose = Posting.PUBLIC_NO_REPLY_NO_REBLOG; // 답글, 리블로그 모두 불가능
-		} else if (exposure.equals("")) {
+		} else if (exposure.equals("private")) {
 			expose = Posting.PRIVATE; // 비공개 포스팅(노출 안됨)
 		}
 		
@@ -213,12 +213,12 @@ public class PostingController extends HttpServlet {
 		PostingService postingService = new PostingServiceImpl();
 		postingService.writePosting(blogName, posting);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(arg0);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
 	}
 	
 	private void writePostingForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher(arg0);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("writeForm.jsp");
 		dispatcher.forward(request, response);
 	}
 	
@@ -277,7 +277,7 @@ public class PostingController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this,processRequest(request, response);
+		this.processRequest(request, response);
 	}
 
 }
