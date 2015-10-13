@@ -1442,9 +1442,8 @@ background-repeat: no-repeat;
 		
 		text-align: center;
 		padding-bottom : 30px;
-		margin-left: 50%;
-		margin-right: 50%;
-		margin: auto;
+		margin-left: 5%;
+		margin-right: 5%;
 	
 	
 }
@@ -1497,7 +1496,7 @@ background-repeat: no-repeat;
 
 .imgContainer {
 	padding-top: 80px;
-	
+	padding-left: 20px;
 	text-align: center;
 	
 	}
@@ -6704,5 +6703,3 @@ text-align:left;
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
-
-

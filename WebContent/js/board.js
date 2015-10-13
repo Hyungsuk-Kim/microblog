@@ -59,3 +59,5 @@ function checkNotEmpty(inputField, errorSpan) {
 		errorSpan.innerHTML = '';
 	}
 }
+
+

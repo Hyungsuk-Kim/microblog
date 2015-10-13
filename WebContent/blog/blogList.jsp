@@ -4,51 +4,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<title>Kitsch</title>
-		<meta name="generator" content="Bootply" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		
-		<link href="../css/styles.css" rel="stylesheet">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Blog Home - BlogList </title>
+
+<!-- Bootstrap Core CSS -->
+<link href="../css/blogList.css" rel="stylesheet">
 </head>
 <body>
 
-<c:import url="../top.jsp"></c:import>
-	
-<div class="tableContainer" style="padding: 100px">
+<div class="tableContainer">
         <div class="tableRow">
            
 			<div class="boardpage">
-		
 			
 					<h1 class="des1">Blog List </h1>
 			 		<h1 class="des2">이 곳에서 내 블로그 목록을 볼 수 있어요.</h1>
 			 		
 			 		<hr>
 			 		
-			 								
-			 		
 				<table id="listtable" class="maintable">
 
 			 		
 			 		
 				<thead>
-				<c:if test="${empty blogList}">
-							<tr>
-								<td colspan="5" class = "nofollow">아직 생성한 블로그가 없어요.</td>
-							</tr>
-							<tr>
-							<td colspan="5" " class = "nofollow">
-								<a href = "../blog/createBlogForm.jsp"><h2>블로그생성하기</h2></a>
-								</td>
-							</tr>
-							
-						</c:if>
+				
 						<tr>
 						
 							<th class="image">블로그 이미지</th>
@@ -58,10 +41,14 @@
 						</tr>
 					</thead>
 					<tbody>
-					 
-
+					<!--  
+						<c:if test="${empty requestScope.followingList}">
+							<tr>
+								<td colspan="5" class = "nofollow">아직 팔로우 한 사람이 없어요.</td>
+							</tr>
+						</c:if>
 						
-					
+					-->
 
 	<c:forEach items="${blogList}" var="blogItem">
 

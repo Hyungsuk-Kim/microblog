@@ -6685,7 +6685,7 @@ button.close {
 
 .boardpage { width: 100%; }
 .maintable { margin-top: 15px; margin-bottom: 8px; }
-.buttonbar { text-align: center; }
+.buttonbar { text-align: right; }
 
 .maintable { caption-side: top; border-collapse: collapse; }
 .maintable > caption { font-size : 40px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #337ab7;   }
@@ -6713,7 +6713,7 @@ button.close {
 
 #writetable .titleinput, #updatetable .titleinput, #replytable .titleinput { width: 496px; }
 #writetable .writerinput, #updatetable .writerinput, #replytable .writerinput { width: 150px; }
-#writetable .contentsinput, #updatetable .contentsinput, #replytable .contentsinput { width: 496px; height: 250px; }
+#writetable .contentsinput, #updatetable .contentsinput, #replytable .contentsinput { width: 588px; height: 250px; }
 #writetable th, #updatetable th, #replytable th { width: 89px; }
 
 #pagenavigator { text-align: center; }
@@ -6738,6 +6738,3 @@ text-align:left;
 }
 
 .miniimg{width:150px; height: 150px; border-radius:75px;}
-.buttonbar{
-	text-align: center;
-}

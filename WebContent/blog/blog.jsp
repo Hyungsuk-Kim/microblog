@@ -13,8 +13,6 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="../css/blog.css" rel="stylesheet">
-<script src="<c:url value='/js/board.js'/>"></script>
-
 
 <!-- Custom CSS
     <link href="css/blog-home.css" rel="stylesheet"> -->
@@ -42,16 +40,16 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="blogList.jsp">-- Kitsch --</a>
+			<a class="navbar-brand" href="#">-- Kitsch --</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<!-- <li><a href="#">About</a></li>
+				<li><a href="#">About</a></li>
 				<li><a href="#">Services</a></li>
-				 -->
-								<li><a href="#">00000 명의 사람들이 이 블로그를 방문했어요!</a></li>
+				
+				<li><a href="#">00000 명의 사람들이 이 블로그를 방문했어요!</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -79,59 +77,63 @@
 	<a href = "../blog/updateBlogForm.jsp"><p>블로그수정하기</p></a>
 
 
-
-
-
+<!-- 
 	<div class="bannersContainer">
 
-      <div class="row">
+		<div class="row">
 
-         <div class="banners"></div>
-         
-         <button class="btn btn-info" onclick="goUrl('../posting/writeForm.jsp');"> 글쓰기 </button>
-         <button class="btn btn-info"> 이미지 </button>
-         <button class="btn btn-info"> 비디오 </button>
-         <button class="btn btn-info"> 오디오 </button>
+			<div class="banners"></div>
 
-        <!-- 
-        <ul>
-        <li class="btn btn-info">글쓰기 </li>
-        <li class="btn btn-info">이미지 </li>
-        <li class="btn btn-info">비디오 </li>
-        <li class="btn btn-info">오디오 </li>
+			<a class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-center"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-center"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-center"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-cetner"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-center"></span></a> <a
+				class="btn btn-info btn-sm" href="#">Read More<span
+				class="glyphicon glyphicon-chevron-center"></span></a>
 
-        
-        
-        </ul>
-         -->
-        
-        
-        
-      </div>
-      
-   </div>
+		</div>
+		<hr />
+	</div>
+
+ -->
 
 
-	<!--  writer form -->
 
 
 
 	<!-- Page Content -->
 
+	<div id="align">
+		<div id="content">
 
 
-	<!-- modal -->
+
+
+			<c:import url="/blog/follow.jsp" />
+
+			<c:import url="/blog/like.jsp"/>
+						
+			<c:import url="/blog/blogList.jsp" />
+		</div>
+	</div>
+
 	
-<
+
 
 
 	<!-- /.container -->
 
 	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/scripts.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
