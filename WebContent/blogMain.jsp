@@ -6,7 +6,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<title>Kitsch</title>
+		<title>Bootstrap Google Plus Theme</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,10 +20,8 @@
  	<div class="col-md-12">
         <div class="navbar-header">
           
-          <c:choose>
-          	<c:when test="${empty sessionScope.loginMember}"><a href="index.jsp" class="navbar-brand">Kitsch</a></c:when>
-          	<c:otherwise><a href="blog.jsp" class="navbar-brand">Kitsch</a></c:otherwise>
-          </c:choose>
+    
+          <a href="/microblog/search?action=home" class="navbar-brand">Kitsch</a>
           
           
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">

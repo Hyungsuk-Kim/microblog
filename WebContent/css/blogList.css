@@ -1,7 +1,5 @@
 @charset "utf-8";
 
- 
-
 /*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -1409,8 +1407,13 @@ a.bg-danger:hover {
   background-color: #e4b9b9;
 }
 .user-name{
+<<<<<<< HEAD
   padding-bottom:20px;
   text-align: center;
+=======
+	 padding-bottom:20px;
+	 text-align: center;
+>>>>>>> gaae-view3
 }
 .page-header {
   padding-bottom:5px;
@@ -1430,7 +1433,11 @@ ol ol {
 }
 
 body{
+<<<<<<< HEAD
  
+=======
+	
+>>>>>>> gaae-view3
 
 background-size: 100% 290px;
 background-repeat: no-repeat;
@@ -1438,6 +1445,7 @@ background-repeat: no-repeat;
 
 
 .updateBlog{
+<<<<<<< HEAD
  
  text-align: center;
 }
@@ -1449,18 +1457,39 @@ background-repeat: no-repeat;
   padding-bottom : 30px;
  
  
+=======
+	
+	text-align: center;
+}
+
+.bannersContainer{
+		
+		text-align: center;
+		padding-top : 30pxl;
+		padding-bottom : 30px;
+	
+	
+>>>>>>> gaae-view3
 }
 
 
 .footer {
+<<<<<<< HEAD
  width: 70%;
  height: 70%;
  margin: 10px auto;
  text-align : center;
+=======
+	width: 70%;
+	height: 70%;
+	margin: 10px auto;
+	text-align : center;
+>>>>>>> gaae-view3
 }
 
 
 .blogNameSize{
+<<<<<<< HEAD
  
  width: 40%;
  margin:auto;
@@ -1469,6 +1498,16 @@ background-repeat: no-repeat;
  
  
  text-align : center;
+=======
+	
+	width: 40%;
+	margin:auto;
+}
+.blogName{
+	
+	
+	text-align : center;
+>>>>>>> gaae-view3
 }
 
 
@@ -1476,6 +1515,7 @@ background-repeat: no-repeat;
 
 }
 .myButtons{
+<<<<<<< HEAD
  padding-bottom: 10px;
 }
 
@@ -1508,11 +1548,49 @@ background-repeat: no-repeat;
 
 .myBlogImage{
  
+=======
+	padding-bottom: 10px;
+}
+
+.btnMyButtion {
+	color: #337ab7;
+	border :  1px;
+	background-color: #FFFFFF;
+	border-color: #2e6da4;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+	margin-left: 5px;
+	margin-right: 5px;
+	
+	border-radius: 10px;
+	
+	}
+
+
+.imgContainer {
+	padding-top: 80px;
+	padding-left: 20px;
+	text-align: center;
+	
+	}
+
+
+
+.myBlogImage{
+	
+>>>>>>> gaae-view3
 width: 230px;
 height: 230px;
 
 border-radius: 110px;
+<<<<<<< HEAD
  
+=======
+	
+>>>>>>> gaae-view3
 
 }
 .list-unstyled {
@@ -3827,8 +3905,13 @@ tbody.collapse.in {
 }
 
 .input-group > .myBlogImage{
+<<<<<<< HEAD
  width: 100px;
  height: 100px;
+=======
+	width: 100px;
+	height: 100px;
+>>>>>>> gaae-view3
 }
 .input-group[class*="col-"] {
   float: none;
@@ -4233,7 +4316,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> gaae-view3
 
 
 .container > .navbar-header,
@@ -5801,7 +5888,11 @@ a.list-group-item-danger.active:focus {
   border-radius: 3px;
 }
 
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> gaae-view3
 
 .close {
   float: right;
@@ -6696,9 +6787,6 @@ button.close {
 
 /*# sourceMappingURL=bootstrap.css.map */
 
- 
-
- 
 
 .boardpage { width: 800px; }
 .maintable { margin-top: 15px; margin-bottom: 8px; }
@@ -6741,9 +6829,8 @@ button.close {
 .nolike { font-size:20px; font-weight: bold; text-align: center; margin-bottom: 200px;}
 
 #align{
- width:100%;   
+	width:100%;   
 text-align:center; 
- 
 }
 
 #content{

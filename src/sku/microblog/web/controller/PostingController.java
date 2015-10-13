@@ -243,7 +243,7 @@ public class PostingController extends HttpServlet {
 		PostingService postingService = new PostingServiceImpl();
 		postingService.removePosting(blogName, Integer.parseInt(num));
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(arg0);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("");
 		dispatcher.forward(request, response);
 	}
 	
@@ -252,7 +252,7 @@ public class PostingController extends HttpServlet {
 	}
 	
 	private void replyPostingForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher(arg0);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("");
 		dispatcher.forward(request, response);
 	}
 	
